@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres_aaron:
+    image: postgres:15-alpine
+    container_name: postgres_aaron_paredes
+    restart: always
+    environment:
+      POSTGRES_USER: aaron_carballo
+      POSTGRES_PASSWORD: "1305"
+      POSTGRES_DB: aaron_db
+    ports:
+      - "40045:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mysql_aaron:
+    image: mysql:8.0
+    container_name: mysql_aaron_paredes
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: aaron_root_password
+      MYSQL_DATABASE: aaron_db
+      MYSQL_USER: aaron_carballo
+      MYSQL_PASSWORD: "1305"
+    ports:
+      - "40044:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_global
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: aaron_carballo@proyectos-integradores-7b-itiid.tech
+      PGADMIN_DEFAULT_PASSWORD: "1305"
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:
+  mysql_data:
