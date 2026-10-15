@@ -6,7 +6,7 @@
 #### Autor: Aaron Ali Carballo Paredes
 
 Periodo: Septiembre - Diciembre 2026
-
+..
 ---
 
 ### Tabla de Practicas de la Materia
