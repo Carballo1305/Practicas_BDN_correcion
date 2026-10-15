@@ -3,6 +3,7 @@
 ## Ingeniería en Tecnologías de la Información e Innovación Diítal
 
 #### Docente: M.T.I. Marco Antonio Ramírez Hernández
+#### Autor: Aaron Ali Carballo Paredes
 
 Periodo: Septiembre - Diciembre 2026
 
