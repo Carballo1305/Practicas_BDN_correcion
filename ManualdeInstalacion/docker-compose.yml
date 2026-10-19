@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   postgres_aaron:
     image: postgres:15-alpine
@@ -8,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: aaron_carballo
       POSTGRES_PASSWORD: "1305"
-      POSTGRES_DB: aaron_db
+      POSTGRES_DB: db_test_7b
     ports:
       - "40045:5432"
     volumes:
@@ -20,7 +19,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: aaron_root_password
-      MYSQL_DATABASE: aaron_db
+      MYSQL_DATABASE: db_test_7b
       MYSQL_USER: aaron_carballo
       MYSQL_PASSWORD: "1305"
     ports:
