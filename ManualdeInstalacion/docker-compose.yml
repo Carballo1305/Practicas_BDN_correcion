@@ -34,8 +34,9 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: aaron_carballo@proyectos-integradores-7b-itiid.tech
       PGADMIN_DEFAULT_PASSWORD: "1305"
+      PGADMIN_CONFIG_SERVER_MODE: "True"
     ports:
-      - "80:80"
+      - "40043:80"
 
 volumes:
   postgres_data:
