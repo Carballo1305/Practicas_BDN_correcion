@@ -102,3 +102,23 @@ inicial, esquema, usuarios, productos y final (22 MB).
 El respaldo final se restauro en `db_test_restore_check` y se verifico:
 25 tablas, 72 triggers, 25 vistas, 7,512 usuarios, 12,000 productos y
 68,888 registros de bitacora. La base temporal se elimino despues de la prueba.
+
+## 8. Diagrama ER interactivo con Archify
+
+Se genero un ERD interactivo standalone con **Archify 3.2.0** a partir de
+`../backups/respaldo1411.sql`:
+
+- Archivo: [`archify/erd_practica03.html`](archify/erd_practica03.html).
+- Captura: [`archify/erd_practica03.png`](archify/erd_practica03.png).
+- Cobertura: **25 tablas**, **205 columnas** y **37 llaves foraneas**
+  (36 relaciones dibujables + 1 auto-referencia en `tbd_address_components`).
+- Vistas por dominio: usuarios/auditoria, catalogo, compras/envios, pagos y posventa.
+- Validacion: `validate`, `deliver`, `check` y `browser-check` en estado **pass**.
+- Especificacion: [`archify/candidate.json`](archify/candidate.json).
+- Generador: [`archify/build_archify_erd.py`](archify/build_archify_erd.py).
+- Receipts: `archify/erd_practica03.delivery.json`,
+  `archify/erd_practica03.finalize.json` y
+  `archify/erd_practica03.browser-check.json`.
+
+Los valores de los `ENUM` se muestran en una tarjeta del ERD y el tipo completo
+se conserva en el diccionario de datos.

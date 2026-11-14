@@ -114,6 +114,7 @@ def build_index(paths):
         "<p>Base de datos <code>db_test</code> - MySQL 8.0.46</p>"
         "<h2>Documentos</h2><ul>" + "".join(links) + "</ul>"
         "<h2>Accesos rapidos</h2><ul>"
+        '<li><a href="archify/erd_practica03.html">Diagrama ER interactivo (Archify)</a></li>'
         '<li><a href="../README.html">README del proyecto</a></li>'
         '<li><a href="../07_verificacion/resultados_verificacion.txt">Resultados de verificacion</a></li>'
         '<li><a href="../07_verificacion/09_pruebas_acceso.txt">Pruebas de acceso</a></li>'

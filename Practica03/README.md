@@ -36,7 +36,12 @@ Practica03/
 │   ├── mere.md                            MERE con diagrama Mermaid
 │   ├── EVIDENCIAS.md                      Resumen de resultados comprobados
 │   ├── Informe_Practica03.md              Informe completo de la practica
-│   └── generar_documentacion.py           Generador de la documentacion
+│   ├── generar_documentacion.py           Generador de la documentacion
+│   └── archify/
+│       ├── build_archify_erd.py           Generador del ERD Archify
+│       ├── candidate.json                 Especificacion ERD validada
+│       ├── erd_practica03.html            ERD interactivo standalone
+│       └── erd_practica03.png             Captura del ERD para el informe
 └── backups/
     ├── backup_00_inicial_20261112.sql
     ├── backup_01_esquema_20261112.sql
@@ -204,7 +209,20 @@ Los documentos tambien estan disponibles en HTML con tablas, codigo y diagrama M
 - [`08_documentacion/Informe_Practica03.html`](08_documentacion/Informe_Practica03.html) - informe completo.
 - [`08_documentacion/mere.html`](08_documentacion/mere.html) - MERE con diagrama.
 - [`08_documentacion/diccionario_datos.html`](08_documentacion/diccionario_datos.html) - diccionario de datos.
+- [`08_documentacion/archify/erd_practica03.html`](08_documentacion/archify/erd_practica03.html) - ERD interactivo generado con Archify.
 - [`README.html`](README.html) - esta guia en HTML.
+
+### Diagrama ER interactivo con Archify
+
+El ERD de [`08_documentacion/archify/erd_practica03.html`](08_documentacion/archify/erd_practica03.html)
+se genero con **Archify 3.2.0** a partir de `backups/respaldo1411.sql`. Incluye las
+25 tablas, 205 columnas, los roles PK/FK/UK, las 36 relaciones dibujables y vistas
+por dominio. La auto-referencia de `tbd_address_components` y los valores de los
+`ENUM` se documentan en tarjetas para no perder informacion.
+
+- Especificacion validada: [`08_documentacion/archify/candidate.json`](08_documentacion/archify/candidate.json).
+- Generador: [`08_documentacion/archify/build_archify_erd.py`](08_documentacion/archify/build_archify_erd.py).
+- Receipts de validacion: `erd_practica03.finalize.json` y `erd_practica03.browser-check.json`.
 
 ### Documentacion interactiva desde `respaldo1411.sql`
 
@@ -220,6 +238,11 @@ Para regenerarlos:
 ```bash
 python 08_documentacion/generar_html.py
 python backups/docgen/build.py
+python 08_documentacion/archify/build_archify_erd.py
+# Finalizar con Archify 3.2.0:
+# node <ruta-a-archify>/bin/archify.mjs finalize erd \
+#   08_documentacion/archify/candidate.json \
+#   08_documentacion/archify/erd_practica03.html --quality standard
 ```
 
 > El diagrama Mermaid usa la libreria publica de jsDelivr; el resto del HTML funciona sin conexion.
@@ -238,9 +261,10 @@ de esquema, de usuarios, de productos y final (22 MB).
 - **GitHub:** la rama `Practica03` y la rama `main` ya se publicaron en
   <https://github.com/Carballo1305/Practicas_BDN_correcion>. El repositorio remoto
   contiene los ultimos commits de la practica.
-- **Archify:** la herramienta de documentacion no estaba disponible en el entorno.
-  Los entregables equivalentes (diccionario de datos, MERE y evidencias) se generaron
-  localmente en `08_documentacion/` para su carga manual.
+- **Archify:** el ERD interactivo se genero con Archify 3.2.0 y paso las puertas
+  `validate`, `deliver`, `check` y `browser-check`. El tipo base `enum` se muestra
+  en la tabla y los valores permitidos se detallan en una tarjeta; el diccionario
+  de datos conserva el tipo completo.
 - Los privilegios heredados sobre la base `db_test_7b` (practicas anteriores) se
   conservaron intactos; no forman parte de esta practica.
 - Los datos de ejemplo de pedidos, carritos, pagos y envios no se poblaron porque

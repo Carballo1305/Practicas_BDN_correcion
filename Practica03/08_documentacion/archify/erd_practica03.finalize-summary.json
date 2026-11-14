@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "erd",
+  "quality": "standard",
+  "specification": {
+    "path": "C:\\Users\\Aaron Carballo\\Documents\\correcion_bdn\\Practicas_BDN_correcion\\Practica03\\08_documentacion\\archify\\candidate.json",
+    "sha256": "c2c432ae9d480109bcfbb8fa42c3a6e8ddfd7f2a9e2e6efd3bcad713a2fceadf",
+    "bytes": 42007
+  },
+  "artifact": {
+    "path": "C:\\Users\\Aaron Carballo\\Documents\\correcion_bdn\\Practicas_BDN_correcion\\Practica03\\08_documentacion\\archify\\erd_practica03.html",
+    "sha256": "4cca348676fb50924f89192c3d0a4e42a58e8df5cac3285e15c08928e114751b",
+    "bytes": 1018281
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\Aaron Carballo\\Documents\\correcion_bdn\\Practicas_BDN_correcion\\Practica03\\08_documentacion\\archify\\erd_practica03.finalize.json",
+    "summaryReceipt": "C:\\Users\\Aaron Carballo\\Documents\\correcion_bdn\\Practicas_BDN_correcion\\Practica03\\08_documentacion\\archify\\erd_practica03.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\Aaron Carballo\\Documents\\correcion_bdn\\Practicas_BDN_correcion\\Practica03\\08_documentacion\\archify\\erd_practica03.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-11-14T19:11:28.977Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 13425,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  },
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "routesOverSuggestedBends": 12
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [],
+      "detours": [
+        {
+          "relationship": {
+            "id": "tbd_products_users_providers__product_ID__tb_products",
+            "from": "tbd_products_users_providers",
+            "to": "tb_products",
+            "label": "producto",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "bends": 3,
+          "stretch": 1.076,
+          "directCorridorBlockers": [
+            {
+              "id": "tbd_products_categories",
+              "label": "tbd_products_categories",
+              "box": [
+                443,
+                620,
+                251,
+                136
+              ]
+            }
+          ]
+        },
+        {
+          "relationship": {
+            "id": "tb_carts__user_ID__tb_users",
+            "from": "tb_carts",
+            "to": "tb_users",
+            "label": "tiene carrito",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "bends": 4,
+          "stretch": 1.179
+        },
+        {
+          "relationship": {
+            "id": "tb_orders__buyer_ID__tb_users",
+            "from": "tb_orders",
+            "to": "tb_users",
+            "label": "compra",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "bends": 4,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "tb_shipments__order_ID__tb_orders",
+            "from": "tb_shipments",
+            "to": "tb_orders",
+            "label": "envía",
+            "collectionIndex": 18,
+            "artifactIndex": 19
+          },
+          "bends": 3,
+          "stretch": 1.08,
+          "directCorridorBlockers": [
+            {
+              "id": "tbd_order_items",
+              "label": "tbd_order_items",
+              "box": [
+                808,
+                940,
+                257,
+                216
+              ]
+            }
+          ]
+        },
+        {
+          "relationship": {
+            "id": "tbd_user_payment_methods__user_ID__tb_users",
+            "from": "tbd_user_payment_methods",
+            "to": "tb_users",
+            "label": "guarda",
+            "collectionIndex": 21,
+            "artifactIndex": 22
+          },
+          "bends": 4,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "tb_order_cancellations__order_ID__tb_orders",
+            "from": "tb_order_cancellations",
+            "to": "tb_orders",
+            "label": "cancela",
+            "collectionIndex": 25,
+            "artifactIndex": 26
+          },
+          "bends": 3,
+          "stretch": 1.036
+        },
+        {
+          "relationship": {
+            "id": "tb_order_cancellations__user_ID__tb_users",
+            "from": "tb_order_cancellations",
+            "to": "tb_users",
+            "label": "solicita",
+            "collectionIndex": 26,
+            "artifactIndex": 27
+          },
+          "bends": 4,
+          "stretch": 1.111
+        },
+        {
+          "relationship": {
+            "id": "tbd_cancellation_items__order_item_ID__tbd_order_items",
+            "from": "tbd_cancellation_items",
+            "to": "tbd_order_items",
+            "label": "cancela",
+            "collectionIndex": 28,
+            "artifactIndex": 29
+          },
+          "bends": 4,
+          "stretch": 1
+        }
+      ],
+      "truncated": true
+    },
+    "repair": "Advisory only: this mode places or routes these relationships itself. Report them; do not remove relationships or meaning to reduce crossings."
+  }
+}

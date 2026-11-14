@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "7f2758a1-f773-4852-b565-d7ac3b475b29",
+  "status": "current",
+  "command": "deliver",
+  "type": "erd",
+  "input": "C:\\Users\\Aaron Carballo\\Documents\\correcion_bdn\\Practicas_BDN_correcion\\Practica03\\08_documentacion\\archify\\candidate.json",
+  "output": "C:\\Users\\Aaron Carballo\\Documents\\correcion_bdn\\Practicas_BDN_correcion\\Practica03\\08_documentacion\\archify\\erd_practica03.html",
+  "specification": {
+    "sha256": "c2c432ae9d480109bcfbb8fa42c3a6e8ddfd7f2a9e2e6efd3bcad713a2fceadf",
+    "bytes": 42007
+  },
+  "artifact": {
+    "sha256": "4cca348676fb50924f89192c3d0a4e42a58e8df5cac3285e15c08928e114751b",
+    "bytes": 1018281
+  }
+}

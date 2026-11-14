@@ -187,6 +187,8 @@ Se generaron:
   tipos, nulabilidad, llaves, valores por defecto y llaves foraneas.
 - `mere.md` con entidades, relaciones, cardinalidades, reglas de negocio y diagrama
   Mermaid.
+- `archify/erd_practica03.html` con el ERD interactivo standalone generado con
+  Archify 3.2.0: 25 tablas, 205 columnas, roles PK/FK/UK y vistas por dominio.
 - `EVIDENCIAS.md` con los resultados comprobados.
 - Este informe y el `README.md` con el orden de ejecucion.
 
@@ -227,8 +229,9 @@ solo de la descripcion textual.
 
 ## 7. Limitaciones
 
-- La herramienta Archify no estaba disponible; los entregables equivalentes se
-  generaron localmente.
+- El ERD de Archify muestra el tipo base `enum` en cada tabla y documenta los
+  valores permitidos en una tarjeta; el diccionario de datos conserva el tipo
+  completo.
 - Los datos de pedidos, carritos, pagos y envios no se poblaron porque el alcance
   de la practica se centro en usuarios, productos y auditoria.
 - Los scripts de poblacion de productos son aditivos y deben ejecutarse una sola vez.
@@ -241,6 +244,9 @@ solo de la descripcion textual.
 | Diccionario de datos | `diccionario_datos.md` |
 | Diccionario en CSV | `diccionario_datos.csv` |
 | MERE | `mere.md` |
+| ERD interactivo (Archify) | `archify/erd_practica03.html` |
+| Captura del ERD | `archify/erd_practica03.png` |
+| Especificacion ERD | `archify/candidate.json` |
 | Evidencias | `EVIDENCIAS.md` |
 | Verificacion completa | `../07_verificacion/resultados_verificacion.txt` |
 | Validacion final | `../07_verificacion/validacion_final.txt` |

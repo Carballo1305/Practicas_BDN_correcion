@@ -82,7 +82,12 @@ poblacion de 7,000 productos por vendedores y verificacion integral.</p>
 │   ├── mere.md                            MERE con diagrama Mermaid
 │   ├── EVIDENCIAS.md                      Resumen de resultados comprobados
 │   ├── Informe_Practica03.md              Informe completo de la practica
-│   └── generar_documentacion.py           Generador de la documentacion
+│   ├── generar_documentacion.py           Generador de la documentacion
+│   └── archify/
+│       ├── build_archify_erd.py           Generador del ERD Archify
+│       ├── candidate.json                 Especificacion ERD validada
+│       ├── erd_practica03.html            ERD interactivo standalone
+│       └── erd_practica03.png             Captura del ERD para el informe
 └── backups/
     ├── backup_00_inicial_20261112.sql
     ├── backup_01_esquema_20261112.sql
@@ -438,7 +443,19 @@ las referencias a metodos de pago.</p>
 <li><a href="08_documentacion/Informe_Practica03.html"><code>08_documentacion/Informe_Practica03.html</code></a> - informe completo.</li>
 <li><a href="08_documentacion/mere.html"><code>08_documentacion/mere.html</code></a> - MERE con diagrama.</li>
 <li><a href="08_documentacion/diccionario_datos.html"><code>08_documentacion/diccionario_datos.html</code></a> - diccionario de datos.</li>
+<li><a href="08_documentacion/archify/erd_practica03.html"><code>08_documentacion/archify/erd_practica03.html</code></a> - ERD interactivo generado con Archify.</li>
 <li><a href="README.html"><code>README.html</code></a> - esta guia en HTML.</li>
+</ul>
+<h3 id="diagrama-er-interactivo-con-archify">Diagrama ER interactivo con Archify</h3>
+<p>El ERD de <a href="08_documentacion/archify/erd_practica03.html"><code>08_documentacion/archify/erd_practica03.html</code></a>
+se genero con <strong>Archify 3.2.0</strong> a partir de <code>backups/respaldo1411.sql</code>. Incluye las
+25 tablas, 205 columnas, los roles PK/FK/UK, las 36 relaciones dibujables y vistas
+por dominio. La auto-referencia de <code>tbd_address_components</code> y los valores de los
+<code>ENUM</code> se documentan en tarjetas para no perder informacion.</p>
+<ul>
+<li>Especificacion validada: <a href="08_documentacion/archify/candidate.json"><code>08_documentacion/archify/candidate.json</code></a>.</li>
+<li>Generador: <a href="08_documentacion/archify/build_archify_erd.py"><code>08_documentacion/archify/build_archify_erd.py</code></a>.</li>
+<li>Receipts de validacion: <code>erd_practica03.finalize.json</code> y <code>erd_practica03.browser-check.json</code>.</li>
 </ul>
 <h3 id="documentacion-interactiva-desde-respaldo1411sql">Documentacion interactiva desde <code>respaldo1411.sql</code></h3>
 <p>Tambien hay una version interactiva generada directamente desde el respaldo
@@ -451,6 +468,11 @@ las referencias a metodos de pago.</p>
 <p>Para regenerarlos:</p>
 <pre><code class="language-bash">python 08_documentacion/generar_html.py
 python backups/docgen/build.py
+python 08_documentacion/archify/build_archify_erd.py
+# Finalizar con Archify 3.2.0:
+# node &lt;ruta-a-archify&gt;/bin/archify.mjs finalize erd \
+#   08_documentacion/archify/candidate.json \
+#   08_documentacion/archify/erd_practica03.html --quality standard
 </code></pre>
 <blockquote>
 <p>El diagrama Mermaid usa la libreria publica de jsDelivr; el resto del HTML funciona sin conexion.</p>
@@ -468,9 +490,10 @@ de esquema, de usuarios, de productos y final (22 MB).</p>
 <li><strong>GitHub:</strong> la rama <code>Practica03</code> y la rama <code>main</code> ya se publicaron en
   <a href="https://github.com/Carballo1305/Practicas_BDN_correcion">https://github.com/Carballo1305/Practicas_BDN_correcion</a>. El repositorio remoto
   contiene los ultimos commits de la practica.</li>
-<li><strong>Archify:</strong> la herramienta de documentacion no estaba disponible en el entorno.
-  Los entregables equivalentes (diccionario de datos, MERE y evidencias) se generaron
-  localmente en <code>08_documentacion/</code> para su carga manual.</li>
+<li><strong>Archify:</strong> el ERD interactivo se genero con Archify 3.2.0 y paso las puertas
+  <code>validate</code>, <code>deliver</code>, <code>check</code> y <code>browser-check</code>. El tipo base <code>enum</code> se muestra
+  en la tabla y los valores permitidos se detallan en una tarjeta; el diccionario
+  de datos conserva el tipo completo.</li>
 <li>Los privilegios heredados sobre la base <code>db_test_7b</code> (practicas anteriores) se
   conservaron intactos; no forman parte de esta practica.</li>
 <li>Los datos de ejemplo de pedidos, carritos, pagos y envios no se poblaron porque
