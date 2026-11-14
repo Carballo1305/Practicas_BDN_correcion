@@ -1,0 +1,101 @@
+id,name,description,sup_id_category,status,creation_date,last_update
+1,Electrónica,"Dispositivos electrónicos, aparatos y tecnología en general.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+2,Computación e Informática,"Laptops, computadoras de escritorio, accesorios y periféricos.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+3,Celulares y Telefonía,"Smartphones, teléfonos fijos y accesorios móviles.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+4,Audio y Video,"Audífonos, bocinas, equipos de sonido y reproductores de video.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+5,Televisores y Pantallas,"Smart TVs, monitores, proyectores y accesorios.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+6,Cámaras y Fotografía,"Cámaras digitales, lentes, trípodes y equipo fotográfico.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+7,Consolas y Videojuegos,"Consolas de videojuegos, controles, juegos y accesorios gamer.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+8,Hogar y Cocina,"Artículos para el hogar, electrodomésticos y decoración.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+9,Electrodomésticos,"Refrigeradores, lavadoras, microondas y enseres domésticos.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+10,Muebles y Decoración,"Muebles para sala, comedor, recámara y artículos decorativos.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+11,Iluminación y Electricidad,"Lámparas, focos LED, extensiones y material eléctrico.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+12,Cuidado Personal y Belleza,"Productos de belleza, secadoras, rasuradoras y cuidado facial.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+13,Salud y Bienestar,"Equipos médicos, termómetros, básculas y cuidado de la salud.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+14,Deportes y Fitness,"Equipo deportivo, ropa deportiva y accesorios de entrenamiento.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+15,Ropa y Moda Masculina,"Camisas, pantalones, chaquetas y accesorios para hombre.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+16,Ropa y Moda Femenina,"Vestidos, blusas, faldas y accesorios para mujer.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+17,Ropa Infantil y Bebés,"Ropa, calzado y accesorios para bebés y niños.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+18,Calzado y Zapatería,"Tenis, zapatos formales, botas y sandalias.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+19,Juguetes y Juegos,"Juguetes educativos, de mesa, muñecos y figuras de acción.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+20,Librería y Papelería,"Libros, cuadernos, útiles escolares y material de oficina.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+21,Herramientas y Ferretería,"Herramientas manuales, eléctricas, clavos y tornillería.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+22,Jardín y Exteriores,"Herramientas de jardinería, macetas, plantas y muebles de exterior.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+23,Automotriz y Motos,"Refacciones, accesorios, aceites y herramientas automotrices.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+24,Mascotas y Veterinarios,"Alimentos, juguetes, accesorios y cuidado para mascotas.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+25,Alimentos y Bebidas,"Abarrotes, snacks, bebidas y artículos despensa.",\N,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+26,Accesorios de Herramientas y Ferretería 26,Subcategoría perteneciente a Herramientas y Ferretería.,21,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+27,Artículos para Electrónica 27,Subcategoría perteneciente a Electrónica.,1,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+28,Equipos de Electrodomésticos 28,Subcategoría perteneciente a Electrodomésticos.,9,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+29,Equipos de Hogar y Cocina 29,Subcategoría perteneciente a Hogar y Cocina.,8,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+30,Accesorios de Mascotas y Veterinarios 30,Subcategoría perteneciente a Mascotas y Veterinarios.,24,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+31,Artículos para Jardín y Exteriores 31,Subcategoría perteneciente a Jardín y Exteriores.,22,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+32,Accesorios de Calzado y Zapatería 32,Subcategoría perteneciente a Calzado y Zapatería.,18,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+33,Suministros de Juguetes y Juegos 33,Subcategoría perteneciente a Juguetes y Juegos.,19,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+34,Accesorios de Computación e Informática 34,Subcategoría perteneciente a Computación e Informática.,2,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+35,Equipos de Celulares y Telefonía 35,Subcategoría perteneciente a Celulares y Telefonía.,3,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+36,Línea Especial de Hogar y Cocina 36,Subcategoría perteneciente a Hogar y Cocina.,8,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+37,Accesorios de Librería y Papelería 37,Subcategoría perteneciente a Librería y Papelería.,20,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+38,Equipos de Calzado y Zapatería 38,Subcategoría perteneciente a Calzado y Zapatería.,18,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+39,Artículos para Automotriz y Motos 39,Subcategoría perteneciente a Automotriz y Motos.,23,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+40,Línea Especial de Automotriz y Motos 40,Subcategoría perteneciente a Automotriz y Motos.,23,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+41,Equipos de Deportes y Fitness 41,Subcategoría perteneciente a Deportes y Fitness.,14,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+42,Línea Especial de Ropa y Moda Masculina 42,Subcategoría perteneciente a Ropa y Moda Masculina.,15,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+43,Accesorios de Electrodomésticos 43,Subcategoría perteneciente a Electrodomésticos.,9,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+44,Equipos de Alimentos y Bebidas 44,Subcategoría perteneciente a Alimentos y Bebidas.,25,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+45,Suministros de Automotriz y Motos 45,Subcategoría perteneciente a Automotriz y Motos.,23,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+46,Componentes para Iluminación y Electricidad 46,Subcategoría perteneciente a Iluminación y Electricidad.,11,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+47,Equipos de Televisores y Pantallas 47,Subcategoría perteneciente a Televisores y Pantallas.,5,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+48,Componentes para Alimentos y Bebidas 48,Subcategoría perteneciente a Alimentos y Bebidas.,25,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+49,Accesorios de Audio y Video 49,Subcategoría perteneciente a Audio y Video.,4,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+50,Accesorios de Salud y Bienestar 50,Subcategoría perteneciente a Salud y Bienestar.,13,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+51,Componentes para Cuidado Personal y Belleza 51,Subcategoría perteneciente a Cuidado Personal y Belleza.,12,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+52,Componentes para Librería y Papelería 52,Subcategoría perteneciente a Librería y Papelería.,20,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+53,Artículos para Computación e Informática 53,Subcategoría perteneciente a Computación e Informática.,2,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+54,Línea Especial de Ropa y Moda Masculina 54,Subcategoría perteneciente a Ropa y Moda Masculina.,15,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+55,Suministros de Audio y Video 55,Subcategoría perteneciente a Audio y Video.,4,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+56,Línea Especial de Celulares y Telefonía 56,Subcategoría perteneciente a Celulares y Telefonía.,3,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+57,Artículos para Muebles y Decoración 57,Subcategoría perteneciente a Muebles y Decoración.,10,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+58,Componentes para Librería y Papelería 58,Subcategoría perteneciente a Librería y Papelería.,20,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+59,Equipos de Juguetes y Juegos 59,Subcategoría perteneciente a Juguetes y Juegos.,19,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+60,Accesorios de Automotriz y Motos 60,Subcategoría perteneciente a Automotriz y Motos.,23,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+61,Artículos para Computación e Informática 61,Subcategoría perteneciente a Computación e Informática.,2,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+62,Componentes para Hogar y Cocina 62,Subcategoría perteneciente a Hogar y Cocina.,8,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+63,Equipos de Celulares y Telefonía 63,Subcategoría perteneciente a Celulares y Telefonía.,3,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+64,Suministros de Audio y Video 64,Subcategoría perteneciente a Audio y Video.,4,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+65,Suministros de Electrodomésticos 65,Subcategoría perteneciente a Electrodomésticos.,9,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+66,Componentes para Herramientas y Ferretería 66,Subcategoría perteneciente a Herramientas y Ferretería.,21,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+67,Componentes para Cámaras y Fotografía 67,Subcategoría perteneciente a Cámaras y Fotografía.,6,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+68,Equipos de Cuidado Personal y Belleza 68,Subcategoría perteneciente a Cuidado Personal y Belleza.,12,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+69,Componentes para Jardín y Exteriores 69,Subcategoría perteneciente a Jardín y Exteriores.,22,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+70,Artículos para Automotriz y Motos 70,Subcategoría perteneciente a Automotriz y Motos.,23,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+71,Accesorios de Herramientas y Ferretería 71,Subcategoría perteneciente a Herramientas y Ferretería.,21,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+72,Artículos para Librería y Papelería 72,Subcategoría perteneciente a Librería y Papelería.,20,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+73,Línea Especial de Cámaras y Fotografía 73,Subcategoría perteneciente a Cámaras y Fotografía.,6,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+74,Equipos de Mascotas y Veterinarios 74,Subcategoría perteneciente a Mascotas y Veterinarios.,24,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+75,Suministros de Cámaras y Fotografía 75,Subcategoría perteneciente a Cámaras y Fotografía.,6,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+76,Componentes para Salud y Bienestar 76,Subcategoría perteneciente a Salud y Bienestar.,13,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+77,Artículos para Herramientas y Ferretería 77,Subcategoría perteneciente a Herramientas y Ferretería.,21,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+78,Equipos de Calzado y Zapatería 78,Subcategoría perteneciente a Calzado y Zapatería.,18,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+79,Componentes para Jardín y Exteriores 79,Subcategoría perteneciente a Jardín y Exteriores.,22,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+80,Accesorios de Alimentos y Bebidas 80,Subcategoría perteneciente a Alimentos y Bebidas.,25,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+81,Accesorios de Hogar y Cocina 81,Subcategoría perteneciente a Hogar y Cocina.,8,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+82,Suministros de Iluminación y Electricidad 82,Subcategoría perteneciente a Iluminación y Electricidad.,11,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+83,Accesorios de Electrodomésticos 83,Subcategoría perteneciente a Electrodomésticos.,9,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+84,Línea Especial de Consolas y Videojuegos 84,Subcategoría perteneciente a Consolas y Videojuegos.,7,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+85,Componentes para Automotriz y Motos 85,Subcategoría perteneciente a Automotriz y Motos.,23,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+86,Artículos para Consolas y Videojuegos 86,Subcategoría perteneciente a Consolas y Videojuegos.,7,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+87,Suministros de Ropa y Moda Femenina 87,Subcategoría perteneciente a Ropa y Moda Femenina.,16,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+88,Suministros de Herramientas y Ferretería 88,Subcategoría perteneciente a Herramientas y Ferretería.,21,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+89,Componentes para Televisores y Pantallas 89,Subcategoría perteneciente a Televisores y Pantallas.,5,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+90,Equipos de Televisores y Pantallas 90,Subcategoría perteneciente a Televisores y Pantallas.,5,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+91,Línea Especial de Mascotas y Veterinarios 91,Subcategoría perteneciente a Mascotas y Veterinarios.,24,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+92,Componentes para Calzado y Zapatería 92,Subcategoría perteneciente a Calzado y Zapatería.,18,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+93,Línea Especial de Mascotas y Veterinarios 93,Subcategoría perteneciente a Mascotas y Veterinarios.,24,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+94,Línea Especial de Deportes y Fitness 94,Subcategoría perteneciente a Deportes y Fitness.,14,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+95,Componentes para Salud y Bienestar 95,Subcategoría perteneciente a Salud y Bienestar.,13,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+96,Equipos de Hogar y Cocina 96,Subcategoría perteneciente a Hogar y Cocina.,8,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+97,Suministros de Ropa Infantil y Bebés 97,Subcategoría perteneciente a Ropa Infantil y Bebés.,17,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+98,Accesorios de Celulares y Telefonía 98,Subcategoría perteneciente a Celulares y Telefonía.,3,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+99,Equipos de Audio y Video 99,Subcategoría perteneciente a Audio y Video.,4,1,2024-01-01 10:00:00,2024-01-01 10:00:00
+100,Equipos de Herramientas y Ferretería 100,Subcategoría perteneciente a Herramientas y Ferretería.,21,1,2024-01-01 10:00:00,2024-01-01 10:00:00
