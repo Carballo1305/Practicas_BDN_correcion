@@ -194,8 +194,9 @@ Se generaron:
 
 Se inicializo un repositorio Git local. El trabajo se desarrollo en la rama
 `Practica03` y se integro en `main` mediante `merge --no-ff`. Se creo la etiqueta
-`practica03-final`. El `push` a GitHub quedo pendiente porque el entorno no tenia
-un remoto ni credenciales configuradas.
+`practica03-final`. Ambas ramas se publicaron en
+<https://github.com/Carballo1305/Practicas_BDN_correcion> y el repositorio remoto
+conto con los ultimos commits de la practica.
 
 ## 5. Resultados y discusion
 
@@ -226,7 +227,6 @@ solo de la descripcion textual.
 
 ## 7. Limitaciones
 
-- El `push` a GitHub no se pudo completar por falta de remoto y credenciales.
 - La herramienta Archify no estaba disponible; los entregables equivalentes se
   generaron localmente.
 - Los datos de pedidos, carritos, pagos y envios no se poblaron porque el alcance

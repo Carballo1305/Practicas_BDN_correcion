@@ -6,7 +6,7 @@ from pathlib import Path
 
 import markdown
 
-BASE = Path(r"C:\Users\Aaron Carballo\Documents\Proyecto predeterminado\Practica03")
+BASE = Path(__file__).resolve().parent.parent
 
 DOCS = [
     BASE / "README.md",

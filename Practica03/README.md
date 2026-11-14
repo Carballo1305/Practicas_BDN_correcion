@@ -235,14 +235,9 @@ de esquema, de usuarios, de productos y final (22 MB).
 
 ## Limitaciones y pendientes
 
-- **GitHub:** el repositorio se inicializo y trabajo localmente en la rama
-  `Practica03`, pero no se pudo hacer `push` porque el entorno no tenia un remoto
-  ni credenciales configuradas. Para publicarlo:
-  ```bash
-  git remote add origin https://github.com/<usuario>/<repositorio>.git
-  git push -u origin main
-  git push origin Practica03
-  ```
+- **GitHub:** la rama `Practica03` y la rama `main` ya se publicaron en
+  <https://github.com/Carballo1305/Practicas_BDN_correcion>. El repositorio remoto
+  contiene los ultimos commits de la practica.
 - **Archify:** la herramienta de documentacion no estaba disponible en el entorno.
   Los entregables equivalentes (diccionario de datos, MERE y evidencias) se generaron
   localmente en `08_documentacion/` para su carga manual.

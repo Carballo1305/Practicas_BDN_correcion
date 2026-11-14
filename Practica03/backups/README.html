@@ -84,8 +84,30 @@ hr { border:0; border-top:1px solid var(--borde); margin:2em 0; }
 <td>Respaldo completo final: estructura + datos + triggers + vistas + rutinas + eventos.</td>
 <td>22 MB</td>
 </tr>
+<tr>
+<td><code>respaldo1411.sql</code></td>
+<td>Copia renombrada del respaldo final usada como fuente de la documentación interactiva.</td>
+<td>23 MB</td>
+</tr>
 </tbody>
 </table>
+<h2 id="documentacion-interactiva">Documentación interactiva</h2>
+<p>La documentación de la base de datos se puede abrir directamente en el navegador:</p>
+<ul>
+<li><code>index_documentacion.html</code> - página de entrada con enlaces a las dos vistas.</li>
+<li><code>diccionario_datos.html</code> - diccionario interactivo: 25 tablas, columnas, tipos SQL, llaves, relaciones y ejemplos con datos sensibles enmascarados.</li>
+<li><code>diagrama_er.html</code> - diagrama entidad-relación: mapa por dominios, diagrama técnico con zoom y descarga SVG, y lista de las 37 relaciones.</li>
+</ul>
+<p>Los archivos se generan con los scripts de <code>docgen/</code> a partir de <code>respaldo1411.sql</code>:</p>
+<pre><code class="language-bash">python docgen/build.py
+</code></pre>
+<h2 id="respaldos-heredados">Respaldos heredados</h2>
+<p>En esta misma carpeta se conservan sin modificaciones:</p>
+<ul>
+<li><code>respaldo 2010.sql</code> - respaldo de una version anterior de <code>db_test</code>.</li>
+<li><code>respaldo1510.sql</code> - respaldo previo adicional.</li>
+</ul>
+<p>El respaldo vigente de la Practica 03 es <code>backup_04_final_20261112.sql</code>.</p>
 <h2 id="restauracion">Restauracion</h2>
 <p>Restauracion completa en una base limpia:</p>
 <pre><code class="language-bash">mysql -h 127.0.0.1 -P 40045 -u root -p -e &quot;CREATE DATABASE db_test_restaurada;&quot;

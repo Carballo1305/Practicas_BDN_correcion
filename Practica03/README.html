@@ -440,24 +440,34 @@ las referencias a metodos de pago.</p>
 <li><a href="08_documentacion/diccionario_datos.html"><code>08_documentacion/diccionario_datos.html</code></a> - diccionario de datos.</li>
 <li><a href="README.html"><code>README.html</code></a> - esta guia en HTML.</li>
 </ul>
+<h3 id="documentacion-interactiva-desde-respaldo1411sql">Documentacion interactiva desde <code>respaldo1411.sql</code></h3>
+<p>Tambien hay una version interactiva generada directamente desde el respaldo
+<a href="backups/respaldo1411.sql"><code>backups/respaldo1411.sql</code></a>:</p>
+<ul>
+<li><a href="backups/index_documentacion.html"><code>backups/index_documentacion.html</code></a> - entrada con enlaces a las dos vistas.</li>
+<li><a href="backups/diccionario_datos.html"><code>backups/diccionario_datos.html</code></a> - diccionario de las 25 tablas con buscador, filtros, llaves, tipos SQL y ejemplos enmascarados.</li>
+<li><a href="backups/diagrama_er.html"><code>backups/diagrama_er.html</code></a> - diagrama entidad-relacion con mapa por dominios, zoom, descarga SVG y las 37 relaciones explicadas.</li>
+</ul>
 <p>Para regenerarlos:</p>
 <pre><code class="language-bash">python 08_documentacion/generar_html.py
+python backups/docgen/build.py
 </code></pre>
 <blockquote>
 <p>El diagrama Mermaid usa la libreria publica de jsDelivr; el resto del HTML funciona sin conexion.</p>
 </blockquote>
 <h2 id="respaldos">Respaldos</h2>
+<blockquote>
+<p>En <code>backups/</code> tambien se conservan los respaldos heredados <code>respaldo 2010.sql</code> y
+<code>respaldo1510.sql</code>, que corresponden a versiones anteriores de <code>db_test</code> y no se
+modificaron. El respaldo vigente de esta practica es <code>backup_04_final_20261112.sql</code>.</p>
+</blockquote>
 <p>Ver <a href="backups/README.html"><code>backups/README.md</code></a>. Se incluyen respaldos inicial,
 de esquema, de usuarios, de productos y final (22 MB).</p>
 <h2 id="limitaciones-y-pendientes">Limitaciones y pendientes</h2>
 <ul>
-<li><strong>GitHub:</strong> el repositorio se inicializo y trabajo localmente en la rama
-  <code>Practica03</code>, pero no se pudo hacer <code>push</code> porque el entorno no tenia un remoto
-  ni credenciales configuradas. Para publicarlo:
-  <code>bash
-  git remote add origin https://github.com/&lt;usuario&gt;/&lt;repositorio&gt;.git
-  git push -u origin main
-  git push origin Practica03</code></li>
+<li><strong>GitHub:</strong> la rama <code>Practica03</code> y la rama <code>main</code> ya se publicaron en
+  <a href="https://github.com/Carballo1305/Practicas_BDN_correcion">https://github.com/Carballo1305/Practicas_BDN_correcion</a>. El repositorio remoto
+  contiene los ultimos commits de la practica.</li>
 <li><strong>Archify:</strong> la herramienta de documentacion no estaba disponible en el entorno.
   Los entregables equivalentes (diccionario de datos, MERE y evidencias) se generaron
   localmente en <code>08_documentacion/</code> para su carga manual.</li>
