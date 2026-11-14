@@ -9,6 +9,10 @@ El enlace del diccionario de datos de la actividad esta aqui:
 ### Diagrama Entidad-Relación 
 * **[Ver Diagrama ER en pantalla completa](https://carballo1305.github.io/Practicas_BDN_correcion/Practica03/backups/diagrama_er.html)**
 
+* ## Diagrama Entidad-Relación (Archify)
+
+* **[Abrir Diagrama Interactivo en pantalla completa](https://carballo1305.github.io/Practicas_BDN_correcion/Practica03/Pasos_Extra/08_documentacion/archify/erd_practica03.html)**
+
 ## Contenido del repositorio
 
 ```text
