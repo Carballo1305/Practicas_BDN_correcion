@@ -5,6 +5,10 @@ Implementacion completa de la Practica 03 sobre la base de datos `db_test`
 25 vistas, 7 roles con privilegios, rutinas y eventos, simulacion de 7,500 usuarios,
 poblacion de 7,000 productos por vendedores y verificacion integral.
 
+El enlace del diccionario de datos de la actividad esta aqui:
+### Diagrama Entidad-Relación 
+* **[Ver Diagrama ER en pantalla completa](https://carballo1305.github.io/Practicas_BDN_correcion/Practica03/backups/diagrama_er.html)**
+
 ## Contenido del repositorio
 
 ```text
