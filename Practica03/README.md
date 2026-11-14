@@ -7,7 +7,7 @@ poblacion de 7,000 productos por vendedores y verificacion integral.
 
 El enlace del diccionario de datos de la actividad esta aqui:
 ### Diccionario De Datos
-* **[Ver Diagrama ER en pantalla completa](https://carballo1305.github.io/Practicas_BDN_correcion/Practica03/backups/diagrama_er.html)**
+* **[Ver Diagrama ER en pantalla completa](https://carballo1305.github.io/Practicas_BDN_correcion/Practica03/backups/diccionario_datos.html)**
 
 * ## Diagrama Entidad-Relación (Archify)
 
