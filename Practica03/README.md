@@ -206,10 +206,20 @@ Los documentos tambien estan disponibles en HTML con tablas, codigo y diagrama M
 - [`08_documentacion/diccionario_datos.html`](08_documentacion/diccionario_datos.html) - diccionario de datos.
 - [`README.html`](README.html) - esta guia en HTML.
 
+### Documentacion interactiva desde `respaldo1411.sql`
+
+Tambien hay una version interactiva generada directamente desde el respaldo
+[`backups/respaldo1411.sql`](backups/respaldo1411.sql):
+
+- [`backups/index_documentacion.html`](backups/index_documentacion.html) - entrada con enlaces a las dos vistas.
+- [`backups/diccionario_datos.html`](backups/diccionario_datos.html) - diccionario de las 25 tablas con buscador, filtros, llaves, tipos SQL y ejemplos enmascarados.
+- [`backups/diagrama_er.html`](backups/diagrama_er.html) - diagrama entidad-relacion con mapa por dominios, zoom, descarga SVG y las 37 relaciones explicadas.
+
 Para regenerarlos:
 
 ```bash
 python 08_documentacion/generar_html.py
+python backups/docgen/build.py
 ```
 
 > El diagrama Mermaid usa la libreria publica de jsDelivr; el resto del HTML funciona sin conexion.
