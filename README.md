@@ -15,3 +15,5 @@ Periodo: Septiembre - Diciembre 2026
 |---|---|---|---|---|
 |1.|Metodología de Evaluación de la Materia| Transcribir en libreta y comprender la metodología y fechas de evaluación de la asignatura | Si | 🟢 Concluida |
 |2.|Conexiones Remotas para bases de datos sql|Crear administrar  usuarios y privilegios para conexiones desde internet o redes locales | Si | 🟢 En proceso |
+### Diagrama Entidad-Relación (Interactivo)
+* **[Ver Diagrama ER en pantalla completa](https://carballo1305.github.io/Practicas_BDN_correcion/Practica03/backups/diagrama_er.html)**
