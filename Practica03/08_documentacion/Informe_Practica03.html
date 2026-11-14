@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informe Practica03</title>
+<style>
+:root { --azul:#123b6d; --azul2:#1f5fa8; --gris:#f4f6f9; --borde:#d8dee8; }
+* { box-sizing: border-box; }
+body { margin:0; background:#eef1f5; color:#1c2430;
+       font-family: "Segoe UI", Roboto, Arial, sans-serif; line-height:1.6; }
+main { max-width: 1150px; margin: 28px auto; background:#fff; padding: 46px 58px;
+       box-shadow: 0 4px 24px rgba(0,0,0,.10); border-radius: 6px; }
+h1 { color:var(--azul); border-bottom:3px solid var(--azul2); padding-bottom:.3em;
+     font-size:2em; margin-top:0; }
+h2 { color:var(--azul); border-bottom:1px solid var(--borde); padding-bottom:.2em;
+     margin-top:2em; }
+h3 { color:var(--azul2); margin-top:1.6em; }
+h4 { color:#33475b; }
+a { color:var(--azul2); }
+table { border-collapse:collapse; width:100%; margin:1em 0; font-size:.94em; }
+th, td { border:1px solid var(--borde); padding:8px 10px; text-align:left; vertical-align:top; }
+th { background:var(--azul); color:#fff; font-weight:600; }
+tr:nth-child(even) td { background:var(--gris); }
+code { background:#eef2f7; padding:2px 5px; border-radius:3px; font-size:.92em;
+       font-family: Consolas, "Courier New", monospace; }
+pre { background:#1e2733; color:#e8eef7; padding:14px 18px; border-radius:6px;
+      overflow-x:auto; font-size:.9em; }
+pre code { background:transparent; color:inherit; padding:0; }
+blockquote { border-left:4px solid var(--azul2); background:#eef4fb; margin:1em 0;
+             padding:.6em 1em; color:#2c3e50; }
+hr { border:0; border-top:1px solid var(--borde); margin:2em 0; }
+.mermaid { background:#fff; border:1px solid var(--borde); border-radius:6px;
+           padding:18px; margin:1.2em 0; overflow-x:auto; text-align:center; }
+.portada { text-align:center; margin-bottom:1.5em; }
+.portada .sub { color:#5b6b80; }
+@media print {
+  body { background:#fff; }
+  main { box-shadow:none; margin:0; padding:0; max-width:none; }
+  h1, h2, h3 { page-break-after:avoid; }
+  table, pre, .mermaid { page-break-inside:avoid; }
+}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+</script>
+</head>
+<body>
+<main>
+<h1 id="informe-de-la-practica-03">Informe de la Practica 03</h1>
+<p><strong>Materia:</strong> Bases de datos en la nube<br>
+<strong>Practica:</strong> 03 - Triggers, vistas, roles, simulacion y documentacion<br>
+<strong>Alumno:</strong> Aaron Carballo<br>
+<strong>Fecha:</strong> 12 de noviembre de 2026<br>
+<strong>Motor:</strong> MySQL 8.0.46<br>
+<strong>Servidor:</strong> <code>127.0.0.1:40045</code><br>
+<strong>Base de datos:</strong> <code>db_test</code></p>
+<hr>
+<h2 id="1-introduccion">1. Introduccion</h2>
+<p>La Practica 03 consolida el uso de objetos avanzados de MySQL sobre el esquema de
+comercio electronico <code>db_test</code>. El trabajo abarca la correccion del modelo relacional,
+la implementacion de 72 triggers de auditoria, 25 vistas de consulta y trazabilidad,
+la definicion de siete roles con privilegios diferenciados, la creacion de funciones,
+procedimientos y eventos, la simulacion de 7,500 usuarios y la poblacion de 7,000
+productos por parte de dos vendedores remotos.</p>
+<p>El objetivo general es demostrar que la base de datos no solo almacena informacion,
+sino que tambien aplica reglas de negocio, registra trazabilidad, controla el acceso
+y soporta procesos masivos de generacion de datos de prueba.</p>
+<h2 id="2-objetivos-especificos">2. Objetivos especificos</h2>
+<ol>
+<li>Corregir las llaves foraneas y completar la tabla de bitacora.</li>
+<li>Implementar 72 triggers (3 por tabla operativa) que registren INSERT, UPDATE y DELETE.</li>
+<li>Crear 25 vistas: 24 de trazabilidad y 1 de catalogo por categoria.</li>
+<li>Definir 7 roles y 8 cuentas remotas con privilegios de minimo privilegio.</li>
+<li>Crear funciones, procedimientos y eventos para automatizar procesos.</li>
+<li>Simular 7,500 usuarios en tres escenarios demograficos.</li>
+<li>Poblar 7,000 productos distribuidos entre <code>seller1</code> y <code>seller2</code>.</li>
+<li>Verificar integridad, duplicados, permisos y trazabilidad.</li>
+<li>Generar respaldos y documentacion tecnica (diccionario de datos y MERE).</li>
+</ol>
+<h2 id="3-entorno-y-metodologia">3. Entorno y metodologia</h2>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servidor MySQL</td>
+<td>8.0.46 en <code>127.0.0.1:40045</code></td>
+</tr>
+<tr>
+<td>Cliente</td>
+<td><code>mysql</code> / <code>mysqldump</code> 8.0</td>
+</tr>
+<tr>
+<td>Base de datos</td>
+<td><code>db_test</code></td>
+</tr>
+<tr>
+<td>Configuracion</td>
+<td><code>C:\Users\Public\my_practica.cnf</code></td>
+</tr>
+<tr>
+<td>Control de versiones</td>
+<td>Git local, rama <code>Practica03</code></td>
+</tr>
+</tbody>
+</table>
+<p>Los scripts se ejecutaron en el orden documentado en el <code>README.md</code>. Cada actividad
+genero un archivo de salida en <code>06_simulacion/</code> o <code>07_verificacion/</code> para conservar
+la evidencia.</p>
+<h2 id="4-desarrollo-de-las-actividades">4. Desarrollo de las actividades</h2>
+<h3 id="actividad-1-correccion-del-esquema">Actividad 1. Correccion del esquema</h3>
+<p>Se conservaron las 25 tablas existentes. Se detecto que la llave foranea
+<code>tbd_order_items.tbd_order_items_ibfk_1</code> apuntaba a una tabla inexistente
+(<code>tb_buyer_orders</code>). Se elimino y se recreo como
+<code>fk_order_items_order</code> hacia <code>tb_orders(ID)</code>.</p>
+<p>Tambien se agrego a <code>tb_logs</code> la columna <code>record_id VARCHAR(150)</code> con su indice,
+necesaria para relacionar cada evento con el registro afectado. El resultado fue
+de 24 tablas operativas mas <code>tb_logs</code> (25 en total) y cero llaves foraneas huerfanas.</p>
+<h3 id="actividad-2-triggers-de-auditoria">Actividad 2. Triggers de auditoria</h3>
+<p>Se crearon 72 triggers con la convencion <code>trg_&lt;tabla&gt;_ai</code>, <code>trg_&lt;tabla&gt;_au</code> y
+<code>trg_&lt;tabla&gt;_ad</code>. Cada trigger registra en <code>tb_logs</code>:</p>
+<ul>
+<li>tabla afectada,</li>
+<li>operacion (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>),</li>
+<li>usuario de base de datos (<code>USER()</code>),</li>
+<li>identificador del registro (<code>record_id</code>),</li>
+<li>descripcion con los campos principales,</li>
+<li>fecha y estado.</li>
+</ul>
+<p>Se verifico que las 24 tablas operativas tienen exactamente 3 triggers. <code>tb_logs</code>
+no tiene triggers para evitar recursion.</p>
+<h3 id="actividad-3-vistas">Actividad 3. Vistas</h3>
+<p>Se crearon 25 vistas:</p>
+<ul>
+<li><code>vw_productos_por_categoria</code>: agrega productos por categoria con totales,
+  activos, descontinuados y stock.</li>
+<li>24 vistas <code>vw_trazabilidad_&lt;tabla&gt;</code>: combinan la entidad con su ultimo evento
+  de bitacora.</li>
+</ul>
+<p>La vista de usuarios excluye la columna <code>password</code>, expone <code>nick</code> como <code>username</code>
+y enmascara las referencias a metodos de pago. Las vistas de trazabilidad se
+restringieron a los roles <code>admin</code> y <code>support</code>; <code>seller</code> solo accede a las cinco
+vistas de su dominio y los demas roles unicamente a la vista de catalogo.</p>
+<h3 id="actividad-4-usuarios-roles-y-privilegios">Actividad 4. Usuarios, roles y privilegios</h3>
+<p>Se definieron siete roles:</p>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>superadmin</code></td>
+<td>Control total del servidor y de <code>db_test</code>.</td>
+</tr>
+<tr>
+<td><code>admin</code></td>
+<td>CRUD de las 24 tablas, lectura de bitacora y EXECUTE; sin DDL.</td>
+</tr>
+<tr>
+<td><code>support</code></td>
+<td>Consulta general y actualizacion de pedidos, envios y devoluciones.</td>
+</tr>
+<tr>
+<td><code>seller</code></td>
+<td>Productos, categorias de producto y proveedores.</td>
+</tr>
+<tr>
+<td><code>buyer</code></td>
+<td>Catalogo, carrito y pedidos propios.</td>
+</tr>
+<tr>
+<td><code>common_user</code></td>
+<td>Catalogo, perfil y carrito.</td>
+</tr>
+<tr>
+<td><code>user_not_registered</code></td>
+<td>Solo catalogo publico.</td>
+</tr>
+</tbody>
+</table>
+<p>Se crearon ocho cuentas remotas (<code>remoto_superadmin</code>, <code>remoto_admin</code>,
+<code>remoto_support</code>, <code>seller1</code>, <code>seller2</code>, <code>buyer1</code>, <code>common1</code>, <code>guest1</code>) con su rol
+asignado como predeterminado. Durante la revision se eliminaron privilegios amplios
+heredados: <code>admin</code> tenia <code>ALL PRIVILEGES</code> sobre <code>db_test</code> y <code>support</code> podia crear
+usuarios y administrar roles. Ambos se redujeron a los privilegios documentados.</p>
+<h3 id="actividad-5-funciones-procedimientos-y-eventos">Actividad 5. Funciones, procedimientos y eventos</h3>
+<p>Se implementaron:</p>
+<ul>
+<li><strong>7 funciones</strong> auxiliares para generar nombres, apellidos, paises, generos,
+  fechas de nacimiento, numeros aleatorios y estados por probabilidad.</li>
+<li><strong>6 procedimientos</strong>: <code>sp_simular_usuarios</code>, <code>sp_poblar_productos</code>,
+  <code>sp_register_new_user</code>, <code>sp_soft_delete_product</code>, <code>sp_restore_product</code> y
+  <code>sp_generar_72_triggers</code>.</li>
+<li><strong>2 eventos</strong> habilitados: cierre de carritos inactivos (diario) y purga de
+  bitacora antigua (semanal).</li>
+</ul>
+<h3 id="actividad-6-simulacion-de-usuarios">Actividad 6. Simulacion de usuarios</h3>
+<p>Se generaron 7,500 usuarios en tres escenarios:</p>
+<table>
+<thead>
+<tr>
+<th>Escenario</th>
+<th style="text-align: right;">Usuarios</th>
+<th style="text-align: right;">Activos</th>
+<th style="text-align: right;">Inactivos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test 1: 500 hombres de EE.UU.</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Test 2: 2,000 de 24 paises, 19-35 anos</td>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Test 3: 5,000 con 80/20</td>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;">4,006</td>
+<td style="text-align: right;">994</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>7,500</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<p>Se corrigio un error de calculo de edad y se regenero el Test 2 para garantizar
+que todos los usuarios quedaran dentro del rango de 19 a 35 anos. Los 7,500
+usuarios tienen registro correspondiente en <code>tb_people</code>.</p>
+<h3 id="actividad-7-poblacion-de-productos">Actividad 7. Poblacion de productos</h3>
+<p>Se generaron 7,000 productos nuevos:</p>
+<table>
+<thead>
+<tr>
+<th>Vendedor</th>
+<th style="text-align: right;">Productos</th>
+<th style="text-align: right;">Descontinuados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>seller1</code></td>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;">505</td>
+</tr>
+<tr>
+<td><code>seller2</code></td>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;">214</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>7,000</strong></td>
+<td style="text-align: right;"><strong>719</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Cada producto se asocio a una categoria y a su proveedor. El catalogo total quedo
+en 12,000 productos (incluye 5,000 productos heredados de practicas anteriores),
+con 11,281 activos y 719 descontinuados. Ninguna categoria quedo sin productos.</p>
+<h3 id="actividad-8-verificacion">Actividad 8. Verificacion</h3>
+<p>Se ejecutaron consultas de conteo, integridad, duplicados, permisos y trazabilidad.
+Resultados principales:</p>
+<pre><code class="language-text">Tablas base 25 | Triggers 72 | Vistas 25 | Funciones 7 | Procedimientos 6 | Eventos 2
+Usuarios simulados 7,500 | Productos 12,000 | Productos con vendedor 7,000
+Registros de bitacora 68,888
+Personas sin usuario 0 | FK huerfanas 0 | Emails/nick/SKU duplicados 0
+Precios o stock invalidos 0 | Categorias sin productos 0
+</code></pre>
+<p>Las pruebas de acceso confirmaron que las cuentas solo pueden operar dentro de su
+rol. Los intentos de lectura o escritura fuera de alcance devolvieron
+<code>ERROR 1142</code> o <code>ERROR 1227</code>.</p>
+<h3 id="actividad-9-respaldos">Actividad 9. Respaldos</h3>
+<p>Se generaron cinco respaldos con <code>mysqldump</code>:</p>
+<ol>
+<li><code>backup_00_inicial</code> - estado previo a las correcciones.</li>
+<li><code>backup_01_esquema</code> - solo estructura.</li>
+<li><code>backup_02_usuarios</code> - usuarios, personas y relaciones.</li>
+<li><code>backup_03_productos</code> - productos, categorias y relaciones.</li>
+<li><code>backup_04_final</code> - respaldo completo (22 MB).</li>
+</ol>
+<h3 id="actividad-10-documentacion">Actividad 10. Documentacion</h3>
+<p>Se generaron:</p>
+<ul>
+<li><code>diccionario_datos.md</code> y <code>diccionario_datos.csv</code> con las 25 tablas, 205 columnas,
+  tipos, nulabilidad, llaves, valores por defecto y llaves foraneas.</li>
+<li><code>mere.md</code> con entidades, relaciones, cardinalidades, reglas de negocio y diagrama
+  Mermaid.</li>
+<li><code>EVIDENCIAS.md</code> con los resultados comprobados.</li>
+<li>Este informe y el <code>README.md</code> con el orden de ejecucion.</li>
+</ul>
+<h3 id="actividad-11-control-de-versiones">Actividad 11. Control de versiones</h3>
+<p>Se inicializo un repositorio Git local. El trabajo se desarrollo en la rama
+<code>Practica03</code> y se integro en <code>main</code> mediante <code>merge --no-ff</code>. Se creo la etiqueta
+<code>practica03-final</code>. El <code>push</code> a GitHub quedo pendiente porque el entorno no tenia
+un remoto ni credenciales configuradas.</p>
+<h2 id="5-resultados-y-discusion">5. Resultados y discusion</h2>
+<p>La base <code>db_test</code> cumple con los objetos y volumenes solicitados. La bitacora
+registro 68,888 eventos, lo que demuestra que los triggers se disparan en las
+operaciones reales de simulacion y poblacion. Las pruebas de acceso evidencian
+una separacion efectiva de responsabilidades: el rol de soporte puede consultar
+las 25 vistas, el vendedor solo las cinco de productos y los compradores e
+invitados unicamente el catalogo.</p>
+<p>La correccion del esquema elimino una llave foranea rota que podia impedir la
+insercion de items de pedido. La incorporacion de <code>record_id</code> en <code>tb_logs</code>
+mejora la trazabilidad y permite auditar un registro especifico sin depender
+solo de la descripcion textual.</p>
+<h2 id="6-conclusiones">6. Conclusiones</h2>
+<ol>
+<li>Los triggers permiten auditar de forma automatica y consistente las 24 tablas
+   operativas sin modificar el codigo de la aplicacion.</li>
+<li>Las vistas de trazabilidad facilitan la consulta de auditoria y, al excluir
+   datos sensibles, reducen el riesgo de exposicion de contrasenas.</li>
+<li>El modelo de roles aplica el principio de minimo privilegio y es verificable
+   mediante pruebas de acceso reproducibles.</li>
+<li>Los procedimientos y funciones permiten generar volumenes grandes de datos
+   de prueba con reglas demograficas controladas.</li>
+<li>La documentacion generada a partir de <code>information_schema</code> se mantiene
+   sincronizada con la base y facilita el mantenimiento.</li>
+</ol>
+<h2 id="7-limitaciones">7. Limitaciones</h2>
+<ul>
+<li>El <code>push</code> a GitHub no se pudo completar por falta de remoto y credenciales.</li>
+<li>La herramienta Archify no estaba disponible; los entregables equivalentes se
+  generaron localmente.</li>
+<li>Los datos de pedidos, carritos, pagos y envios no se poblaron porque el alcance
+  de la practica se centro en usuarios, productos y auditoria.</li>
+<li>Los scripts de poblacion de productos son aditivos y deben ejecutarse una sola vez.</li>
+</ul>
+<h2 id="8-anexos">8. Anexos</h2>
+<table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Ruta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>README del proyecto</td>
+<td><code>../README.md</code></td>
+</tr>
+<tr>
+<td>Diccionario de datos</td>
+<td><code>diccionario_datos.md</code></td>
+</tr>
+<tr>
+<td>Diccionario en CSV</td>
+<td><code>diccionario_datos.csv</code></td>
+</tr>
+<tr>
+<td>MERE</td>
+<td><code>mere.md</code></td>
+</tr>
+<tr>
+<td>Evidencias</td>
+<td><code>EVIDENCIAS.md</code></td>
+</tr>
+<tr>
+<td>Verificacion completa</td>
+<td><code>../07_verificacion/resultados_verificacion.txt</code></td>
+</tr>
+<tr>
+<td>Validacion final</td>
+<td><code>../07_verificacion/validacion_final.txt</code></td>
+</tr>
+<tr>
+<td>Pruebas de acceso</td>
+<td><code>../07_verificacion/09_pruebas_acceso.txt</code></td>
+</tr>
+<tr>
+<td>Respaldos</td>
+<td><code>../backups/README.md</code></td>
+</tr>
+</tbody>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>README</title>
+<style>
+:root { --azul:#123b6d; --azul2:#1f5fa8; --gris:#f4f6f9; --borde:#d8dee8; }
+* { box-sizing: border-box; }
+body { margin:0; background:#eef1f5; color:#1c2430;
+       font-family: "Segoe UI", Roboto, Arial, sans-serif; line-height:1.6; }
+main { max-width: 1150px; margin: 28px auto; background:#fff; padding: 46px 58px;
+       box-shadow: 0 4px 24px rgba(0,0,0,.10); border-radius: 6px; }
+h1 { color:var(--azul); border-bottom:3px solid var(--azul2); padding-bottom:.3em;
+     font-size:2em; margin-top:0; }
+h2 { color:var(--azul); border-bottom:1px solid var(--borde); padding-bottom:.2em;
+     margin-top:2em; }
+h3 { color:var(--azul2); margin-top:1.6em; }
+h4 { color:#33475b; }
+a { color:var(--azul2); }
+table { border-collapse:collapse; width:100%; margin:1em 0; font-size:.94em; }
+th, td { border:1px solid var(--borde); padding:8px 10px; text-align:left; vertical-align:top; }
+th { background:var(--azul); color:#fff; font-weight:600; }
+tr:nth-child(even) td { background:var(--gris); }
+code { background:#eef2f7; padding:2px 5px; border-radius:3px; font-size:.92em;
+       font-family: Consolas, "Courier New", monospace; }
+pre { background:#1e2733; color:#e8eef7; padding:14px 18px; border-radius:6px;
+      overflow-x:auto; font-size:.9em; }
+pre code { background:transparent; color:inherit; padding:0; }
+blockquote { border-left:4px solid var(--azul2); background:#eef4fb; margin:1em 0;
+             padding:.6em 1em; color:#2c3e50; }
+hr { border:0; border-top:1px solid var(--borde); margin:2em 0; }
+.mermaid { background:#fff; border:1px solid var(--borde); border-radius:6px;
+           padding:18px; margin:1.2em 0; overflow-x:auto; text-align:center; }
+.portada { text-align:center; margin-bottom:1.5em; }
+.portada .sub { color:#5b6b80; }
+@media print {
+  body { background:#fff; }
+  main { box-shadow:none; margin:0; padding:0; max-width:none; }
+  h1, h2, h3 { page-break-after:avoid; }
+  table, pre, .mermaid { page-break-inside:avoid; }
+}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+</script>
+</head>
+<body>
+<main>
+<h1 id="practica-03-bases-de-datos-en-la-nube">Practica 03 - Bases de datos en la nube</h1>
+<p>Implementacion completa de la Practica 03 sobre la base de datos <code>db_test</code>
+(MySQL 8.0.46, servidor <code>127.0.0.1:40045</code>): correccion del esquema, 72 triggers,
+25 vistas, 7 roles con privilegios, rutinas y eventos, simulacion de 7,500 usuarios,
+poblacion de 7,000 productos por vendedores y verificacion integral.</p>
+<h2 id="contenido-del-repositorio">Contenido del repositorio</h2>
+<pre><code class="language-text">Practica03/
+├── 01_schema/
+│   └── 01_correccion_esquema.sql          Correccion de FK y tabla tb_logs
+├── 02_triggers/
+│   └── 02_triggers_72.sql                 72 triggers de auditoria
+├── 03_vistas/
+│   └── 03_vistas_25.sql                   25 vistas (24 trazabilidad + catalogo)
+├── 04_usuarios_roles/
+│   └── 04_usuarios_roles_privilegios.sql  7 roles, 8 cuentas remotas y privilegios
+├── 05_rutinas/
+│   └── 05_procedimientos_funciones_eventos.sql  7 funciones, 6 procedimientos, 2 eventos
+├── 06_simulacion/
+│   ├── 06_simulacion_usuarios.sql         Simulacion de 7,500 usuarios (3 escenarios)
+│   ├── 06b_regenerar_test2.sql            Regeneracion del Test 2 (edades 19-35)
+│   ├── 07a_poblacion_seller1.sql          5,000 productos como seller1
+│   ├── 07b_poblacion_seller2.sql          2,000 productos como seller2
+│   └── resultado_*.txt                    Salidas de cada proceso
+├── 07_verificacion/
+│   ├── 08_consultas_verificacion.sql      Consultas de verificacion
+│   ├── 09_pruebas_acceso.ps1              Pruebas automatizadas de acceso
+│   ├── 09_pruebas_acceso.txt              Resultados de las pruebas de acceso
+│   └── resultados_verificacion.txt        Resultados de la verificacion
+├── 08_documentacion/
+│   ├── diccionario_datos.md               Diccionario de datos legible
+│   ├── diccionario_datos.csv              Diccionario de datos para Excel
+│   ├── mere.md                            MERE con diagrama Mermaid
+│   ├── EVIDENCIAS.md                      Resumen de resultados comprobados
+│   ├── Informe_Practica03.md              Informe completo de la practica
+│   └── generar_documentacion.py           Generador de la documentacion
+└── backups/
+    ├── backup_00_inicial_20261112.sql
+    ├── backup_01_esquema_20261112.sql
+    ├── backup_02_usuarios_20261112.sql
+    ├── backup_03_productos_20261112.sql
+    ├── backup_04_final_20261112.sql
+    └── README.md
+</code></pre>
+<h2 id="requisitos">Requisitos</h2>
+<ul>
+<li>MySQL Server 8.0.46 en <code>127.0.0.1:40045</code>.</li>
+<li>Cliente <code>mysql</code> y <code>mysqldump</code> en el PATH (o rutas completas de MySQL 8.0).</li>
+<li><code>event_scheduler = ON</code> y privilegios de administrador para crear roles, usuarios y eventos.</li>
+</ul>
+<h2 id="conexion">Conexion</h2>
+<table>
+<thead>
+<tr>
+<th>Parametro</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td><code>127.0.0.1</code></td>
+</tr>
+<tr>
+<td>Puerto</td>
+<td><code>40045</code></td>
+</tr>
+<tr>
+<td>Base de datos</td>
+<td><code>db_test</code></td>
+</tr>
+<tr>
+<td>Usuario administrador</td>
+<td><code>root</code></td>
+</tr>
+<tr>
+<td>Contrasena administrador</td>
+<td><code>root1234</code></td>
+</tr>
+</tbody>
+</table>
+<p>Archivo de configuracion usado por los scripts:</p>
+<pre><code class="language-ini"># C:\Users\Public\my_practica.cnf
+[client]
+host=127.0.0.1
+port=40045
+user=root
+password=root1234
+default-character-set=utf8mb4
+</code></pre>
+<h2 id="orden-de-ejecucion">Orden de ejecucion</h2>
+<p>Ejecutar desde una consola con el cliente MySQL:</p>
+<pre><code class="language-bash">mysql --defaults-file=&quot;C:\Users\Public\my_practica.cnf&quot; db_test &lt; 01_schema/01_correccion_esquema.sql
+mysql --defaults-file=&quot;C:\Users\Public\my_practica.cnf&quot; db_test &lt; 02_triggers/02_triggers_72.sql
+mysql --defaults-file=&quot;C:\Users\Public\my_practica.cnf&quot; db_test &lt; 03_vistas/03_vistas_25.sql
+mysql --defaults-file=&quot;C:\Users\Public\my_practica.cnf&quot; db_test &lt; 04_usuarios_roles/04_usuarios_roles_privilegios.sql
+mysql --defaults-file=&quot;C:\Users\Public\my_practica.cnf&quot; db_test &lt; 05_rutinas/05_procedimientos_funciones_eventos.sql
+mysql --defaults-file=&quot;C:\Users\Public\my_practica.cnf&quot; db_test &lt; 06_simulacion/06_simulacion_usuarios.sql
+# Solo si se requiere regenerar el Test 2:
+# mysql --defaults-file=&quot;C:\Users\Public\my_practica.cnf&quot; db_test &lt; 06_simulacion/06b_regenerar_test2.sql
+# Poblacion de productos (ejecutar como seller1 y seller2):
+mysql --defaults-file=&quot;C:\Users\Public\my_seller1.cnf&quot; db_test &lt; 06_simulacion/07a_poblacion_seller1.sql
+mysql --defaults-file=&quot;C:\Users\Public\my_seller2.cnf&quot; db_test &lt; 06_simulacion/07b_poblacion_seller2.sql
+mysql --defaults-file=&quot;C:\Users\Public\my_practica.cnf&quot; db_test &lt; 07_verificacion/08_consultas_verificacion.sql
+powershell -ExecutionPolicy Bypass -File 07_verificacion/09_pruebas_acceso.ps1
+</code></pre>
+<blockquote>
+<p><strong>Importante:</strong> si se vuelven a crear los procedimientos con <code>DROP PROCEDURE</code>,
+se pierden los permisos <code>EXECUTE</code> a nivel de rutina. En ese caso se debe re-ejecutar
+<code>04_usuarios_roles_privilegios.sql</code> para restaurar los permisos de <code>seller</code>.</p>
+<p>La simulacion de usuarios es repetible: elimina los usuarios <code>t1_</code>, <code>t2_</code> y <code>t3_</code>
+antes de regenerarlos. La poblacion de productos es <strong>aditiva</strong>; ejecutarla dos veces
+duplica los productos de cada vendedor, por lo que debe correrse una sola vez.</p>
+</blockquote>
+<h2 id="cuentas-y-roles">Cuentas y roles</h2>
+<h3 id="roles-del-sistema">Roles del sistema</h3>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Proposito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>superadmin</code></td>
+<td>Control total del servidor y de <code>db_test</code>.</td>
+</tr>
+<tr>
+<td><code>admin</code></td>
+<td>CRUD sobre las 24 tablas operativas, lectura de bitacora y ejecucion de rutinas; sin DDL.</td>
+</tr>
+<tr>
+<td><code>support</code></td>
+<td>Consulta general y actualizacion de pedidos, envios, devoluciones y cancelaciones.</td>
+</tr>
+<tr>
+<td><code>seller</code></td>
+<td>Gestion de productos, categorias de producto y proveedores.</td>
+</tr>
+<tr>
+<td><code>buyer</code></td>
+<td>Consulta de catalogo y gestion de carrito y pedidos propios.</td>
+</tr>
+<tr>
+<td><code>common_user</code></td>
+<td>Catalogo, perfil propio y carrito.</td>
+</tr>
+<tr>
+<td><code>user_not_registered</code></td>
+<td>Solo catalogo publico.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cuentas-remotas">Cuentas remotas</h3>
+<table>
+<thead>
+<tr>
+<th>Usuario</th>
+<th>Rol</th>
+<th>Contrasena</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>remoto_superadmin</code></td>
+<td><code>superadmin</code></td>
+<td><code>Sup3r#2026</code></td>
+</tr>
+<tr>
+<td><code>remoto_admin</code></td>
+<td><code>admin</code></td>
+<td><code>Adm1n#2026</code></td>
+</tr>
+<tr>
+<td><code>remoto_support</code></td>
+<td><code>support</code></td>
+<td><code>Supp0rt#2026</code></td>
+</tr>
+<tr>
+<td><code>seller1</code></td>
+<td><code>seller</code></td>
+<td><code>Sell3r1#2026</code></td>
+</tr>
+<tr>
+<td><code>seller2</code></td>
+<td><code>seller</code></td>
+<td><code>Sell3r2#2026</code></td>
+</tr>
+<tr>
+<td><code>buyer1</code></td>
+<td><code>buyer</code></td>
+<td><code>Buy3r1#2026</code></td>
+</tr>
+<tr>
+<td><code>common1</code></td>
+<td><code>common_user</code></td>
+<td><code>C0mm0n#2026</code></td>
+</tr>
+<tr>
+<td><code>guest1</code></td>
+<td><code>user_not_registered</code></td>
+<td><code>Gu3st1#2026</code></td>
+</tr>
+</tbody>
+</table>
+<p>Todas las cuentas usan el host <code>%</code> y tienen su rol asignado como rol predeterminado.
+Las contrasenas con <code>#</code> deben ir entre comillas dobles en los archivos <code>.cnf</code>.
+MySQL muestra los roles como cuentas bloqueadas (<code>account_locked = 'Y'</code>); es el
+comportamiento normal de los roles y no impide su uso por las cuentas asignadas.</p>
+<h3 id="usuarios-de-aplicacion-de-los-vendedores">Usuarios de aplicacion de los vendedores</h3>
+<table>
+<thead>
+<tr>
+<th>Email</th>
+<th>Nick</th>
+<th>Contrasena (SHA-256 en <code>tb_users</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>seller1@ecommerce.test</code></td>
+<td><code>seller1</code></td>
+<td><code>Seller1#2026</code></td>
+</tr>
+<tr>
+<td><code>seller2@ecommerce.test</code></td>
+<td><code>seller2</code></td>
+<td><code>Seller2#2026</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="matriz-de-acceso-a-objetos">Matriz de acceso a objetos</h2>
+<table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th style="text-align: center;">superadmin</th>
+<th style="text-align: center;">admin</th>
+<th style="text-align: center;">support</th>
+<th style="text-align: center;">seller</th>
+<th style="text-align: center;">buyer</th>
+<th style="text-align: center;">common_user</th>
+<th style="text-align: center;">guest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>24 tablas operativas</td>
+<td style="text-align: center;">CRUD</td>
+<td style="text-align: center;">CRUD</td>
+<td style="text-align: center;">SELECT (+UPDATE en pedidos/envios/devoluciones)</td>
+<td style="text-align: center;">productos y relaciones</td>
+<td style="text-align: center;">catalogo, carrito, pedidos propios</td>
+<td style="text-align: center;">catalogo, perfil, carrito</td>
+<td style="text-align: center;">catalogo</td>
+</tr>
+<tr>
+<td><code>tb_logs</code></td>
+<td style="text-align: center;">CRUD</td>
+<td style="text-align: center;">SELECT</td>
+<td style="text-align: center;">SELECT</td>
+<td style="text-align: center;">SELECT</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td>25 vistas</td>
+<td style="text-align: center;">SELECT</td>
+<td style="text-align: center;">SELECT</td>
+<td style="text-align: center;">SELECT</td>
+<td style="text-align: center;">5 vistas de productos</td>
+<td style="text-align: center;">1 vista de catalogo</td>
+<td style="text-align: center;">1 vista de catalogo</td>
+<td style="text-align: center;">1 vista de catalogo</td>
+</tr>
+<tr>
+<td>Rutinas</td>
+<td style="text-align: center;">EXECUTE</td>
+<td style="text-align: center;">EXECUTE</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">3 procedimientos de productos</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td>DDL / usuarios</td>
+<td style="text-align: center;">Si</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="resultados-verificados">Resultados verificados</h2>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tablas base</td>
+<td>25 (24 operativas + <code>tb_logs</code>)</td>
+</tr>
+<tr>
+<td>Triggers</td>
+<td>72</td>
+</tr>
+<tr>
+<td>Vistas</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Funciones / procedimientos / eventos</td>
+<td>7 / 6 / 2</td>
+</tr>
+<tr>
+<td>Usuarios simulados</td>
+<td>7,500</td>
+</tr>
+<tr>
+<td>Usuarios con registro en <code>tb_people</code></td>
+<td>7,500</td>
+</tr>
+<tr>
+<td>Productos totales</td>
+<td>12,000 (11,281 activos, 719 descontinuados)</td>
+</tr>
+<tr>
+<td>Productos asignados a vendedores</td>
+<td>7,000 (seller1: 5,000; seller2: 2,000)</td>
+</tr>
+<tr>
+<td>Categorias sin productos</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Registros de auditoria</td>
+<td>68,888</td>
+</tr>
+<tr>
+<td>Llaves foraneas huerfanas / duplicados</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>El detalle y las salidas literales estan en
+<a href="08_documentacion/EVIDENCIAS.html"><code>08_documentacion/EVIDENCIAS.md</code></a>,
+<a href="07_verificacion/resultados_verificacion.txt"><code>07_verificacion/resultados_verificacion.txt</code></a>
+y la validacion consolidada en
+<a href="07_verificacion/validacion_final.txt"><code>07_verificacion/validacion_final.txt</code></a>
+(script: <a href="07_verificacion/10_validacion_final.sql"><code>07_verificacion/10_validacion_final.sql</code></a>).</p>
+<h2 id="vistas">Vistas</h2>
+<ul>
+<li><strong>Catalogo:</strong> <code>vw_productos_por_categoria</code>.</li>
+<li><strong>Trazabilidad (24):</strong> una vista por tabla operativa
+  (<code>vw_trazabilidad_usuarios</code>, <code>vw_trazabilidad_people</code>, <code>vw_trazabilidad_productos</code>,
+  <code>vw_trazabilidad_categorias</code>, <code>vw_trazabilidad_productos_categorias</code>,
+  <code>vw_trazabilidad_products_users_providers</code>, <code>vw_trazabilidad_carts</code>,
+  <code>vw_trazabilidad_cart_items</code>, <code>vw_trazabilidad_orders</code>, <code>vw_trazabilidad_order_items</code>,
+  <code>vw_trazabilidad_payments</code>, <code>vw_trazabilidad_payment_methods</code>,
+  <code>vw_trazabilidad_payment_methods_types</code>, <code>vw_trazabilidad_user_payment_methods</code>,
+  <code>vw_trazabilidad_payment_transaction</code>, <code>vw_trazabilidad_shipments</code>,
+  <code>vw_trazabilidad_returns</code>, <code>vw_trazabilidad_return_items</code>, <code>vw_trazabilidad_refunds</code>,
+  <code>vw_trazabilidad_user_addresses</code>, <code>vw_trazabilidad_address_components</code>,
+  <code>vw_trazabilidad_order_cancellations</code>, <code>vw_trazabilidad_cancellation_items</code>,
+  <code>vw_trazabilidad_users_wishlist_products</code>).</li>
+</ul>
+<p>Las vistas de trazabilidad incluyen los datos de la entidad y las columnas
+<code>log_id</code>, <code>log_operation</code>, <code>log_db_user</code>, <code>log_record_id</code>, <code>log_description</code>,
+<code>log_date</code> y <code>log_status</code>. La vista de usuarios excluye <code>password</code> y enmascara
+las referencias a metodos de pago.</p>
+<h2 id="version-html-de-la-documentacion">Version HTML de la documentacion</h2>
+<p>Los documentos tambien estan disponibles en HTML con tablas, codigo y diagrama Mermaid:</p>
+<ul>
+<li><a href="08_documentacion/index.html"><code>08_documentacion/index.html</code></a> - indice general.</li>
+<li><a href="08_documentacion/Informe_Practica03.html"><code>08_documentacion/Informe_Practica03.html</code></a> - informe completo.</li>
+<li><a href="08_documentacion/mere.html"><code>08_documentacion/mere.html</code></a> - MERE con diagrama.</li>
+<li><a href="08_documentacion/diccionario_datos.html"><code>08_documentacion/diccionario_datos.html</code></a> - diccionario de datos.</li>
+<li><a href="README.html"><code>README.html</code></a> - esta guia en HTML.</li>
+</ul>
+<p>Para regenerarlos:</p>
+<pre><code class="language-bash">python 08_documentacion/generar_html.py
+</code></pre>
+<blockquote>
+<p>El diagrama Mermaid usa la libreria publica de jsDelivr; el resto del HTML funciona sin conexion.</p>
+</blockquote>
+<h2 id="respaldos">Respaldos</h2>
+<p>Ver <a href="backups/README.html"><code>backups/README.md</code></a>. Se incluyen respaldos inicial,
+de esquema, de usuarios, de productos y final (22 MB).</p>
+<h2 id="limitaciones-y-pendientes">Limitaciones y pendientes</h2>
+<ul>
+<li><strong>GitHub:</strong> el repositorio se inicializo y trabajo localmente en la rama
+  <code>Practica03</code>, pero no se pudo hacer <code>push</code> porque el entorno no tenia un remoto
+  ni credenciales configuradas. Para publicarlo:
+  <code>bash
+  git remote add origin https://github.com/&lt;usuario&gt;/&lt;repositorio&gt;.git
+  git push -u origin main
+  git push origin Practica03</code></li>
+<li><strong>Archify:</strong> la herramienta de documentacion no estaba disponible en el entorno.
+  Los entregables equivalentes (diccionario de datos, MERE y evidencias) se generaron
+  localmente en <code>08_documentacion/</code> para su carga manual.</li>
+<li>Los privilegios heredados sobre la base <code>db_test_7b</code> (practicas anteriores) se
+  conservaron intactos; no forman parte de esta practica.</li>
+<li>Los datos de ejemplo de pedidos, carritos, pagos y envios no se poblaron porque
+  el alcance solicitado se centro en usuarios y productos.</li>
+</ul>
+</main>
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿objeto	total
+Tablas base	25
+Tablas operativas (sin tb_logs)	24
+Triggers	72
+Vistas	25
+Funciones	7
+Procedimientos	6
+Eventos	2
+escenario	total	activos	inactivos
+Test 1: 500 hombres de US	500	500	0
+Test 2: 2000 paises, 19-35	2000	2000	0
+Test 3: 5000, 80/20	5000	4006	994
+verificacion	total
+Total usuarios simulados	7500
+verificacion	total
+Test 1: hombres de US	500
+verificacion	edad_min	edad_max	paises
+Test 2: rango de edad	19	35	24
+verificacion	total	activos	pct_activos
+Test 3: proporcion activos	5000	4006	80.12
+verificacion	usuarios	sin_persona	estados_inconsistentes
+Usuarios simulados con persona	7500	0	0
+verificacion	total	activos	descontinuados
+Total de productos	12000	11281	719
+vendedor	email	productos	descontinuados
+seller1	seller1@ecommerce.test	5000	505
+seller2	seller2@ecommerce.test	2000	214
+verificacion	total
+Productos con vendedor asignado	7000
+category_id	category_name	category_level	total_products	active_products	discontinued_products	total_stock
+23	Automotriz y Motos	Categoria	299	275	24	71942
+21	Herramientas y Ferreter├¡a	Categoria	292	269	23	67119
+8	Hogar y Cocina	Categoria	282	259	23	60793
+18	Calzado y Zapater├¡a	Categoria	262	243	19	56508
+9	Electrodom├®sticos	Categoria	261	250	11	59736
+24	Mascotas y Veterinarios	Categoria	257	245	12	55934
+5	Televisores y Pantallas	Categoria	256	245	11	55125
+20	Librer├¡a y Papeler├¡a	Categoria	254	232	22	56954
+4	Audio y Video	Categoria	251	234	17	57970
+3	Celulares y Telefon├¡a	Categoria	240	227	13	54856
+25	Alimentos y Bebidas	Categoria	232	214	18	51999
+6	C├ímaras y Fotograf├¡a	Categoria	231	217	14	49252
+13	Salud y Bienestar	Categoria	228	214	14	49309
+22	Jard├¡n y Exteriores	Categoria	226	212	14	49785
+12	Cuidado Personal y Belleza	Categoria	220	198	22	46811
+verificacion	total
+Categorias/subcategorias sin productos	0
+db_user	table_name	operation	eventos
+remoto_superadmin@localhost	tb_people	DELETE	2002
+remoto_superadmin@localhost	tb_people	INSERT	9502
+remoto_superadmin@localhost	tb_users	DELETE	2002
+remoto_superadmin@localhost	tb_users	INSERT	9502
+seller1@localhost	tb_products	INSERT	5004
+seller1@localhost	tbd_products_categories	INSERT	6254
+seller1@localhost	tbd_products_users_providers	INSERT	5004
+seller2@localhost	tb_products	INSERT	2000
+seller2@localhost	tbd_products_categories	INSERT	2500
+seller2@localhost	tbd_products_users_providers	INSERT	2000
+verificacion	eventos
+Inserciones de usuarios por superadmin remoto	9502
+verificacion	seller1	seller2
+Inserciones de productos por seller1/seller2	5004	2000
+ID	username	email	log_db_user	log_description	log_date
+16	t1_f3026303dec9	t1_f3026303dec911f1823a0a00@sim.test	remoto_superadmin@localhost	INSERT en tb_users: ID=16; email=t1_f3026303dec911f1823a0a00@sim.test; nick=t1_f3026303dec9; roles=common_user; status=1	2026-11-12 12:50:37
+17	t1_f302b33adec9	t1_f302b33adec911f1823a0a00@sim.test	remoto_superadmin@localhost	INSERT en tb_users: ID=17; email=t1_f302b33adec911f1823a0a00@sim.test; nick=t1_f302b33adec9; roles=common_user; status=1	2026-11-12 12:50:37
+18	t1_f302c770dec9	t1_f302c770dec911f1823a0a00@sim.test	remoto_superadmin@localhost	INSERT en tb_users: ID=18; email=t1_f302c770dec911f1823a0a00@sim.test; nick=t1_f302c770dec9; roles=common_user; status=1	2026-11-12 12:50:37
+19	t1_f302d9cedec9	t1_f302d9cedec911f1823a0a00@sim.test	remoto_superadmin@localhost	INSERT en tb_users: ID=19; email=t1_f302d9cedec911f1823a0a00@sim.test; nick=t1_f302d9cedec9; roles=common_user; status=1	2026-11-12 12:50:37
+20	t1_f302e95bdec9	t1_f302e95bdec911f1823a0a00@sim.test	remoto_superadmin@localhost	INSERT en tb_users: ID=20; email=t1_f302e95bdec911f1823a0a00@sim.test; nick=t1_f302e95bdec9; roles=common_user; status=1	2026-11-12 12:50:37
+ID	SKU	name	log_db_user	log_operation	log_date
+10005	SELLER1-005000-12	Equipos de Herramientas y Ferreter├¡a 100 SELLER1 05000	seller1@localhost	INSERT	2026-11-12 12:54:16
+10004	SELLER1-004999-12	Equipos de Audio y Video 99 SELLER1 04999	seller1@localhost	INSERT	2026-11-12 12:54:16
+10003	SELLER1-004998-12	Accesorios de Celulares y Telefon├¡a 98 SELLER1 04998	seller1@localhost	INSERT	2026-11-12 12:54:16
+10002	SELLER1-004997-12	Suministros de Ropa Infantil y Beb├®s 97 SELLER1 04997	seller1@localhost	INSERT	2026-11-12 12:54:16
+10001	SELLER1-004996-12	Equipos de Hogar y Cocina 96 SELLER1 04996	seller1@localhost	INSERT	2026-11-12 12:54:16
+verificacion	total
+Personas sin usuario	0
+verificacion	total
+Productos-categoria sin producto	0
+verificacion	total
+Productos-categoria sin categoria	0
+verificacion	total
+Proveedor-producto sin producto	0
+verificacion	total
+Proveedor-producto sin usuario	0
+verificacion	total
+Items de orden sin orden	0
+verificacion	total
+Emails duplicados	0
+verificacion	total
+Nicks duplicados	0
+verificacion	total
+SKU duplicados	0
+verificacion	total
+Precios o stock invalidos	0
+rol	usuario_asignado
+buyer	buyer1
+common_user	common1
+user_not_registered	guest1
+admin	remoto_admin
+superadmin	remoto_superadmin
+support	remoto_support
+seller	seller1
+seller	seller2
+usuario	rol_predeterminado
+buyer1	buyer
+common1	common_user
+guest1	user_not_registered
+remoto_admin	admin
+remoto_superadmin	superadmin
+remoto_support	support
+seller1	seller
+seller2	seller
+EVENT_NAME	STATUS	INTERVAL_VALUE	INTERVAL_FIELD	STARTS	LAST_EXECUTED
+ev_cerrar_carritos_inactivos	ENABLED	1	DAY	2026-11-13 02:00:00	NULL
+ev_purgar_logs_antiguos	ENABLED	1	WEEK	2026-11-19 03:00:00	NULL
