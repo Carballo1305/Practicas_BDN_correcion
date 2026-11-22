@@ -361,6 +361,21 @@ def build_data() -> dict:
     }
 
 
+def fill_stats(html: str, meta: dict) -> str:
+    """Sustituye los valores de respaldo del HTML por los conteos reales."""
+    return (
+        html.replace("__TABLES__", str(meta["tables"]))
+        .replace("__ROWS__", f"{meta['totalRows']:,}")
+        .replace("__RELATIONS__", str(meta["relations"]))
+        .replace("__WITH_DATA__", str(meta["withData"]))
+        .replace("__DOMAINS__", str(len(DOMAINS)))
+        .replace("__USERS__", f"{meta['users']:,}")
+        .replace("__PRODUCTS__", f"{meta['products']:,}")
+        .replace("__LOGS__", f"{meta['logs']:,}")
+        .replace("__CATEGORIES__", f"{meta['categories']:,}")
+    )
+
+
 def main() -> None:
     data = build_data()
     data_json = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
@@ -368,30 +383,29 @@ def main() -> None:
     app_js = (BASE / "app.js").read_text(encoding="utf-8")
     diagram_js = (BASE / "diagram.js").read_text(encoding="utf-8")
     template = (BASE / "template_main.html").read_text(encoding="utf-8")
-    html = (
+    html = fill_stats(
         template.replace("__CSS__", css)
         .replace("__DATA_JSON__", data_json)
         .replace("__APP_JS__", app_js)
-        .replace("__GENERATED__", TODAY)
+        .replace("__GENERATED__", TODAY),
+        data["meta"],
     )
     OUT_MAIN.write_text(html, encoding="utf-8")
 
     diagram_template = (BASE / "template_diagram.html").read_text(encoding="utf-8")
-    diagram_html = (
+    diagram_html = fill_stats(
         diagram_template.replace("__CSS__", css)
         .replace("__DATA_JSON__", data_json)
         .replace("__DIAGRAM_JS__", diagram_js)
-        .replace("__GENERATED__", TODAY)
+        .replace("__GENERATED__", TODAY),
+        data["meta"],
     )
     OUT_DIAGRAM.write_text(diagram_html, encoding="utf-8")
 
     index_template = (BASE / "template_index.html").read_text(encoding="utf-8")
-    index_html = (
-        index_template.replace("__CSS__", css)
-        .replace("__GENERATED__", TODAY)
-        .replace("__TABLES__", str(data["meta"]["tables"]))
-        .replace("__ROWS__", f"{data['meta']['totalRows']:,}")
-        .replace("__RELATIONS__", str(data["meta"]["relations"]))
+    index_html = fill_stats(
+        index_template.replace("__CSS__", css).replace("__GENERATED__", TODAY),
+        data["meta"],
     )
     OUT_INDEX.write_text(index_html, encoding="utf-8")
 
