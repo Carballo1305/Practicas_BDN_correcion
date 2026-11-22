@@ -2,8 +2,9 @@
 
 Puedes visualizar e interactuar directamente con el diccionario de datos y el diagrama entidad-relación desde tu navegador haciendo clic en los siguientes enlaces:
 
-* **[Ver Diccionario de Datos Interactivo](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/diccionario_datos.html)** — Haz clic aquí para explorar las tablas, columnas, tipos de datos y descripciones de `respaldo2011.sql`.
-* **[Ver Diagrama Entidad-Relación (ER)](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/diagrama_er.html)** — Haz clic aquí para visualizar el esquema gráfico de relaciones y llaves entre entidades.
+* **[Ver Diccionario de Datos Interactivo](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/backups/diccionario_datos.html)** — Haz clic aquí para explorar las tablas, columnas, tipos de datos y descripciones de `respaldo2011.sql`.
+* **[Ver Diagrama Entidad-Relación (ER)](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/backups/diagrama_er.html)** — Haz clic aquí para visualizar el esquema gráfico de relaciones y llaves entre entidades.
+* **[Ver Portada de la Documentación](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/backups/index_documentacion.html)** — Página de entrada con accesos directos a ambas herramientas.
 
 📁 Práctica 04: Ingeniería Inversa y Documentación Interactiva de Base de Datos (respaldo2011.sql)
 
@@ -21,10 +22,11 @@ Visualización Interactiva: Actualizar y entregar dos herramientas web autoconte
 
 Practica04/
 ├── backups/
-│   └── respaldo2011.sql         # Script SQL fuente con la estructura y registros de la BD
-├── diccionario_datos.html       # Diccionario de datos extendido, buscable e interactivo
-├── diagrama_er.html             # Diagrama Entidad-Relación (ER) visual e interactivo
-└── README.md                    # Documentación general del proyecto
+│   ├── respaldo2011.sql          # Script SQL fuente con la estructura y registros de la BD
+│   ├── diccionario_datos.html    # Diccionario de datos extendido, buscable e interactivo
+│   ├── diagrama_er.html          # Diagrama Entidad-Relación (ER) visual e interactivo
+│   └── index_documentacion.html  # Portada con enlaces a las dos vistas
+└── Readme.md                     # Documentación general del proyecto
 
 
 🛠️ Componentes Desarrollados
@@ -61,9 +63,9 @@ Al tratarse de archivos HTML autocontenidos, no requieren instalación de servid
 
 Ubica la carpeta del proyecto en tu equipo.
 
-Haz doble clic sobre diccionario_datos.html para abrirlo en tu navegador web predeterminado (Chrome, Brave, Edge, Firefox) y explorar las tablas y definiciones.
+Haz doble clic sobre `backups/diccionario_datos.html` para abrirlo en tu navegador web predeterminado (Chrome, Brave, Edge, Firefox) y explorar las tablas y definiciones.
 
-Haz doble clic sobre diagrama_er.html para inspeccionar de forma gráfica el mapa de relaciones de la base de datos.
+Haz doble clic sobre `backups/diagrama_er.html` para inspeccionar de forma gráfica el mapa de relaciones de la base de datos.
 
 📝 Notas Técnicas
 

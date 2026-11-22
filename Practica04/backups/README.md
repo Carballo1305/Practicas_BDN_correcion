@@ -9,7 +9,8 @@ Respaldos generados con `mysqldump` (MySQL 8.0.46) el 12/11/2026.
 | `backup_02_usuarios_20261112.sql` | Datos de usuarios y personas: `tb_users`, `tb_people`, direcciones, metodos de pago y wishlist. | 2.3 MB |
 | `backup_03_productos_20261112.sql` | Datos de catalogo: `tb_products`, `tbc_categories` y tablas de relacion. | 4.9 MB |
 | `backup_04_final_20261112.sql` | Respaldo completo final: estructura + datos + triggers + vistas + rutinas + eventos. | 22 MB |
-| `respaldo1411.sql` | Copia renombrada del respaldo final usada como fuente de la documentación interactiva. | 23 MB |
+| `respaldo2011.sql` | Respaldo usado como fuente de la documentación interactiva (Práctica 04). | 23 MB |
+| `respaldo1411.sql` | Respaldo anterior conservado como referencia. | 23 MB |
 
 ## Documentación interactiva
 
@@ -19,7 +20,7 @@ La documentación de la base de datos se puede abrir directamente en el navegado
 - `diccionario_datos.html` - diccionario interactivo: 25 tablas, columnas, tipos SQL, llaves, relaciones y ejemplos con datos sensibles enmascarados.
 - `diagrama_er.html` - diagrama entidad-relación: mapa por dominios, diagrama técnico con zoom y descarga SVG, y lista de las 37 relaciones.
 
-Los archivos se generan con los scripts de `docgen/` a partir de `respaldo1411.sql`:
+Los archivos se generan con los scripts de `docgen/` a partir de `respaldo2011.sql`:
 
 ```bash
 python docgen/build.py

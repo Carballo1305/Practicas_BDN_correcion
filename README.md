@@ -17,3 +17,8 @@ Periodo: Septiembre - Diciembre 2026
 |2.|Conexiones Remotas para bases de datos sql|Crear administrar  usuarios y privilegios para conexiones desde internet o redes locales | Si | 🟢 En proceso |
 ### Diagrama Entidad-Relación (Interactivo)
 * **[Ver Diagrama ER en pantalla completa](https://carballo1305.github.io/Practicas_BDN_correcion/Practica03/backups/diagrama_er.html)**
+
+### Práctica 04 - Documentación Interactiva de Base de Datos
+* **[Ver Diccionario de Datos](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/backups/diccionario_datos.html)**
+* **[Ver Diagrama Entidad-Relación (ER)](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/backups/diagrama_er.html)**
+* **[Ver Portada de la Documentación](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/backups/index_documentacion.html)**
