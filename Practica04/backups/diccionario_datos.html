@@ -1,0 +1,2002 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1f3a">
+  <meta name="description" content="Diccionario de datos interactivo y diagrama entidad-relación de la base de datos db_test, generado a partir del respaldo respaldo2011.sql.">
+  <title>Diccionario de Datos Interactivo · db_test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>:root {
+  --ink: #0b1f3a;
+  --ink-2: #173a63;
+  --muted: #5f738c;
+  --muted-2: #8194aa;
+  --line: #dfe8f3;
+  --line-strong: #cbd9ea;
+  --bg: #f3f7fc;
+  --card: #ffffff;
+  --blue: #2563eb;
+  --blue-soft: #e8f0ff;
+  --teal: #0d9488;
+  --teal-soft: #e6fffb;
+  --violet: #7c3aed;
+  --violet-soft: #f3e8ff;
+  --amber: #d97706;
+  --amber-soft: #fff7e6;
+  --red: #dc2626;
+  --red-soft: #fee2e2;
+  --slate: #475569;
+  --slate-soft: #f1f5f9;
+  --green: #15803d;
+  --green-soft: #e8f8ee;
+  --pink: #be185d;
+  --pink-soft: #fce7f3;
+  --shadow-sm: 0 1px 2px rgba(15, 39, 68, 0.05);
+  --shadow: 0 12px 30px -18px rgba(15, 39, 68, 0.35);
+  --shadow-lg: 0 26px 60px -28px rgba(15, 39, 68, 0.42);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --font: "Inter", "Segoe UI", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", "Cascadia Code", ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 500px at 8% -10%, rgba(37, 99, 235, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(13, 148, 136, 0.08), transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, .mono { font-family: var(--mono); }
+
+::selection { background: rgba(37, 99, 235, 0.18); }
+
+/* ------------------------------------------------------------------ hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(900px 380px at 85% -10%, rgba(45, 212, 191, 0.25), transparent 60%),
+    radial-gradient(700px 340px at 0% 110%, rgba(96, 165, 250, 0.25), transparent 60%),
+    linear-gradient(135deg, #07182f 0%, #0c2b52 48%, #0b5f73 100%);
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(6px);
+  opacity: 0.55;
+  pointer-events: none;
+  animation: float 12s ease-in-out infinite alternate;
+}
+
+.hero::before {
+  width: 280px;
+  height: 280px;
+  right: -80px;
+  top: -90px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.5), transparent 68%);
+}
+
+.hero::after {
+  width: 220px;
+  height: 220px;
+  left: -90px;
+  bottom: -120px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.45), transparent 68%);
+  animation-delay: -4s;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 46px 28px 34px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #cfe8ff;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.eyebrow .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.18);
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 0 0 10px;
+  font-size: clamp(30px, 4.4vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+}
+
+.hero h1 .grad {
+  background: linear-gradient(90deg, #7dd3fc, #5eead4 55%, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p.lead {
+  max-width: 780px;
+  margin: 0;
+  color: #c4d7ee;
+  font-size: clamp(14px, 1.4vw, 17px);
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.chip-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(3, 16, 33, 0.28);
+  color: #d8e9ff;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.chip-source strong { color: #fff; font-weight: 600; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.stat {
+  position: relative;
+  overflow: hidden;
+  padding: 16px 16px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.075);
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.stat:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.11); }
+
+.stat .stat-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 17px;
+}
+
+.stat .value {
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.stat .label {
+  margin-top: 5px;
+  color: #b9cfe8;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------- toolbar */
+.toolbar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(203, 217, 234, 0.85);
+  background: rgba(243, 247, 252, 0.86);
+  backdrop-filter: blur(16px);
+}
+
+.toolbar {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 28px;
+}
+
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search {
+  position: relative;
+  flex: 1 1 320px;
+  min-width: 220px;
+}
+
+.search svg {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  transform: translateY(-50%);
+  color: var(--muted-2);
+  pointer-events: none;
+}
+
+.search input {
+  width: 100%;
+  height: 44px;
+  padding: 0 40px 0 40px;
+  border: 1px solid var(--line-strong);
+  border-radius: 13px;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search input:focus {
+  border-color: rgba(37, 99, 235, 0.55);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.search .clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  display: none;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--slate-soft);
+  color: var(--muted);
+  transform: translateY(-50%);
+}
+
+.search .clear:hover { background: var(--line); }
+.search.has-value .clear { display: grid; place-items: center; }
+
+.toolbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 13px;
+  border: 1px solid var(--line-strong);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ink-2);
+  font-size: 12.5px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.btn:hover { transform: translateY(-1px); border-color: #b9cce2; background: #fbfdff; }
+.btn:active { transform: translateY(0); }
+.btn.ghost { background: transparent; box-shadow: none; }
+.btn.primary { border-color: transparent; background: var(--blue); color: #fff; }
+.btn.primary:hover { background: #1d4ed8; }
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ink-2);
+  font-size: 12.5px;
+  font-weight: 600;
+  user-select: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.switch input { position: absolute; opacity: 0; pointer-events: none; }
+
+.switch .track {
+  position: relative;
+  width: 34px;
+  height: 19px;
+  border-radius: 999px;
+  background: #cbd5e1;
+  transition: background 0.2s ease;
+}
+
+.switch .track::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.switch input:checked + .track { background: var(--teal); }
+.switch input:checked + .track::after { transform: translateX(15px); }
+
+.chips {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-bottom: 2px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.chip:hover { border-color: #b9cce2; color: var(--ink-2); }
+.chip.active { border-color: transparent; background: var(--ink); color: #fff; box-shadow: 0 6px 16px -8px rgba(11, 31, 58, 0.55); }
+.chip .count { opacity: 0.65; font-family: var(--mono); font-size: 10px; }
+
+/* ----------------------------------------------------------------- tabs */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 13px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.7);
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.tab:hover { color: var(--ink-2); background: rgba(37, 99, 235, 0.06); }
+.tab.active { background: #fff; color: var(--ink); box-shadow: 0 5px 14px -9px rgba(15, 39, 68, 0.4); }
+
+/* ---------------------------------------------------------------- layout */
+main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 28px 64px;
+}
+
+.view { display: none; animation: fadeUp 0.35s ease both; }
+.view.active { display: block; }
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 4px 0 18px;
+  flex-wrap: wrap;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(20px, 2.2vw, 27px);
+  letter-spacing: -0.03em;
+}
+
+.section-head p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+
+.result-info {
+  color: var(--muted);
+  font-size: 12.5px;
+  font-family: var(--mono);
+}
+
+.domain-group { margin: 0 0 28px; scroll-margin-top: 160px; }
+
+.domain-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 12px;
+  padding: 0 2px;
+}
+
+.domain-head .domain-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--d-soft, var(--blue-soft));
+  color: var(--d-color, var(--blue));
+  font-size: 18px;
+  box-shadow: inset 0 0 0 1px rgba(15, 39, 68, 0.05);
+}
+
+.domain-head h3 { margin: 0; font-size: 16px; letter-spacing: -0.015em; }
+.domain-head p { margin: 1px 0 0; color: var(--muted); font-size: 12px; }
+.domain-head .domain-count {
+  margin-left: auto;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------- table cards */
+.table-card {
+  margin-bottom: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  scroll-margin-top: 160px;
+}
+
+.table-card:hover { border-color: #c9d9eb; box-shadow: var(--shadow); }
+.table-card.open { border-color: rgba(37, 99, 235, 0.28); box-shadow: var(--shadow-lg); }
+
+.table-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 17px 18px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+}
+
+.table-head::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--d-color, var(--blue));
+  opacity: 0.9;
+}
+
+.table-head:hover { background: linear-gradient(90deg, rgba(37, 99, 235, 0.035), transparent 55%); }
+
+.table-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: var(--d-soft, var(--blue-soft));
+  font-size: 19px;
+  box-shadow: inset 0 0 0 1px rgba(15, 39, 68, 0.05);
+}
+
+.table-title { display: block; min-width: 0; }
+
+.table-name {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.table-name .friendly {
+  font-family: var(--font);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--d-color, var(--blue));
+}
+
+.table-desc {
+  display: block;
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.table-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 26px;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fbfdff;
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pill.rows { background: var(--d-soft, var(--blue-soft)); border-color: transparent; color: var(--d-color, var(--blue)); }
+.pill.empty { background: var(--slate-soft); color: var(--muted); }
+.pill.domain { background: #fff; color: var(--muted); }
+
+.chevron {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--slate-soft);
+  color: var(--muted);
+  transition: transform 0.28s ease, background 0.2s ease;
+}
+
+.table-card.open .chevron { transform: rotate(180deg); background: var(--blue-soft); color: var(--blue); }
+
+.table-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.34s ease;
+}
+
+.table-card.open .table-body { grid-template-rows: 1fr; }
+
+.table-body-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.table-body-pad {
+  padding: 0 18px 18px;
+  border-top: 1px solid transparent;
+}
+
+.table-card.open .table-body-pad { border-top-color: var(--line); padding-top: 16px; }
+
+/* ------------------------------------------------------------- columns */
+.columns-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+
+table.columns {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table.columns thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: #f8fbff;
+  color: var(--muted-2);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+table.columns tbody td {
+  padding: 11px 12px;
+  border-bottom: 1px solid #eef4fb;
+  vertical-align: top;
+  font-size: 12.5px;
+}
+
+table.columns tbody tr:last-child td { border-bottom: 0; }
+table.columns tbody tr:hover td { background: #fbfdff; }
+
+.col-name code {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.col-type .type-badge { margin-bottom: 3px; }
+.type-raw {
+  color: var(--muted-2);
+  font-family: var(--mono);
+  font-size: 10px;
+  word-break: break-word;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 21px;
+  padding: 2px 7px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.badge + .badge { margin-left: 3px; }
+
+.type-text { background: var(--blue-soft); color: var(--blue); }
+.type-number { background: var(--violet-soft); color: var(--violet); }
+.type-date { background: var(--amber-soft); color: var(--amber); }
+.type-bool { background: var(--green-soft); color: var(--green); }
+.type-enum { background: var(--teal-soft); color: var(--teal); }
+.type-json { background: var(--pink-soft); color: var(--pink); }
+.type-binary { background: var(--slate-soft); color: var(--slate); }
+.type-money { background: #fef3c7; color: #b45309; }
+.type-other { background: var(--slate-soft); color: var(--slate); }
+
+.key-pk { background: #fef3c7; color: #92400e; }
+.key-fk { background: var(--blue-soft); color: var(--blue); }
+.key-uq { background: var(--violet-soft); color: var(--violet); }
+.badge-req { background: #fff1f2; color: #be123c; }
+.badge-opt { background: var(--slate-soft); color: var(--muted); }
+.badge-auto { background: var(--teal-soft); color: var(--teal); }
+.badge-default { background: #f8fafc; color: var(--muted); border-color: var(--line); font-family: var(--mono); font-size: 9.5px; }
+
+.col-desc { color: var(--ink-2); line-height: 1.45; }
+.col-desc .sensitive { color: var(--red); font-weight: 700; }
+.col-desc mark, .table-name mark, .table-desc mark, .domain-head mark { padding: 0 2px; border-radius: 3px; background: #fde68a; color: inherit; }
+
+.col-badges { min-width: 150px; }
+
+/* ------------------------------------------------------------- relations */
+.relations {
+  margin-top: 14px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fbfdff, #f8fbff);
+}
+
+.relations h4 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 9px;
+  color: var(--muted-2);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.rel-list { display: grid; gap: 7px; }
+
+.rel-item {
+  display: grid;
+  grid-template-columns: minmax(150px, auto) minmax(0, 1fr);
+  gap: 4px 12px;
+  align-items: start;
+  padding: 9px 11px;
+  border: 1px solid #e3edf8;
+  border-left: 3px solid var(--blue);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 12px;
+}
+
+.rel-link { font-family: var(--mono); font-size: 11px; color: var(--ink); line-height: 1.5; }
+.rel-link .arrow { color: var(--blue); font-weight: 800; }
+.rel-link .target { color: var(--blue); }
+.rel-item p { margin: 0; color: var(--muted); line-height: 1.45; }
+.rel-card-badge { display: inline-flex; margin-left: 4px; }
+
+/* ---------------------------------------------------------------- sample */
+.sample {
+  margin-top: 12px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 12px;
+  background: #fcfdff;
+}
+
+.sample summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.sample summary::-webkit-details-marker { display: none; }
+.sample summary::before {
+  content: "▸";
+  display: inline-block;
+  color: var(--blue);
+  transition: transform 0.2s ease;
+}
+.sample[open] summary::before { transform: rotate(90deg); }
+.sample summary:hover { color: var(--ink-2); }
+
+.sample-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 7px;
+  padding: 0 13px 13px;
+}
+
+.sample-item {
+  min-width: 0;
+  padding: 7px 9px;
+  border: 1px solid #edf3fa;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.sample-item .k {
+  display: block;
+  color: var(--muted-2);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.sample-item .v {
+  display: block;
+  margin-top: 1px;
+  color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.sample-empty { padding: 0 13px 13px; color: var(--muted); font-size: 12px; }
+
+/* --------------------------------------------------------------- diagram */
+.diagram-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 17px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #fbfdff, #f8fbff);
+}
+
+.panel-head h3 { margin: 0; font-size: 14px; letter-spacing: -0.01em; }
+.panel-head p { margin: 2px 0 0; color: var(--muted); font-size: 11.5px; }
+.panel-body { padding: 15px 17px; }
+
+.domain-map {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+}
+
+.domain-column {
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+}
+
+.domain-column .dc-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.domain-column .dc-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: var(--d-soft, var(--blue-soft));
+  font-size: 14px;
+}
+
+.domain-column .dc-head strong { font-size: 11.5px; line-height: 1.2; }
+.domain-column .dc-head span { margin-left: auto; color: var(--muted-2); font-family: var(--mono); font-size: 9px; }
+
+.map-table {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 5px;
+  padding: 6px 8px;
+  border: 1px solid #edf3fa;
+  border-radius: 8px;
+  background: #fbfdff;
+  color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-align: left;
+  transition: all 0.18s ease;
+}
+
+.map-table:hover { border-color: var(--d-color, var(--blue)); background: #fff; transform: translateX(2px); }
+.map-table .mt-rows { margin-left: auto; color: var(--muted-2); font-size: 9px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.legend .badge { font-size: 9.5px; }
+
+.mermaid-shell {
+  position: relative;
+  overflow: auto;
+  min-height: 420px;
+  max-height: 76vh;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(37, 99, 235, 0.04), transparent 40%),
+    #fff;
+}
+
+.mermaid-shell svg { display: block; max-width: none !important; height: auto; }
+
+.mermaid-tools {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 800;
+  transition: all 0.18s ease;
+}
+
+.icon-btn:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+
+.mermaid-fallback {
+  padding: 24px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 12px;
+  background: #fcfdff;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.mermaid-loading {
+  display: grid;
+  place-items: center;
+  min-height: 360px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 10px;
+  border: 3px solid var(--line);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* -------------------------------------------------------------- relations */
+.relations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 10px;
+}
+
+.relation-card {
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.relation-card:hover { transform: translateY(-2px); border-color: #c9d9eb; }
+.relation-card .rc-top { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.relation-card .rc-top code { font-size: 10.5px; font-weight: 700; color: var(--ink); }
+.relation-card .rc-top .arrow { color: var(--blue); font-weight: 800; }
+.relation-card .rc-top .target { color: var(--blue); }
+.relation-card p { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+
+.empty-state {
+  padding: 40px 20px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: #fcfdff;
+  color: var(--muted);
+  text-align: center;
+}
+
+.empty-state .big { display: block; margin-bottom: 6px; font-size: 28px; }
+
+/* ---------------------------------------------------------------- footer */
+footer {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px 36px;
+  color: var(--muted-2);
+  font-size: 11.5px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.footer-inner code { color: var(--muted); }
+
+/* ----------------------------------------------------------------- toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 100;
+  padding: 11px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 11px;
+  background: rgba(11, 31, 58, 0.94);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  box-shadow: 0 18px 40px -18px rgba(11, 31, 58, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ------------------------------------------------------------ animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.14); }
+  50% { box-shadow: 0 0 0 7px rgba(45, 212, 191, 0.04); }
+}
+
+@keyframes float {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-14px, 18px, 0) scale(1.08); }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ------------------------------------------------------------- responsive */
+@media (max-width: 1000px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .diagram-hero { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .hero-inner, .toolbar, main, footer { padding-left: 16px; padding-right: 16px; }
+  .hero-inner { padding-top: 32px; }
+  .table-head { grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; padding: 14px; }
+  .table-meta { grid-column: 2 / -1; justify-content: flex-start; margin-top: 2px; }
+  .chevron { grid-row: 1; grid-column: 3; }
+  .table-icon { width: 38px; height: 38px; }
+  .table-body-pad { padding: 0 14px 14px; }
+  .table-card.open .table-body-pad { padding-top: 13px; }
+  .rel-item { grid-template-columns: 1fr; }
+  .toolbar-row { gap: 8px; }
+  .toolbar-actions { width: 100%; }
+  .toolbar-actions .btn, .toolbar-actions .switch { flex: 1 1 auto; justify-content: center; }
+  .tabs { width: 100%; }
+  .tab { flex: 1 1 auto; justify-content: center; }
+  .sample-grid { grid-template-columns: 1fr; }
+  .columns-wrap { border-radius: 12px; }
+}
+
+@media (max-width: 560px) {
+  .stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat { padding: 12px; }
+  .stat .value { font-size: 22px; }
+  .table-head { grid-template-columns: auto minmax(0, 1fr); }
+  .chevron { display: none; }
+  .table-name { font-size: 12.5px; }
+  .table-desc { font-size: 11.5px; }
+  .domain-head h3 { font-size: 14px; }
+  .domain-head .domain-count { display: none; }
+  .relations-grid { grid-template-columns: 1fr; }
+}
+
+/* Tabla de columnas en modo tarjeta para móvil */
+@media (max-width: 720px) {
+  table.columns { min-width: 0; }
+  table.columns thead { display: none; }
+  table.columns, table.columns tbody, table.columns tr, table.columns td { display: block; width: 100%; }
+  table.columns tbody tr {
+    padding: 10px 11px;
+    border-bottom: 1px solid #eef4fb;
+  }
+  table.columns tbody tr:last-child { border-bottom: 0; }
+  table.columns tbody td { padding: 2px 0; border: 0; }
+  table.columns tbody td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    color: var(--muted-2);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  table.columns tbody td.col-name { padding-bottom: 4px; }
+  table.columns tbody td.col-name::before { display: none; }
+  table.columns tbody td.col-desc { padding-top: 5px; }
+}
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow"><span class="dot"></span> Documentación técnica · Práctica 03</div>
+      <h1>Diccionario de Datos <span class="grad">Interactivo</span></h1>
+      <p class="lead">
+        Una guía visual de la base de datos <strong>db_test</strong> pensada para personas de negocio:
+        qué guarda cada tabla, para qué sirve cada columna y cómo se conectan los datos entre sí.
+      </p>
+      <div class="hero-meta">
+        <span class="chip-source">🗄️ Base de datos <strong>db_test</strong></span>
+        <span class="chip-source">📄 Fuente <strong>respaldo2011.sql</strong></span>
+        <span class="chip-source">📅 Generado <strong>2026-11-21</strong></span>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-icon">🗂️</div>
+          <div class="value" id="stat-tables">25</div>
+          <div class="label">Tablas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🧾</div>
+          <div class="value" id="stat-rows">120,750</div>
+          <div class="label">Registros</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🔗</div>
+          <div class="value" id="stat-relations">39</div>
+          <div class="label">Relaciones</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🟢</div>
+          <div class="value" id="stat-with-data">7</div>
+          <div class="label">Tablas con datos</div>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <span class="chip-source">👥 <strong id="fact-users">7,512</strong> usuarios</span>
+        <span class="chip-source">📦 <strong id="fact-products">12,000</strong> productos</span>
+        <span class="chip-source">🗂️ <strong id="fact-categories">100</strong> categorías</span>
+        <span class="chip-source">🛡️ <strong id="fact-logs">68,888</strong> registros de auditoría</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar-wrap">
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <label class="search" id="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.5-3.5"></path>
+          </svg>
+          <input id="search-input" type="search" placeholder="Buscar tabla, columna, tipo o relación… ( / )" autocomplete="off" spellcheck="false" aria-label="Buscar en el diccionario">
+          <button class="clear" id="clear-search" type="button" aria-label="Limpiar búsqueda">×</button>
+        </label>
+        <div class="toolbar-actions">
+          <label class="switch" title="Mostrar solo tablas que tienen registros">
+            <input type="checkbox" id="only-data">
+            <span class="track"></span>
+            Solo con datos
+          </label>
+          <button class="btn" id="expand-all" type="button">⌄ Expandir todo</button>
+          <button class="btn ghost" id="collapse-all" type="button">⌃ Colapsar todo</button>
+        </div>
+      </div>
+      <div class="chips" id="domain-chips" aria-label="Filtrar por dominio"></div>
+      <nav class="tabs" aria-label="Vistas de la documentación">
+        <button class="tab active" data-view="diccionario" type="button">📚 Diccionario</button>
+        <button class="tab" data-view="diagrama" type="button">🧭 Diagrama ER</button>
+        <button class="tab" data-view="relaciones" type="button">🔗 Relaciones</button>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="view active" data-view="diccionario" id="view-diccionario">
+      <div class="section-head">
+        <div>
+          <h2>Diccionario de datos</h2>
+          <p>Haz clic en una tabla para ver sus columnas, tipos, llaves y relaciones explicadas en lenguaje sencillo.</p>
+        </div>
+        <div class="result-info" id="result-info"></div>
+      </div>
+      <div id="dictionary-list"></div>
+    </section>
+
+    <section class="view" data-view="diagrama" id="view-diagrama">
+      <div class="section-head">
+        <div>
+          <h2>Diagrama entidad-relación</h2>
+          <p>Mapa visual de las 25 tablas y sus conexiones. El diagrama técnico muestra las columnas clave; el diccionario contiene el detalle completo.</p>
+        </div>
+      </div>
+
+      <div class="diagram-hero">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h3>Mapa por dominios</h3>
+              <p>Agrupación de tablas por área de negocio. Haz clic en una tabla para abrir su ficha.</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="domain-map" id="domain-map"></div>
+            <div class="legend">
+              <span class="badge key-pk">🔑 PK · Llave primaria</span>
+              <span class="badge key-fk">🔗 FK · Llave foránea</span>
+              <span class="badge key-uq">✨ Único</span>
+              <span class="badge type-bool">✅ Sí/No</span>
+              <span class="badge type-money">💰 Monto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h3>Cómo leer el diagrama</h3>
+              <p>Cada caja es una tabla y cada línea representa una relación.</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <p style="margin:0 0 10px;color:var(--muted);font-size:12.5px;">
+              La notación <strong>N : 1</strong> significa que muchos registros de una tabla apuntan a un solo registro de otra.
+              Por ejemplo, muchos pedidos pertenecen a un mismo comprador.
+            </p>
+            <div class="rel-list">
+              <div class="rel-item">
+                <div class="rel-link"><span>tb_orders.buyer_ID</span> <span class="arrow">→</span> <span class="target">tb_users.ID</span></div>
+                <p>Cada pedido pertenece a un comprador específico.</p>
+              </div>
+              <div class="rel-item">
+                <div class="rel-link"><span>tbd_products_categories</span> <span class="arrow">→</span> <span class="target">tb_products / tbc_categories</span></div>
+                <p>Es una tabla puente: un producto puede estar en varias categorías y una categoría agrupa varios productos.</p>
+              </div>
+              <div class="rel-item">
+                <div class="rel-link"><span>tb_logs</span> <span class="arrow">→</span> <span class="target">todas las tablas</span></div>
+                <p>La bitácora registra automáticamente los cambios de las demás tablas mediante triggers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Diagrama técnico</h3>
+            <p>Vista generada con Mermaid. Usa los controles para acercar, alejar o descargar el SVG.</p>
+          </div>
+          <div class="mermaid-tools">
+            <button class="icon-btn" id="zoom-out" type="button" title="Alejar" aria-label="Alejar">−</button>
+            <span class="badge badge-default" id="zoom-level">100%</span>
+            <button class="icon-btn" id="zoom-in" type="button" title="Acercar" aria-label="Acercar">+</button>
+            <button class="icon-btn" id="zoom-reset" type="button" title="Restablecer zoom" aria-label="Restablecer zoom">⟲</button>
+            <button class="btn" id="download-svg" type="button">⬇ SVG</button>
+            <button class="btn ghost" id="copy-mermaid" type="button">Copiar código</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="mermaid-shell">
+            <div id="mermaid-diagram" class="mermaid"></div>
+          </div>
+          <p style="margin:10px 2px 0;color:var(--muted-2);font-size:11px;">
+            Nota: el diagrama técnico necesita conexión a internet para cargar Mermaid desde el CDN.
+            El mapa por dominios y el diccionario funcionan sin conexión.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="relaciones" id="view-relaciones">
+      <div class="section-head">
+        <div>
+          <h2>Relaciones entre tablas</h2>
+          <p>Todas las llaves foráneas explicadas sin jerga: qué conecta cada campo y por qué existe esa relación.</p>
+        </div>
+        <div class="result-info" id="relations-info"></div>
+      </div>
+      <div id="relations-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Documentación generada a partir de <code>respaldo2011.sql</code> · Base de datos <code>db_test</code>.</span>
+      <span>Los datos de ejemplo están protegidos: contraseñas, referencias de pago y datos sensibles se muestran enmascarados.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript>
+    <div style="max-width:900px;margin:20px auto;padding:16px;border:1px solid #fca5a5;border-radius:12px;background:#fef2f2;color:#991b1b;font-family:Segoe UI,sans-serif;">
+      Este diccionario es interactivo y necesita JavaScript habilitado para mostrar las tablas y el diagrama.
+    </div>
+  </noscript>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>window.__DB_DATA__ = {"meta":{"database":"db_test","source":"respaldo2011.sql","generated":"2026-11-21","tables":25,"totalRows":120920,"relations":37,"withData":24,"empty":1,"users":7513,"products":10915,"logs":70028,"categories":100},"domains":[{"id":"usuarios","name":"Usuarios y personas","icon":"👤","color":"#2563eb","soft":"#e8f0ff","description":"Cuentas, datos personales y direcciones de entrega."},{"id":"catalogo","name":"Catálogo y vendedores","icon":"🛍️","color":"#0d9488","soft":"#e6fffb","description":"Productos, categorías, vendedores y listas de deseos."},{"id":"compras","name":"Carrito y pedidos","icon":"🛒","color":"#7c3aed","soft":"#f3e8ff","description":"Lo que el cliente agrega al carrito y los pedidos confirmados."},{"id":"pagos","name":"Pagos y facturación","icon":"💳","color":"#d97706","soft":"#fff7e6","description":"Métodos de pago, cobros y transacciones."},{"id":"logistica","name":"Envíos","icon":"🚚","color":"#0284c7","soft":"#e0f2fe","description":"Paquetería, guías y estados de entrega."},{"id":"posventa","name":"Devoluciones y cancelaciones","icon":"↩️","color":"#dc2626","soft":"#fee2e2","description":"Cancelaciones, devoluciones y reembolsos."},{"id":"auditoria","name":"Auditoría","icon":"🛡️","color":"#475569","soft":"#f1f5f9","description":"Bitácora automática de cambios en la base de datos."}],"tables":[{"name":"tb_users","friendly":"Cuentas de usuario","description":"Registro de las personas que pueden iniciar sesión en la tienda, con su correo, alias, rol y estado.","domain":"usuarios","icon":"👤","rows":7513,"columns":[{"name":"ID","type":"int","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único que identifica a cada cuenta."},{"name":"email","type":"varchar(100)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":true,"uniqueComposite":false,"description":"Correo electrónico con el que la persona inicia sesión."},{"name":"nick","type":"varchar(50)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":true,"uniqueComposite":false,"description":"Nombre visible o alias dentro de la tienda."},{"name":"roles","type":"varchar(20)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Perfil de permisos del usuario (administrador, vendedor, comprador, etc.)."},{"name":"password","type":"varchar(255)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Contraseña cifrada de la cuenta. Por seguridad, nunca se muestra en texto plano."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora en que se creó la cuenta."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación de la cuenta."},{"name":"last_login","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora del último inicio de sesión."},{"name":"status","type":"bit(1)","notNull":false,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si la cuenta está activa (1) o bloqueada/inactiva (0)."}],"foreignKeys":[],"foreign_keys":[],"sample":{"ID":"2","nick":"A•••• C•••••••","email":"24•••@utxicotepec.edu.mx","roles":null,"status":"1","password":"••••••••","last_login":null,"last_update":null,"creation_date":"2026-09-10 10:43:30"},"isBridge":false,"uniques":[{"name":"email","columns":["email"]},{"name":"nick","columns":["nick"]}],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_people","friendly":"Datos personales","description":"Información personal de cada usuario: nombre, fecha de nacimiento, género, país y teléfono.","domain":"usuarios","icon":"🪪","rows":7503,"columns":[{"name":"person_ID","type":"bigint unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único de la ficha personal."},{"name":"user_ID","type":"int","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":true,"uniqueComposite":false,"description":"Cuenta de usuario a la que pertenece esta ficha personal."},{"name":"courtesy_title","type":"varchar(20)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Tratamiento cortés: Sr., Sra., Dr., etc."},{"name":"given_names","type":"varchar(150)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre o nombres de la persona."},{"name":"family_names","type":"varchar(150)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Apellidos de la persona."},{"name":"birth_date","type":"date","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha de nacimiento."},{"name":"gender","type":"enum('Hombre','Mujer','Prefiero no decirlo')","notNull":true,"default":"'Prefiero no decirlo'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Género con el que se identifica la persona."},{"name":"country_code","type":"char(2)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Código de dos letras del país de origen (por ejemplo, MX)."},{"name":"phone","type":"varchar(25)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Número telefónico de contacto."},{"name":"status","type":"bit(1)","notNull":false,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si la ficha personal está activa (1) o inactiva (0)."},{"name":"creation_date","type":"datetime","notNull":false,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación de la ficha."},{"name":"last_update","type":"datetime","notNull":false,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última actualización."}],"foreignKeys":[{"name":"fk_people_users","columns":["user_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"Cada ficha personal corresponde a una cuenta de usuario.","cardinality":"1 : 1"}],"foreign_keys":[{"name":"fk_people_users","columns":["user_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":{"phone":"+52••••••01","gender":"Hombre","status":"1","user_ID":"12","person_ID":"1","birth_date":"1990-01-15","given_names":"V•••••••","last_update":"2026-11-12 12:43:38","country_code":"MX","family_names":"R••••• U••","creation_date":"2026-11-12 12:43:38","courtesy_title":null},"isBridge":false,"uniques":[{"name":"user_ID","columns":["user_ID"]}],"primaryKey":["person_ID"],"primary_key":["person_ID"]},{"name":"tb_user_addresses","friendly":"Direcciones de entrega","description":"Direcciones registradas por los usuarios para recibir sus pedidos.","domain":"usuarios","icon":"📍","rows":5,"columns":[{"name":"ID","type":"bigint unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único de la dirección."},{"name":"user_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Usuario dueño de la dirección."},{"name":"address_label","type":"varchar(100)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre corto para reconocer la dirección: Casa, Oficina, etc."},{"name":"recipient_name","type":"varchar(150)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre de quien recibe el pedido en esa dirección."},{"name":"recipient_phone","type":"varchar(25)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Teléfono de contacto para la entrega."},{"name":"delivery_instructions","type":"varchar(500)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indicaciones especiales para el repartidor (portón, horario, referencias)."},{"name":"latitude","type":"decimal(10,7)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Coordenada geográfica de latitud."},{"name":"longitude","type":"decimal(10,7)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Coordenada geográfica de longitud."},{"name":"is_default","type":"tinyint(1)","notNull":true,"default":"'0'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si es la dirección principal del usuario (1 = sí, 0 = no)."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si la dirección está activa (1) o inactiva (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de registro de la dirección."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_addresses_users","columns":["user_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"Cada dirección pertenece a un usuario.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_addresses_users","columns":["user_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbd_address_components","friendly":"Componentes de dirección","description":"Partes que forman una dirección: calle, número, colonia, ciudad, estado y código postal.","domain":"usuarios","icon":"🧩","rows":5,"columns":[{"name":"ID","type":"bigint unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":true,"description":"Número único del componente de dirección."},{"name":"address_ID","type":"bigint unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":true,"description":"Dirección a la que pertenece este componente."},{"name":"value","type":"varchar(255)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Valor del componente: nombre de la calle, número, colonia, etc."},{"name":"component_type","type":"varchar(50)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Tipo de componente: calle, número, colonia, ciudad, estado o código postal."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el componente está activo (1) o inactivo (0)."},{"name":"address_sup_ID","type":"bigint unsigned","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Componente superior dentro de la jerarquía de la dirección."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación del componente."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_component_address","columns":["address_ID"],"refTable":"tb_user_addresses","refColumns":["ID"],"description":"Un componente puede depender de otro componente superior (jerarquía de la dirección).","cardinality":"N : 1"},{"name":"fk_component_parent","columns":["address_ID","address_sup_ID"],"refTable":"tbd_address_components","refColumns":["address_ID","ID"],"description":"Un componente puede depender de otro componente superior (jerarquía de la dirección).","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_component_address","columns":["address_ID"],"ref_table":"tb_user_addresses","ref_columns":["ID"]},{"name":"fk_component_parent","columns":["address_ID","address_sup_ID"],"ref_table":"tbd_address_components","ref_columns":["address_ID","ID"]}],"sample":null,"isBridge":false,"uniques":[{"name":"uk_address_component","columns":["address_ID","ID"]}],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbc_categories","friendly":"Categorías","description":"Clasificación de productos en categorías y subcategorías para facilitar su búsqueda.","domain":"catalogo","icon":"🗂️","rows":100,"columns":[{"name":"id","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único de la categoría."},{"name":"name","type":"varchar(120)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre de la categoría o subcategoría."},{"name":"description","type":"text","notNull":false,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Explicación breve de qué productos agrupa."},{"name":"sup_id_category","type":"int unsigned","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Categoría padre cuando se trata de una subcategoría."},{"name":"status","type":"bit(1)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si la categoría está activa (1) o inactiva (0)."},{"name":"creation_date","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[],"foreign_keys":[],"sample":{"id":"1","name":"Electrónica","status":"1","description":"Dispositivos electrónicos, aparatos y tecnología en general.","last_update":"2024-01-01 10:00:00","creation_date":"2024-01-01 10:00:00","sup_id_category":null},"isBridge":false,"uniques":[],"primaryKey":["id"],"primary_key":["id"]},{"name":"tb_products","friendly":"Productos","description":"Catálogo de artículos que se venden en la tienda, con precio, existencias y estado.","domain":"catalogo","icon":"📦","rows":10915,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del producto."},{"name":"SKU","type":"varchar(50)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":true,"uniqueComposite":false,"description":"Código único de inventario que identifica el producto."},{"name":"name","type":"varchar(250)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre comercial del producto."},{"name":"description","type":"text","notNull":false,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Descripción de las características del producto."},{"name":"current_price","type":"decimal(10,2)","notNull":true,"default":"'0.00'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Precio de venta actual."},{"name":"current_stock","type":"int unsigned","notNull":true,"default":"'0'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Cantidad disponible en inventario."},{"name":"status","type":"bit(1)","notNull":false,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el producto está activo (1) o descontinuado (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de alta del producto."},{"name":"last_update","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[],"foreign_keys":[],"sample":{"ID":"1","SKU":"PROD-001","name":"Laptop HP Pavilion","status":"1","description":"Laptop 15 pulgadas, 16GB RAM, SSD 512GB","last_update":"2026-09-17 11:38:59","creation_date":"2026-09-17 11:38:59","current_price":"12999.00","current_stock":"15"},"isBridge":false,"uniques":[{"name":"SKU","columns":["SKU"]}],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbd_products_categories","friendly":"Productos por categoría","description":"Relación que indica a qué categorías pertenece cada producto.","domain":"catalogo","icon":"🔗","rows":17748,"columns":[{"name":"product_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Producto que se clasifica."},{"name":"category_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Categoría a la que pertenece el producto."},{"name":"status","type":"bit(1)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si la relación está activa (1) o inactiva (0)."},{"name":"creation_date","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora en que se asignó la categoría."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_products_categorias_category","columns":["category_ID"],"refTable":"tbc_categories","refColumns":["id"],"description":"Cada relación asigna una categoría al producto.","cardinality":"N : 1"},{"name":"fk_products_categorias_product","columns":["product_ID"],"refTable":"tb_products","refColumns":["ID"],"description":"Cada relación asigna un producto del catálogo.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_products_categorias_category","columns":["category_ID"],"ref_table":"tbc_categories","ref_columns":["id"]},{"name":"fk_products_categorias_product","columns":["product_ID"],"ref_table":"tb_products","ref_columns":["ID"]}],"sample":{"status":"1","product_ID":"1","category_ID":"23","last_update":"2026-10-12 22:41:15","creation_date":"2026-10-12 22:41:15"},"isBridge":true,"uniques":[],"primaryKey":["product_ID","category_ID"],"primary_key":["product_ID","category_ID"]},{"name":"tbd_products_users_providers","friendly":"Productos y vendedores","description":"Relación que indica qué usuario vende o distribuye cada producto.","domain":"catalogo","icon":"🤝","rows":7000,"columns":[{"name":"user_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Usuario que vende o distribuye el producto."},{"name":"product_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Producto que ofrece el vendedor."},{"name":"type_ownership","type":"enum('Owner','Reseller','Distributor')","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Tipo de relación: propietario (Owner), revendedor (Reseller) o distribuidor (Distributor)."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si la relación está activa (1) o inactiva (0)."},{"name":"available_date","type":"datetime","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha desde la que el producto está disponible con ese vendedor."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación de la relación."},{"name":"last_update","type":"datetime","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_products2","columns":["product_ID"],"refTable":"tb_products","refColumns":["ID"],"description":"Cada producto es ofrecido por un vendedor.","cardinality":"N : 1"},{"name":"fk_user1","columns":["user_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"El vendedor o proveedor es una cuenta de usuario.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_products2","columns":["product_ID"],"ref_table":"tb_products","ref_columns":["ID"]},{"name":"fk_user1","columns":["user_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":{"status":"1","user_ID":"12","product_ID":"5006","last_update":"2026-11-12 12:54:05","creation_date":"2026-11-12 12:54:05","available_date":"2026-11-12 12:54:05","type_ownership":"Owner"},"isBridge":true,"uniques":[],"primaryKey":["user_ID","product_ID"],"primary_key":["user_ID","product_ID"]},{"name":"tbd_users_wishlist_products","friendly":"Lista de deseos","description":"Productos que un usuario guardó como favoritos para comprarlos después.","domain":"catalogo","icon":"💚","rows":0,"columns":[{"name":"user_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Usuario dueño de la lista de deseos."},{"name":"product_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Producto guardado como favorito."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el favorito está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora en que se guardó el producto."},{"name":"last_update","type":"datetime","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_products3","columns":["product_ID"],"refTable":"tb_products","refColumns":["ID"],"description":"La lista de deseos contiene productos del catálogo.","cardinality":"N : 1"},{"name":"fk_user2","columns":["user_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"La lista de deseos pertenece a un usuario.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_products3","columns":["product_ID"],"ref_table":"tb_products","ref_columns":["ID"]},{"name":"fk_user2","columns":["user_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":null,"isBridge":true,"uniques":[],"primaryKey":["user_ID","product_ID"],"primary_key":["user_ID","product_ID"]},{"name":"tb_carts","friendly":"Carritos de compra","description":"Guarda temporalmente los productos que un usuario piensa comprar antes de confirmar el pedido.","domain":"compras","icon":"🛒","rows":5,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del carrito."},{"name":"user_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":true,"uniqueComposite":false,"description":"Usuario dueño del carrito."},{"name":"status","type":"bit(1)","notNull":false,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el carrito está activo (1) o cerrado/inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación del carrito."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"tb_carts_ibfk_1","columns":["user_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"Cada carrito pertenece a una cuenta de usuario.","cardinality":"1 : 1"}],"foreign_keys":[{"name":"tb_carts_ibfk_1","columns":["user_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[{"name":"uk_cart_user","columns":["user_ID"]}],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbd_cart_items","friendly":"Productos del carrito","description":"Artículos y cantidades que el usuario agregó a su carrito.","domain":"compras","icon":"🧺","rows":22,"columns":[{"name":"cart_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Carrito al que pertenece el artículo."},{"name":"provider_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Vendedor que ofrece el producto."},{"name":"product_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Producto agregado al carrito."},{"name":"quantity","type":"int unsigned","notNull":true,"default":"'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Cantidad de unidades agregadas."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora en que se agregó el producto."}],"foreignKeys":[{"name":"tbd_cart_items_ibfk_1","columns":["cart_ID"],"refTable":"tb_carts","refColumns":["ID"],"description":"Cada artículo está dentro de un carrito.","cardinality":"N : 1"},{"name":"tbd_cart_items_ibfk_2","columns":["provider_ID"],"refTable":"tbd_products_users_providers","refColumns":["user_ID"],"description":"El artículo del carrito identifica al vendedor.","cardinality":"N : 1"},{"name":"tbd_cart_items_ibfk_3","columns":["product_ID"],"refTable":"tbd_products_users_providers","refColumns":["product_ID"],"description":"El artículo del carrito identifica el producto ofrecido.","cardinality":"N : 1"}],"foreign_keys":[{"name":"tbd_cart_items_ibfk_1","columns":["cart_ID"],"ref_table":"tb_carts","ref_columns":["ID"]},{"name":"tbd_cart_items_ibfk_2","columns":["provider_ID"],"ref_table":"tbd_products_users_providers","ref_columns":["user_ID"]},{"name":"tbd_cart_items_ibfk_3","columns":["product_ID"],"ref_table":"tbd_products_users_providers","ref_columns":["product_ID"]}],"sample":null,"isBridge":true,"uniques":[],"primaryKey":["cart_ID","provider_ID","product_ID"],"primary_key":["cart_ID","provider_ID","product_ID"]},{"name":"tb_orders","friendly":"Pedidos","description":"Cada compra confirmada por un cliente, con sus importes y estado de entrega.","domain":"compras","icon":"🧾","rows":5,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del pedido."},{"name":"buyer_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Usuario que realizó la compra."},{"name":"address_ID","type":"bigint unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Dirección de entrega del pedido."},{"name":"order_number","type":"varchar(50)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":true,"uniqueComposite":false,"description":"Folio o número visible del pedido."},{"name":"subtotal","type":"decimal(12,2)","notNull":true,"default":"'0.00'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Suma de los productos antes de envío e impuestos."},{"name":"shipping_total","type":"decimal(12,2)","notNull":true,"default":"'0.00'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Costo de envío."},{"name":"total_amount","type":"decimal(12,2)","notNull":true,"default":"'0.00'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Importe total a pagar por el pedido."},{"name":"order_status","type":"enum('Pending','Processing','Shipped','Delivered','Cancelled')","notNull":true,"default":"'Pending'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Estado del pedido: pendiente, en proceso, enviado, entregado o cancelado."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el pedido está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación del pedido."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_orders_address","columns":["address_ID"],"refTable":"tb_user_addresses","refColumns":["ID"],"description":"Cada pedido se entrega en una dirección registrada.","cardinality":"N : 1"},{"name":"fk_orders_buyer","columns":["buyer_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"Cada pedido es realizado por un comprador.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_orders_address","columns":["address_ID"],"ref_table":"tb_user_addresses","ref_columns":["ID"]},{"name":"fk_orders_buyer","columns":["buyer_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[{"name":"uk_order_number","columns":["order_number"]}],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbd_order_items","friendly":"Productos del pedido","description":"Líneas de producto de cada pedido, con cantidad, precio y vendedor.","domain":"compras","icon":"📋","rows":22,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único de la línea de pedido."},{"name":"seller_order_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Pedido al que pertenece esta línea."},{"name":"product_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Producto incluido en el pedido."},{"name":"provider_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Vendedor que surte el producto."},{"name":"product_name","type":"varchar(255)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre del producto al momento de la compra."},{"name":"quantity","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Cantidad comprada."},{"name":"unit_price","type":"decimal(12,2)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Precio unitario al momento de la compra."},{"name":"subtotal","type":"decimal(12,2)","notNull":false,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Importe de la línea: cantidad por precio unitario."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación de la línea."}],"foreignKeys":[{"name":"fk_order_items_order","columns":["seller_order_ID"],"refTable":"tb_orders","refColumns":["ID"],"description":"Cada línea de pedido pertenece a un pedido.","cardinality":"N : 1"},{"name":"tbd_order_items_ibfk_2","columns":["product_ID"],"refTable":"tbd_products_users_providers","refColumns":["product_ID"],"description":"La línea del pedido identifica el producto vendido.","cardinality":"N : 1"},{"name":"tbd_order_items_ibfk_3","columns":["provider_ID"],"refTable":"tbd_products_users_providers","refColumns":["user_ID"],"description":"La línea del pedido identifica al vendedor que surte.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_order_items_order","columns":["seller_order_ID"],"ref_table":"tb_orders","ref_columns":["ID"]},{"name":"tbd_order_items_ibfk_2","columns":["product_ID"],"ref_table":"tbd_products_users_providers","ref_columns":["product_ID"]},{"name":"tbd_order_items_ibfk_3","columns":["provider_ID"],"ref_table":"tbd_products_users_providers","ref_columns":["user_ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbc_payment_methods_types","friendly":"Tipos de pago","description":"Catálogo de tipos generales de pago: tarjeta, transferencia, efectivo, etc.","domain":"pagos","icon":"🏷️","rows":6,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del tipo de pago."},{"name":"code","type":"varchar(30)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Código corto que identifica el tipo: CARD, TRANSFER, CASH, etc."},{"name":"description","type":"text","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Descripción del tipo de pago."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el tipo está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación."},{"name":"last_update","type":"datetime","notNull":false,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[],"foreign_keys":[],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_payment_methods","friendly":"Métodos de pago","description":"Opciones de pago disponibles en la tienda y el proveedor que las procesa.","domain":"pagos","icon":"💳","rows":6,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del método de pago."},{"name":"payment_method_type_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Tipo general al que pertenece este método."},{"name":"name","type":"varchar(100)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre visible del método de pago."},{"name":"provider","type":"varchar(100)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Empresa o proveedor que procesa el pago."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el método está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_pm_type","columns":["payment_method_type_ID"],"refTable":"tbc_payment_methods_types","refColumns":["ID"],"description":"Cada método de pago pertenece a un tipo general.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_pm_type","columns":["payment_method_type_ID"],"ref_table":"tbc_payment_methods_types","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbd_user_payment_methods","friendly":"Métodos de pago del usuario","description":"Métodos de pago que cada usuario guardó para compras futuras.","domain":"pagos","icon":"🔐","rows":5,"columns":[{"name":"ID","type":"bigint unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del método guardado por el usuario."},{"name":"user_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Usuario dueño del método de pago."},{"name":"payment_method_type_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Tipo general del método guardado."},{"name":"provider","type":"varchar(60)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":true,"description":"Proveedor que procesa el pago: banco, pasarela, etc."},{"name":"provider_method_ref","type":"varchar(255)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":true,"description":"Referencia interna del método en el proveedor. Es un dato sensible."},{"name":"label","type":"varchar(100)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre corto para que el usuario reconozca el método: Mi tarjeta, Nómina, etc."},{"name":"last_four","type":"char(4)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Últimos cuatro dígitos de la tarjeta o cuenta."},{"name":"is_default","type":"tinyint(1)","notNull":true,"default":"'0'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si es el método principal del usuario (1 = sí, 0 = no)."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el método está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de registro."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_user_payment_type","columns":["payment_method_type_ID"],"refTable":"tbc_payment_methods_types","refColumns":["ID"],"description":"El método guardado es de un tipo general.","cardinality":"N : 1"},{"name":"fk_user_payment_user","columns":["user_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"El método de pago guardado pertenece a un usuario.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_user_payment_type","columns":["payment_method_type_ID"],"ref_table":"tbc_payment_methods_types","ref_columns":["ID"]},{"name":"fk_user_payment_user","columns":["user_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[{"name":"uk_provider_method","columns":["provider","provider_method_ref"]}],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_payments","friendly":"Pagos","description":"Pagos realizados para cubrir un pedido y su estado actual.","domain":"pagos","icon":"💵","rows":10,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del pago."},{"name":"order_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Pedido que se está pagando."},{"name":"payment_method_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Método utilizado para el pago."},{"name":"amount","type":"decimal(12,2)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Importe pagado."},{"name":"currency","type":"varchar(10)","notNull":true,"default":"'MXN'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Moneda del pago (por ejemplo, MXN)."},{"name":"payment_status","type":"enum('Pending','Completed','Failed','Refunded')","notNull":true,"default":"'Pending'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Estado del pago: pendiente, completado, fallido o reembolsado."},{"name":"payment_date","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora en que se realizó el pago."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el registro está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación del registro."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_payments_method","columns":["payment_method_ID"],"refTable":"tb_payment_methods","refColumns":["ID"],"description":"El pago utiliza un método registrado.","cardinality":"N : 1"},{"name":"fk_payments_order","columns":["order_ID"],"refTable":"tb_orders","refColumns":["ID"],"description":"Cada pago corresponde a un pedido.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_payments_method","columns":["payment_method_ID"],"ref_table":"tb_payment_methods","ref_columns":["ID"]},{"name":"fk_payments_order","columns":["order_ID"],"ref_table":"tb_orders","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_payment_transaction","friendly":"Transacciones de pago","description":"Detalle técnico de cada intento de cobro procesado por la pasarela de pago.","domain":"pagos","icon":"⚙️","rows":9,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único de la transacción."},{"name":"payment_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Pago al que pertenece esta transacción."},{"name":"gateway_transaction_id","type":"varchar(150)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Identificador que asigna la pasarela de pago."},{"name":"gateway_status","type":"varchar(50)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Respuesta o estado devuelto por la pasarela."},{"name":"gateway_response","type":"json","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Respuesta técnica completa de la pasarela. Puede contener datos sensibles."},{"name":"amount","type":"decimal(12,2)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Importe procesado en la transacción."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la transacción."}],"foreignKeys":[{"name":"fk_pt_payment","columns":["payment_ID"],"refTable":"tb_payments","refColumns":["ID"],"description":"Cada transacción procesa un pago.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_pt_payment","columns":["payment_ID"],"ref_table":"tb_payments","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_shipments","friendly":"Envíos","description":"Datos de paquetería, número de guía y estado de entrega de cada pedido.","domain":"logistica","icon":"🚚","rows":5,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del envío."},{"name":"order_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Pedido que se envía."},{"name":"carrier","type":"varchar(100)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Empresa de paquetería o transporte."},{"name":"tracking_number","type":"varchar(100)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Número de guía para rastrear el envío."},{"name":"shipment_status","type":"enum('Preparing','In Transit','Out for Delivery','Delivered','Failed')","notNull":true,"default":"'Preparing'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Estado del envío: preparando, en tránsito, en reparto, entregado o fallido."},{"name":"shipped_date","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora en que salió el paquete."},{"name":"estimated_delivery","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha estimada de entrega."},{"name":"delivered_date","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora real de entrega."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el envío está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación del envío."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_shipments_order","columns":["order_ID"],"refTable":"tb_orders","refColumns":["ID"],"description":"Cada envío corresponde a un pedido.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_shipments_order","columns":["order_ID"],"ref_table":"tb_orders","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_order_cancellations","friendly":"Cancelaciones de pedidos","description":"Solicitudes para anular un pedido y su estado de aprobación.","domain":"posventa","icon":"🚫","rows":2,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único de la cancelación."},{"name":"order_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Pedido que se desea cancelar."},{"name":"user_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Usuario que solicita la cancelación."},{"name":"reason","type":"text","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Motivo de la cancelación."},{"name":"cancellation_status","type":"enum('Requested','Approved','Rejected')","notNull":true,"default":"'Requested'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Estado de la solicitud: solicitada, aprobada o rechazada."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el registro está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la solicitud."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_oc_order","columns":["order_ID"],"refTable":"tb_orders","refColumns":["ID"],"description":"Cada cancelación corresponde a un pedido.","cardinality":"N : 1"},{"name":"fk_oc_user","columns":["user_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"La cancelación la solicita un usuario.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_oc_order","columns":["order_ID"],"ref_table":"tb_orders","ref_columns":["ID"]},{"name":"fk_oc_user","columns":["user_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbd_cancellation_items","friendly":"Productos cancelados","description":"Productos específicos que se cancelan dentro de una solicitud de cancelación.","domain":"posventa","icon":"✂️","rows":2,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del detalle de cancelación."},{"name":"cancellation_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Solicitud de cancelación a la que pertenece."},{"name":"order_item_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Línea de pedido que se cancela."},{"name":"quantity","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Cantidad de unidades canceladas."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación del detalle."}],"foreignKeys":[{"name":"fk_ci_cancellation","columns":["cancellation_ID"],"refTable":"tb_order_cancellations","refColumns":["ID"],"description":"Cada detalle pertenece a una solicitud de cancelación.","cardinality":"N : 1"},{"name":"fk_ci_order_item","columns":["order_item_ID"],"refTable":"tbd_order_items","refColumns":["ID"],"description":"Se cancela un producto específico del pedido.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_ci_cancellation","columns":["cancellation_ID"],"ref_table":"tb_order_cancellations","ref_columns":["ID"]},{"name":"fk_ci_order_item","columns":["order_item_ID"],"ref_table":"tbd_order_items","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_returns","friendly":"Devoluciones","description":"Solicitudes de los clientes para regresar un producto de un pedido.","domain":"posventa","icon":"↩️","rows":1,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único de la devolución."},{"name":"order_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Pedido del que se devuelve el producto."},{"name":"user_ID","type":"int","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Usuario que solicita la devolución."},{"name":"reason","type":"text","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Motivo de la devolución."},{"name":"return_status","type":"enum('Requested','Approved','In Transit','Received','Rejected')","notNull":true,"default":"'Requested'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Estado: solicitada, aprobada, en tránsito, recibida o rechazada."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el registro está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la solicitud."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_returns_order","columns":["order_ID"],"refTable":"tb_orders","refColumns":["ID"],"description":"Cada devolución corresponde a un pedido.","cardinality":"N : 1"},{"name":"fk_returns_user","columns":["user_ID"],"refTable":"tb_users","refColumns":["ID"],"description":"La devolución la solicita un usuario.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_returns_order","columns":["order_ID"],"ref_table":"tb_orders","ref_columns":["ID"]},{"name":"fk_returns_user","columns":["user_ID"],"ref_table":"tb_users","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tbd_return_items","friendly":"Productos devueltos","description":"Productos específicos incluidos en una devolución.","domain":"posventa","icon":"📦","rows":1,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del producto devuelto."},{"name":"return_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Devolución a la que pertenece."},{"name":"order_item_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Línea de pedido que se devuelve."},{"name":"quantity","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Cantidad devuelta."},{"name":"condition_notes","type":"varchar(255)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Notas sobre el estado del producto devuelto."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación del detalle."}],"foreignKeys":[{"name":"fk_ri_order_item","columns":["order_item_ID"],"refTable":"tbd_order_items","refColumns":["ID"],"description":"Se devuelve un producto específico del pedido.","cardinality":"N : 1"},{"name":"fk_ri_return","columns":["return_ID"],"refTable":"tb_returns","refColumns":["ID"],"description":"Cada producto devuelto pertenece a una devolución.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_ri_order_item","columns":["order_item_ID"],"ref_table":"tbd_order_items","ref_columns":["ID"]},{"name":"fk_ri_return","columns":["return_ID"],"ref_table":"tb_returns","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_refunds","friendly":"Reembolsos","description":"Devoluciones de dinero al cliente por una devolución o cancelación.","domain":"posventa","icon":"💰","rows":2,"columns":[{"name":"ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del reembolso."},{"name":"payment_ID","type":"int unsigned","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Pago que se reembolsa."},{"name":"return_ID","type":"int unsigned","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Devolución que origina el reembolso, si aplica."},{"name":"cancellation_ID","type":"int unsigned","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Cancelación que origina el reembolso, si aplica."},{"name":"amount","type":"decimal(12,2)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Importe devuelto al cliente."},{"name":"refund_status","type":"enum('Pending','Processed','Failed')","notNull":true,"default":"'Pending'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Estado: pendiente, procesado o fallido."},{"name":"refund_reference","type":"varchar(150)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Referencia o folio del reembolso."},{"name":"refund_date","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora en que se realizó el reembolso."},{"name":"status","type":"bit(1)","notNull":true,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Indica si el registro está activo (1) o inactivo (0)."},{"name":"creation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de creación."},{"name":"last_update","type":"datetime","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la última modificación."}],"foreignKeys":[{"name":"fk_refunds_cancellation","columns":["cancellation_ID"],"refTable":"tb_order_cancellations","refColumns":["ID"],"description":"El reembolso puede originarse por una cancelación.","cardinality":"N : 1"},{"name":"fk_refunds_payment","columns":["payment_ID"],"refTable":"tb_payments","refColumns":["ID"],"description":"El reembolso se aplica sobre un pago.","cardinality":"N : 1"},{"name":"fk_refunds_return","columns":["return_ID"],"refTable":"tb_returns","refColumns":["ID"],"description":"El reembolso puede originarse por una devolución.","cardinality":"N : 1"}],"foreign_keys":[{"name":"fk_refunds_cancellation","columns":["cancellation_ID"],"ref_table":"tb_order_cancellations","ref_columns":["ID"]},{"name":"fk_refunds_payment","columns":["payment_ID"],"ref_table":"tb_payments","ref_columns":["ID"]},{"name":"fk_refunds_return","columns":["return_ID"],"ref_table":"tb_returns","ref_columns":["ID"]}],"sample":null,"isBridge":false,"uniques":[],"primaryKey":["ID"],"primary_key":["ID"]},{"name":"tb_logs","friendly":"Bitácora de auditoría","description":"Registra automáticamente cada cambio realizado en la base de datos: quién lo hizo, cuándo y sobre qué tabla.","domain":"auditoria","icon":"🛡️","rows":70028,"columns":[{"name":"id","type":"int","notNull":true,"default":null,"autoIncrement":true,"primaryKey":true,"primary_key":true,"unique":false,"uniqueComposite":false,"description":"Número único del registro de auditoría."},{"name":"category_id","type":"int unsigned","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Categoría afectada, cuando la operación se relaciona con una."},{"name":"product_id","type":"bigint unsigned","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Producto afectado, cuando la operación se relaciona con uno."},{"name":"table_name","type":"varchar(50)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Nombre de la tabla en la que ocurrió el cambio."},{"name":"operation","type":"varchar(20)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Tipo de operación: INSERT (alta), UPDATE (cambio) o DELETE (baja)."},{"name":"db_user","type":"varchar(100)","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Usuario de base de datos que realizó la operación."},{"name":"user_id","type":"int unsigned","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Usuario del sistema relacionado con la operación."},{"name":"record_id","type":"varchar(150)","notNull":false,"default":"NULL","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Identificador del registro afectado."},{"name":"description","type":"text","notNull":true,"default":null,"autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Descripción legible del cambio realizado."},{"name":"operation_date","type":"datetime","notNull":true,"default":"CURRENT_TIMESTAMP","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Fecha y hora de la operación."},{"name":"operation_status","type":"bit(1)","notNull":false,"default":"b'1'","autoIncrement":false,"primaryKey":false,"primary_key":false,"unique":false,"uniqueComposite":false,"description":"Resultado de la operación: 1 = exitosa, 0 = error."}],"foreignKeys":[],"foreign_keys":[],"sample":{"id":"1","db_user":"ro•••@localhost","user_id":null,"operation":"Create","record_id":null,"product_id":null,"table_name":"tb_users","category_id":null,"description":"Usuario creado. ID=2, email=•••@•••, nick=A•••• C•••••••, creation_date=2026-09-10 10:43:30, status=","operation_date":"2026-09-10 10:43:30","operation_status":"1"},"isBridge":false,"uniques":[],"primaryKey":["id"],"primary_key":["id"]}],"mermaid":"erDiagram\n  tb_users {\n    int ID PK\n    varchar email UK\n    varchar nick UK\n    bit status\n    varchar roles\n    varchar password\n    datetime creation_date\n  }\n  tb_people {\n    bigint person_ID PK\n    int user_ID FK, UK\n    bit status\n    varchar given_names\n    varchar courtesy_title\n    varchar family_names\n    date birth_date\n  }\n  tb_user_addresses {\n    bigint ID PK\n    int user_ID FK\n    bit status\n    varchar address_label\n    varchar recipient_name\n    varchar recipient_phone\n    varchar delivery_instructions\n  }\n  tbd_address_components {\n    bigint ID PK\n    bigint address_ID FK\n    bigint address_sup_ID FK\n    bit status\n    varchar value\n    varchar component_type\n    datetime creation_date\n  }\n  tbc_categories {\n    int id PK\n    varchar name\n    text description\n    bit status\n    int sup_id_category\n    datetime creation_date\n    datetime last_update\n  }\n  tb_products {\n    int ID PK\n    varchar SKU UK\n    varchar name\n    text description\n    bit status\n    decimal current_price\n    int current_stock\n  }\n  tbd_products_categories {\n    int product_ID PK, FK\n    int category_ID PK, FK\n    bit status\n    datetime creation_date\n    datetime last_update\n  }\n  tbd_products_users_providers {\n    int user_ID PK, FK\n    int product_ID PK, FK\n    bit status\n    enum type_ownership\n    datetime available_date\n    datetime creation_date\n    datetime last_update\n  }\n  tbd_users_wishlist_products {\n    int user_ID PK, FK\n    int product_ID PK, FK\n    bit status\n    datetime creation_date\n    datetime last_update\n  }\n  tb_carts {\n    int ID PK\n    int user_ID FK, UK\n    bit status\n    datetime creation_date\n    datetime last_update\n  }\n  tbd_cart_items {\n    int cart_ID PK, FK\n    int provider_ID PK, FK\n    int product_ID PK, FK\n    int quantity\n    datetime creation_date\n  }\n  tb_orders {\n    int ID PK\n    int buyer_ID FK\n    bigint address_ID FK\n    varchar order_number UK\n    bit status\n    decimal subtotal\n    decimal shipping_total\n  }\n  tbd_order_items {\n    int ID PK\n    int seller_order_ID FK\n    int product_ID FK\n    int provider_ID FK\n    int quantity\n    varchar product_name\n    decimal unit_price\n  }\n  tbc_payment_methods_types {\n    int ID PK\n    text description\n    bit status\n    varchar code\n    datetime creation_date\n    datetime last_update\n  }\n  tb_payment_methods {\n    int ID PK\n    int payment_method_type_ID FK\n    varchar name\n    bit status\n    varchar provider\n    datetime creation_date\n    datetime last_update\n  }\n  tbd_user_payment_methods {\n    bigint ID PK\n    int user_ID FK\n    int payment_method_type_ID FK\n    bit status\n    varchar provider\n    varchar provider_method_ref\n    varchar label\n  }\n  tb_payments {\n    int ID PK\n    int order_ID FK\n    int payment_method_ID FK\n    bit status\n    decimal amount\n    varchar currency\n    enum payment_status\n  }\n  tb_payment_transaction {\n    int ID PK\n    int payment_ID FK\n    decimal amount\n    varchar gateway_transaction_id\n    varchar gateway_status\n    json gateway_response\n    datetime creation_date\n  }\n  tb_shipments {\n    int ID PK\n    int order_ID FK\n    bit status\n    varchar carrier\n    varchar tracking_number\n    enum shipment_status\n    datetime shipped_date\n  }\n  tb_order_cancellations {\n    int ID PK\n    int order_ID FK\n    int user_ID FK\n    bit status\n    text reason\n    enum cancellation_status\n    datetime creation_date\n  }\n  tbd_cancellation_items {\n    int ID PK\n    int cancellation_ID FK\n    int order_item_ID FK\n    int quantity\n    datetime creation_date\n  }\n  tb_returns {\n    int ID PK\n    int order_ID FK\n    int user_ID FK\n    bit status\n    text reason\n    enum return_status\n    datetime creation_date\n  }\n  tbd_return_items {\n    int ID PK\n    int return_ID FK\n    int order_item_ID FK\n    int quantity\n    varchar condition_notes\n    datetime creation_date\n  }\n  tb_refunds {\n    int ID PK\n    int payment_ID FK\n    int return_ID FK\n    int cancellation_ID FK\n    bit status\n    decimal amount\n    enum refund_status\n  }\n  tb_logs {\n    int id PK\n    text description\n    varchar operation\n    varchar table_name\n    int category_id\n    bigint product_id\n    varchar db_user\n  }\n\n  %% tb_logs registra automáticamente los cambios de las demás tablas.\n  tb_people ||--o| tb_users : \"tiene ficha\"\n  tb_user_addresses }o--|| tb_users : \"registra\"\n  tbd_address_components }o--|| tb_user_addresses : \"dirección\"\n  tbd_address_components ||--o{ tbd_address_components : \"depende de\"\n  tbd_products_categories }o--|| tbc_categories : \"categoría\"\n  tbd_products_categories }o--|| tb_products : \"producto\"\n  tbd_products_users_providers }o--|| tb_products : \"producto\"\n  tbd_products_users_providers }o--|| tb_users : \"vendedor\"\n  tbd_users_wishlist_products }o--|| tb_products : \"producto\"\n  tbd_users_wishlist_products }o--|| tb_users : \"usuario\"\n  tb_carts ||--o| tb_users : \"tiene carrito\"\n  tbd_cart_items }o--|| tb_carts : \"contiene\"\n  tbd_cart_items }o--|| tbd_products_users_providers : \"vendedor\"\n  tbd_cart_items }o--|| tbd_products_users_providers : \"producto\"\n  tb_orders }o--|| tb_user_addresses : \"entrega en\"\n  tb_orders }o--|| tb_users : \"compra\"\n  tbd_order_items }o--|| tb_orders : \"pertenece a\"\n  tbd_order_items }o--|| tbd_products_users_providers : \"producto\"\n  tbd_order_items }o--|| tbd_products_users_providers : \"vendedor\"\n  tb_payment_methods }o--|| tbc_payment_methods_types : \"es de tipo\"\n  tbd_user_payment_methods }o--|| tbc_payment_methods_types : \"es de tipo\"\n  tbd_user_payment_methods }o--|| tb_users : \"guarda\"\n  tb_payments }o--|| tb_payment_methods : \"usa\"\n  tb_payments }o--|| tb_orders : \"paga\"\n  tb_payment_transaction }o--|| tb_payments : \"procesa\"\n  tb_shipments }o--|| tb_orders : \"envía\"\n  tb_order_cancellations }o--|| tb_orders : \"cancela\"\n  tb_order_cancellations }o--|| tb_users : \"solicita\"\n  tbd_cancellation_items }o--|| tb_order_cancellations : \"detalla\"\n  tbd_cancellation_items }o--|| tbd_order_items : \"cancela\"\n  tb_returns }o--|| tb_orders : \"devuelve\"\n  tb_returns }o--|| tb_users : \"solicita\"\n  tbd_return_items }o--|| tbd_order_items : \"devuelve\"\n  tbd_return_items }o--|| tb_returns : \"detalla\"\n  tb_refunds }o--|| tb_order_cancellations : \"cancelación\"\n  tb_refunds }o--|| tb_payments : \"reembolsa\"\n  tb_refunds }o--|| tb_returns : \"devolución\""};</script>
+  <script>/* Diccionario interactivo - lógica de interfaz */
+(() => {
+  "use strict";
+
+  const DATA = window.__DB_DATA__;
+  if (!DATA) return;
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const state = {
+    query: "",
+    domain: "all",
+    onlyData: false,
+    view: "diccionario",
+    open: new Set(["tb_users"]),
+    mermaidRendered: false,
+    zoom: 1,
+    baseWidth: 0,
+    toastTimer: null,
+  };
+
+  const DOMAIN_BY_ID = Object.fromEntries(DATA.domains.map((d) => [d.id, d]));
+  const TABLE_BY_NAME = Object.fromEntries(DATA.tables.map((t) => [t.name, t]));
+  const MONEY_WORDS = ["price", "amount", "subtotal", "total", "shipping_total", "current_price"];
+
+  function esc(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+  }
+
+  function fmt(number) {
+    return Number(number || 0).toLocaleString("es-MX");
+  }
+
+  function highlight(text, query) {
+    const safe = esc(text);
+    if (!query) return safe;
+    const needle = esc(query).toLowerCase();
+    const haystack = safe.toLowerCase();
+    const index = haystack.indexOf(needle);
+    if (index < 0) return safe;
+    return (
+      safe.slice(0, index) +
+      "<mark>" +
+      safe.slice(index, index + needle.length) +
+      "</mark>" +
+      safe.slice(index + needle.length)
+    );
+  }
+
+  function typeInfo(type, columnName) {
+    const raw = String(type || "").toLowerCase();
+    const name = String(columnName || "").toLowerCase();
+    if (raw.startsWith("bit") || raw.startsWith("tinyint(1)")) {
+      return { cls: "type-bool", label: "Sí/No", icon: "✅" };
+    }
+    if (raw.startsWith("enum")) {
+      return { cls: "type-enum", label: "Lista", icon: "📋" };
+    }
+    if (raw.startsWith("json")) {
+      return { cls: "type-json", label: "JSON", icon: "🧩" };
+    }
+    if (raw.startsWith("date") || raw.startsWith("timestamp") || raw.startsWith("time") || raw.startsWith("year")) {
+      return { cls: "type-date", label: "Fecha", icon: "📅" };
+    }
+    if (raw.startsWith("varchar") || raw.startsWith("char") || raw.includes("text")) {
+      return { cls: "type-text", label: "Texto", icon: "📝" };
+    }
+    if (MONEY_WORDS.some((word) => name.includes(word))) {
+      return { cls: "type-money", label: "Monto", icon: "💰" };
+    }
+    if (raw.startsWith("int") || raw.startsWith("bigint") || raw.startsWith("smallint") || raw.startsWith("tinyint") || raw.startsWith("decimal") || raw.startsWith("numeric") || raw.startsWith("float") || raw.startsWith("double")) {
+      return { cls: "type-number", label: "Número", icon: "🔢" };
+    }
+    if (raw.startsWith("binary") || raw.startsWith("varbinary") || raw.includes("blob")) {
+      return { cls: "type-binary", label: "Binario", icon: "💾" };
+    }
+    return { cls: "type-other", label: "Dato", icon: "🔧" };
+  }
+
+  function fkColumns(table) {
+    const set = new Set();
+    for (const fk of table.foreignKeys) {
+      for (const col of fk.columns) set.add(col);
+    }
+    return set;
+  }
+
+  function columnBadges(table, column) {
+    const badges = [];
+    if (column.primaryKey) badges.push('<span class="badge key-pk">🔑 PK</span>');
+    if (fkColumns(table).has(column.name)) badges.push('<span class="badge key-fk">🔗 FK</span>');
+    if (column.unique) badges.push('<span class="badge key-uq">✨ Único</span>');
+    if (column.uniqueComposite && !column.primaryKey) {
+      badges.push('<span class="badge key-uq" title="Forma parte de una llave única compuesta">🧩 Único en conjunto</span>');
+    }
+    badges.push(
+      column.notNull
+        ? '<span class="badge badge-req">Obligatorio</span>'
+        : '<span class="badge badge-opt">Opcional</span>'
+    );
+    if (column.autoIncrement) badges.push('<span class="badge badge-auto">Auto</span>');
+    if (column.default !== null && String(column.default).toUpperCase() !== "NULL") {
+      badges.push(`<span class="badge badge-default">Por defecto: ${esc(column.default)}</span>`);
+    }
+    return badges.join("");
+  }
+
+  function relationCard(table, fk, query) {
+    const source = `${table.name}.${fk.columns.join(" + ")}`;
+    const target = `${fk.refTable}.${fk.refColumns.join(" + ")}`;
+    const cardinality = fk.cardinality || "N : 1";
+    return `
+      <article class="relation-card">
+        <div class="rc-top">
+          <code>${highlight(source, query)}</code>
+          <span class="arrow">→</span>
+          <code class="target">${highlight(target, query)}</code>
+          <span class="badge key-fk rel-card-badge">${esc(cardinality)}</span>
+        </div>
+        <p>${highlight(fk.description, query)}</p>
+      </article>`;
+  }
+
+  function relationsFor(table, query) {
+    if (!table.foreignKeys.length) {
+      return `<div class="sample-empty">Esta tabla no tiene llaves foráneas directas. Se conecta con la bitácora de auditoría mediante triggers.</div>`;
+    }
+    const items = table.foreignKeys
+      .map((fk) => {
+        const source = `${table.name}.${fk.columns.join(" + ")}`;
+        const target = `${fk.refTable}.${fk.refColumns.join(" + ")}`;
+        return `
+          <div class="rel-item">
+            <div class="rel-link">
+              <span>${highlight(source, query)}</span>
+              <span class="arrow">→</span>
+              <span class="target">${highlight(target, query)}</span>
+              <span class="badge key-fk rel-card-badge">${esc(fk.cardinality || "N : 1")}</span>
+            </div>
+            <p>${highlight(fk.description, query)}</p>
+          </div>`;
+      })
+      .join("");
+    return `<div class="rel-list">${items}</div>`;
+  }
+
+  const SENSITIVE_COLUMNS = new Set([
+    "password",
+    "provider_method_ref",
+    "gateway_transaction_id",
+    "gateway_response",
+    "refund_reference",
+    "last_four",
+  ]);
+
+  function maskValue(tableName, key, value) {
+    if (value === null || value === undefined) return "NULL";
+    const text = String(value);
+    if (SENSITIVE_COLUMNS.has(key)) return "••••••••";
+    if (tableName === "tb_users" && key === "email") {
+      return text.replace(/^(.{1,2}).*(@.*)$/, "$1•••$2");
+    }
+    if (tableName === "tb_people" && key === "phone") {
+      return text.replace(/^(\+\d{2}).*(\d{2})$/, "$1••••••$2");
+    }
+    if (tableName === "tb_logs" && key === "description" && text.length > 170) {
+      return text.slice(0, 170) + "…";
+    }
+    return text;
+  }
+
+  function sampleBlock(table, query) {
+    if (!table.sample) {
+      return `<div class="sample-empty">Esta tabla todavía no tiene registros en el respaldo.</div>`;
+    }
+    const entries = Object.entries(table.sample)
+      .map(([key, value]) => {
+        const masked = maskValue(table.name, key, value);
+        return `
+          <div class="sample-item">
+            <span class="k">${highlight(key, query)}</span>
+            <span class="v">${highlight(masked, query)}</span>
+          </div>`;
+      })
+      .join("");
+    return `
+      <details class="sample">
+        <summary>👀 Ver ejemplo de registro (datos sensibles protegidos)</summary>
+        <div class="sample-grid">${entries}</div>
+      </details>`;
+  }
+
+  function tableCard(table, query) {
+    const domain = DOMAIN_BY_ID[table.domain] || DATA.domains[0];
+    const open = state.open.has(table.name);
+    const rowsLabel = table.rows > 0 ? `${fmt(table.rows)} registros` : "Sin registros";
+    const columns = table.columns
+      .map((column) => {
+        const info = typeInfo(column.type, column.name);
+        return `
+          <tr>
+            <td class="col-name" data-label="Columna"><code>${highlight(column.name, query)}</code></td>
+            <td class="col-type" data-label="Tipo">
+              <span class="badge ${info.cls}">${info.icon} ${info.label}</span>
+              <div class="type-raw">${esc(column.type)}</div>
+            </td>
+            <td class="col-badges" data-label="Atributos">${columnBadges(table, column)}</td>
+            <td class="col-desc" data-label="¿Para qué sirve?">${highlight(column.description, query)}</td>
+          </tr>`;
+      })
+      .join("");
+
+    return `
+      <article class="table-card ${open ? "open" : ""}" id="tbl-${esc(table.name)}" data-table="${esc(table.name)}" style="--d-color:${domain.color};--d-soft:${domain.soft}">
+        <button class="table-head" data-toggle="${esc(table.name)}" aria-expanded="${open}" aria-controls="body-${esc(table.name)}">
+          <span class="table-icon" aria-hidden="true">${table.icon || domain.icon}</span>
+          <span class="table-title">
+            <span class="table-name">${highlight(table.name, query)} <span class="friendly">${highlight(table.friendly, query)}</span></span>
+            <span class="table-desc">${highlight(table.description, query)}</span>
+          </span>
+          <span class="table-meta">
+            <span class="pill ${table.rows > 0 ? "rows" : "empty"}">${table.rows > 0 ? "●" : "○"} ${rowsLabel}</span>
+            <span class="pill domain">${domain.icon} ${esc(domain.name)}</span>
+          </span>
+          <span class="chevron" aria-hidden="true">⌄</span>
+        </button>
+        <div class="table-body" id="body-${esc(table.name)}">
+          <div class="table-body-inner">
+            <div class="table-body-pad">
+              <div class="columns-wrap">
+                <table class="columns">
+                  <thead>
+                    <tr><th>Columna</th><th>Tipo SQL</th><th>Atributos</th><th>¿Para qué sirve?</th></tr>
+                  </thead>
+                  <tbody>${columns}</tbody>
+                </table>
+              </div>
+              <div class="relations">
+                <h4>🔗 Relaciones de esta tabla</h4>
+                ${relationsFor(table, query)}
+              </div>
+              ${sampleBlock(table, query)}
+            </div>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function matches(table, query) {
+    if (!query) return true;
+    const needle = query.toLowerCase();
+    const haystack = [
+      table.name,
+      table.friendly,
+      table.description,
+      ...table.columns.flatMap((c) => [c.name, c.type, c.description]),
+      ...table.foreignKeys.flatMap((fk) => [fk.refTable, fk.description, ...fk.columns, ...fk.refColumns]),
+    ]
+      .join(" ")
+      .toLowerCase();
+    return haystack.includes(needle);
+  }
+
+  function filteredTables() {
+    const query = state.query.trim().toLowerCase();
+    return DATA.tables.filter((table) => {
+      if (state.domain !== "all" && table.domain !== state.domain) return false;
+      if (state.onlyData && table.rows === 0) return false;
+      return matches(table, query);
+    });
+  }
+
+  function renderDictionary() {
+    const query = state.query.trim().toLowerCase();
+    const visible = filteredTables();
+    const container = $("#dictionary-list");
+    const groups = new Map();
+    for (const table of visible) {
+      if (!groups.has(table.domain)) groups.set(table.domain, []);
+      groups.get(table.domain).push(table);
+    }
+
+    if (!visible.length) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <span class="big">🔎</span>
+          No encontramos tablas o columnas con “${esc(state.query)}”.
+          <br><small>Prueba con otro término o cambia los filtros.</small>
+        </div>`;
+    } else {
+      container.innerHTML = DATA.domains
+        .filter((domain) => groups.has(domain.id))
+        .map((domain) => {
+          const tables = groups.get(domain.id);
+          return `
+            <section class="domain-group" id="dom-${esc(domain.id)}">
+              <div class="domain-head" style="--d-color:${domain.color};--d-soft:${domain.soft}">
+                <span class="domain-icon" aria-hidden="true">${domain.icon}</span>
+                <div>
+                  <h3>${esc(domain.name)}</h3>
+                  <p>${esc(domain.description)}</p>
+                </div>
+                <span class="domain-count">${tables.length} tabla${tables.length === 1 ? "" : "s"}</span>
+              </div>
+              ${tables.map((table) => tableCard(table, query)).join("")}
+            </section>`;
+        })
+        .join("");
+    }
+
+    const total = DATA.tables.length;
+    $("#result-info").textContent = `${visible.length} de ${total} tablas · ${fmt(DATA.meta.totalRows)} registros en total`;
+  }
+
+  function renderChips() {
+    const chips = [
+      `<button class="chip ${state.domain === "all" ? "active" : ""}" data-domain="all">🧭 Todas <span class="count">${DATA.tables.length}</span></button>`,
+      ...DATA.domains.map((domain) => {
+        const count = DATA.tables.filter((t) => t.domain === domain.id).length;
+        return `<button class="chip ${state.domain === domain.id ? "active" : ""}" data-domain="${esc(domain.id)}">${domain.icon} ${esc(domain.name)} <span class="count">${count}</span></button>`;
+      }),
+    ];
+    $("#domain-chips").innerHTML = chips.join("");
+  }
+
+  function renderStats() {
+    $("#stat-tables").textContent = fmt(DATA.meta.tables);
+    $("#stat-rows").textContent = fmt(DATA.meta.totalRows);
+    $("#stat-relations").textContent = fmt(DATA.meta.relations);
+    $("#stat-with-data").textContent = fmt(DATA.meta.withData);
+    $("#fact-users").textContent = fmt(DATA.meta.users);
+    $("#fact-products").textContent = fmt(DATA.meta.products);
+    $("#fact-logs").textContent = fmt(DATA.meta.logs);
+    $("#fact-categories").textContent = fmt(DATA.meta.categories);
+  }
+
+  function renderDomainMap() {
+    const container = $("#domain-map");
+    if (!container) return;
+    container.innerHTML = DATA.domains
+      .map((domain) => {
+        const tables = DATA.tables.filter((t) => t.domain === domain.id);
+        if (!tables.length) return "";
+        return `
+          <div class="domain-column" style="--d-color:${domain.color};--d-soft:${domain.soft}">
+            <div class="dc-head">
+              <span class="dc-icon">${domain.icon}</span>
+              <strong>${esc(domain.name)}</strong>
+              <span>${tables.length}</span>
+            </div>
+            ${tables
+              .map(
+                (table) => `
+                  <button class="map-table" data-goto="${esc(table.name)}">
+                    <span>${esc(table.name)}</span>
+                    <span class="mt-rows">${table.rows ? fmt(table.rows) : "0"}</span>
+                  </button>`
+              )
+              .join("")}
+          </div>`;
+      })
+      .join("");
+  }
+
+  function renderRelations() {
+    const query = state.query.trim().toLowerCase();
+    const rows = [];
+    for (const table of DATA.tables) {
+      for (const fk of table.foreignKeys) {
+        const haystack = [table.name, fk.refTable, fk.description, ...fk.columns, ...fk.refColumns].join(" ").toLowerCase();
+        if (!query || haystack.includes(query)) rows.push({ table, fk });
+      }
+    }
+    const container = $("#relations-list");
+    if (!rows.length) {
+      container.innerHTML = `<div class="empty-state"><span class="big">🔎</span>No hay relaciones que coincidan con “${esc(state.query)}”.</div>`;
+    } else {
+      container.innerHTML = `<div class="relations-grid">${rows.map(({ table, fk }) => relationCard(table, fk, query)).join("")}</div>`;
+    }
+    $("#relations-info").textContent = `${rows.length} de ${DATA.meta.relations} relaciones`;
+  }
+
+  function setView(view) {
+    if (!["diccionario", "diagrama", "relaciones"].includes(view)) view = "diccionario";
+    state.view = view;
+    $$(".tab").forEach((tab) => tab.classList.toggle("active", tab.dataset.view === view));
+    $$(".view").forEach((section) => section.classList.toggle("active", section.dataset.view === view));
+    if (view === "diagrama") {
+      renderMermaid();
+    }
+    if (view === "relaciones") {
+      renderRelations();
+    }
+    const hash = view === "diccionario" ? "" : `#${view}`;
+    history.replaceState(null, "", `${location.pathname}${hash}`);
+  }
+
+  async function renderMermaid() {
+    if (state.mermaidRendered) return;
+    const container = $("#mermaid-diagram");
+    if (!container) return;
+    if (!window.mermaid) {
+      container.innerHTML = `<div class="mermaid-fallback">No se pudo cargar el motor de diagramas (Mermaid). Revisa tu conexión a internet y recarga la página. El diccionario y las relaciones siguen funcionando sin conexión.</div>`;
+      return;
+    }
+    container.innerHTML = `<div class="mermaid-loading"><div class="spinner"></div>Cargando diagrama…</div>`;
+    try {
+      window.mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "loose",
+        theme: "base",
+        themeVariables: {
+          fontFamily: "Inter, Segoe UI, sans-serif",
+          primaryColor: "#eef4ff",
+          primaryTextColor: "#0b1f3a",
+          primaryBorderColor: "#7aa2ff",
+          lineColor: "#94a3b8",
+          secondaryColor: "#f8fafc",
+          tertiaryColor: "#ffffff",
+          edgeLabelBackground: "#ffffff",
+          clusterBkg: "#f8fbff",
+          clusterBorder: "#dfe8f3",
+        },
+        er: {
+          diagramPadding: 24,
+          layoutDirection: "TB",
+          minEntityWidth: 150,
+          minEntityHeight: 70,
+          entityPadding: 14,
+          useMaxWidth: false,
+        },
+      });
+      const { svg } = await window.mermaid.render("erDiagramSvg", DATA.mermaid);
+      container.innerHTML = svg;
+      const svgEl = container.querySelector("svg");
+      if (svgEl) {
+        svgEl.style.maxWidth = "none";
+        const box = svgEl.viewBox && svgEl.viewBox.baseVal;
+        state.baseWidth = box && box.width ? box.width : svgEl.getBoundingClientRect().width;
+        applyZoom();
+      }
+      state.mermaidRendered = true;
+    } catch (error) {
+      container.innerHTML = `<div class="mermaid-fallback">No se pudo dibujar el diagrama automáticamente.<br><small>${esc(error.message || error)}</small></div>`;
+    }
+  }
+
+  function applyZoom() {
+    const svg = $("#mermaid-diagram svg");
+    if (!svg) return;
+    if (!state.baseWidth) {
+      const box = svg.viewBox && svg.viewBox.baseVal;
+      state.baseWidth = box && box.width ? box.width : svg.getBoundingClientRect().width;
+    }
+    svg.style.width = `${Math.round(state.baseWidth * state.zoom)}px`;
+    svg.style.height = "auto";
+    svg.style.maxWidth = "none";
+    $("#zoom-level").textContent = `${Math.round(state.zoom * 100)}%`;
+  }
+
+  function downloadSvg() {
+    const svg = $("#mermaid-diagram svg");
+    if (!svg) return;
+    const blob = new Blob([svg.outerHTML], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "diagrama_er_respaldo2011.svg";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    toast("Diagrama SVG descargado");
+  }
+
+  function toast(message) {
+    const node = $("#toast");
+    if (!node) return;
+    node.textContent = message;
+    node.classList.add("show");
+    clearTimeout(state.toastTimer);
+    state.toastTimer = setTimeout(() => node.classList.remove("show"), 2400);
+  }
+
+  function goToTable(name) {
+    state.domain = "all";
+    state.onlyData = false;
+    state.query = "";
+    const search = $("#search-input");
+    if (search) search.value = "";
+    $("#search").classList.remove("has-value");
+    state.open.add(name);
+    renderChips();
+    renderDictionary();
+    setView("diccionario");
+    const card = document.getElementById(`tbl-${name}`);
+    if (card) {
+      card.classList.add("open");
+      const button = $(".table-head", card);
+      if (button) button.setAttribute("aria-expanded", "true");
+      setTimeout(() => card.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+    }
+  }
+
+  function bind() {
+    $("#search-input").addEventListener("input", (event) => {
+      state.query = event.target.value;
+      $("#search").classList.toggle("has-value", Boolean(state.query));
+      renderDictionary();
+      if (state.view === "relaciones") renderRelations();
+    });
+
+    $("#clear-search").addEventListener("click", () => {
+      state.query = "";
+      $("#search-input").value = "";
+      $("#search").classList.remove("has-value");
+      renderDictionary();
+      if (state.view === "relaciones") renderRelations();
+      $("#search-input").focus();
+    });
+
+    $("#domain-chips").addEventListener("click", (event) => {
+      const chip = event.target.closest("[data-domain]");
+      if (!chip) return;
+      state.domain = chip.dataset.domain;
+      renderChips();
+      renderDictionary();
+    });
+
+    $("#only-data").addEventListener("change", (event) => {
+      state.onlyData = event.target.checked;
+      renderDictionary();
+    });
+
+    $("#expand-all").addEventListener("click", () => {
+      state.open = new Set(filteredTables().map((table) => table.name));
+      renderDictionary();
+    });
+
+    $("#collapse-all").addEventListener("click", () => {
+      state.open.clear();
+      renderDictionary();
+    });
+
+    $("#dictionary-list").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-toggle]");
+      if (!button) return;
+      const name = button.dataset.toggle;
+      if (state.open.has(name)) state.open.delete(name);
+      else state.open.add(name);
+      const card = button.closest(".table-card");
+      if (card) {
+        card.classList.toggle("open", state.open.has(name));
+        button.setAttribute("aria-expanded", String(state.open.has(name)));
+      }
+    });
+
+    $$(".tab").forEach((tab) => tab.addEventListener("click", () => setView(tab.dataset.view)));
+
+    $("#domain-map").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-goto]");
+      if (button) goToTable(button.dataset.goto);
+    });
+
+    $("#zoom-in").addEventListener("click", () => {
+      state.zoom = Math.min(2.4, state.zoom + 0.15);
+      applyZoom();
+    });
+    $("#zoom-out").addEventListener("click", () => {
+      state.zoom = Math.max(0.45, state.zoom - 0.15);
+      applyZoom();
+    });
+    $("#zoom-reset").addEventListener("click", () => {
+      state.zoom = 1;
+      applyZoom();
+    });
+    $("#download-svg").addEventListener("click", downloadSvg);
+    $("#copy-mermaid").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(DATA.mermaid);
+        toast("Código Mermaid copiado");
+      } catch {
+        toast("No se pudo copiar el código");
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "/" && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
+        event.preventDefault();
+        $("#search-input").focus();
+      }
+      if (event.key === "Escape") {
+        state.query = "";
+        $("#search-input").value = "";
+        $("#search").classList.remove("has-value");
+        renderDictionary();
+        if (state.view === "relaciones") renderRelations();
+      }
+    });
+  }
+
+  function init() {
+    renderStats();
+    renderChips();
+    renderDictionary();
+    renderDomainMap();
+    renderRelations();
+    bind();
+    const hash = location.hash.replace("#", "");
+    if (hash.startsWith("tbl-")) {
+      goToTable(hash.slice(4));
+    } else if (["diagrama", "relaciones"].includes(hash)) {
+      setView(hash);
+    } else {
+      setView("diccionario");
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1f3a">
+  <meta name="description" content="Diagrama entidad-relación de la base de datos db_test, generado a partir del respaldo respaldo2011.sql.">
+  <title>Diagrama Entidad-Relación · db_test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>__CSS__</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow"><span class="dot"></span> Diagrama entidad-relación · Práctica 03</div>
+      <h1>Diagrama <span class="grad">Entidad-Relación</span></h1>
+      <p class="lead">
+        Mapa visual de las <strong>25 tablas</strong> de la base de datos <strong>db_test</strong> y sus
+        <strong>37 relaciones</strong>, generado a partir de <strong>respaldo2011.sql</strong>.
+      </p>
+      <div class="hero-meta">
+        <span class="chip-source">🗄️ Base de datos <strong>db_test</strong></span>
+        <span class="chip-source">📄 Fuente <strong>respaldo2011.sql</strong></span>
+        <span class="chip-source">📅 Generado <strong>__GENERATED__</strong></span>
+        <a class="chip-source" href="diccionario_datos.html" style="text-decoration:none;">📚 Ir al diccionario completo →</a>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-icon">🗂️</div>
+          <div class="value" id="stat-tables">25</div>
+          <div class="label">Tablas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🔗</div>
+          <div class="value" id="stat-relations">37</div>
+          <div class="label">Relaciones</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🧭</div>
+          <div class="value" id="stat-domains">7</div>
+          <div class="label">Dominios</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🧾</div>
+          <div class="value" id="stat-rows">120,750</div>
+          <div class="label">Registros</div>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <span class="chip-source">👥 <strong id="fact-users">7,512</strong> usuarios</span>
+        <span class="chip-source">📦 <strong id="fact-products">12,000</strong> productos</span>
+        <span class="chip-source">🛡️ <strong id="fact-logs">68,888</strong> registros de auditoría</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-head">
+      <div>
+        <h2>Mapa general</h2>
+        <p>Las tablas están agrupadas por área de negocio. Haz clic en una tabla para abrir su ficha completa en el diccionario.</p>
+      </div>
+    </div>
+
+    <div class="diagram-hero">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Tablas por dominio</h3>
+            <p>Cada bloque representa un área funcional de la tienda.</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="domain-map" id="domain-map"></div>
+          <div class="legend">
+            <span class="badge key-pk">🔑 PK · Llave primaria</span>
+            <span class="badge key-fk">🔗 FK · Llave foránea</span>
+            <span class="badge key-uq">✨ Único</span>
+            <span class="badge type-bool">✅ Sí/No</span>
+            <span class="badge type-money">💰 Monto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Cómo leer las relaciones</h3>
+            <p>Una línea conecta la tabla que guarda la referencia con la tabla que contiene el dato original.</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <p style="margin:0 0 10px;color:var(--muted);font-size:12.5px;">
+            La notación <strong>N : 1</strong> significa que muchos registros de una tabla apuntan a un solo registro de otra.
+            Por ejemplo, muchos pedidos pertenecen a un mismo comprador.
+          </p>
+          <div class="rel-list">
+            <div class="rel-item">
+              <div class="rel-link"><span>tb_orders.buyer_ID</span> <span class="arrow">→</span> <span class="target">tb_users.ID</span></div>
+              <p>Cada pedido pertenece a un comprador específico.</p>
+            </div>
+            <div class="rel-item">
+              <div class="rel-link"><span>tbd_products_categories</span> <span class="arrow">→</span> <span class="target">tb_products / tbc_categories</span></div>
+              <p>Es una tabla puente: un producto puede estar en varias categorías y una categoría agrupa varios productos.</p>
+            </div>
+            <div class="rel-item">
+              <div class="rel-link"><span>tb_logs</span> <span class="arrow">→</span> <span class="target">todas las tablas</span></div>
+              <p>La bitácora registra automáticamente los cambios de las demás tablas mediante triggers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Diagrama técnico</h3>
+          <p>Vista generada con Mermaid. Usa los controles para acercar, alejar o descargar el SVG.</p>
+        </div>
+        <div class="mermaid-tools">
+          <button class="icon-btn" id="zoom-out" type="button" title="Alejar" aria-label="Alejar">−</button>
+          <span class="badge badge-default" id="zoom-level">100%</span>
+          <button class="icon-btn" id="zoom-in" type="button" title="Acercar" aria-label="Acercar">+</button>
+          <button class="icon-btn" id="zoom-reset" type="button" title="Restablecer zoom" aria-label="Restablecer zoom">⟲</button>
+          <button class="btn" id="download-svg" type="button">⬇ SVG</button>
+          <button class="btn ghost" id="copy-mermaid" type="button">Copiar código</button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="mermaid-shell">
+          <div id="mermaid-diagram" class="mermaid"></div>
+        </div>
+        <p style="margin:10px 2px 0;color:var(--muted-2);font-size:11px;">
+          Nota: el diagrama técnico necesita conexión a internet para cargar Mermaid desde el CDN.
+          El mapa por dominios y la lista de relaciones funcionan sin conexión.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:26px;">
+      <div>
+        <h2>Relaciones explicadas</h2>
+        <p>Todas las llaves foráneas con una explicación en lenguaje cotidiano.</p>
+      </div>
+      <div class="result-info" id="relations-info"></div>
+    </div>
+    <div id="relations-list"></div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Diagrama generado a partir de <code>respaldo2011.sql</code> · Base de datos <code>db_test</code>.</span>
+      <span><a href="diccionario_datos.html">Volver al diccionario interactivo</a></span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>window.__DB_DATA__ = __DATA_JSON__;</script>
+  <script>__DIAGRAM_JS__</script>
+</body>
+</html>

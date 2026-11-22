@@ -1,0 +1,3008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>diccionario datos</title>
+<style>
+:root { --azul:#123b6d; --azul2:#1f5fa8; --gris:#f4f6f9; --borde:#d8dee8; }
+* { box-sizing: border-box; }
+body { margin:0; background:#eef1f5; color:#1c2430;
+       font-family: "Segoe UI", Roboto, Arial, sans-serif; line-height:1.6; }
+main { max-width: 1150px; margin: 28px auto; background:#fff; padding: 46px 58px;
+       box-shadow: 0 4px 24px rgba(0,0,0,.10); border-radius: 6px; }
+h1 { color:var(--azul); border-bottom:3px solid var(--azul2); padding-bottom:.3em;
+     font-size:2em; margin-top:0; }
+h2 { color:var(--azul); border-bottom:1px solid var(--borde); padding-bottom:.2em;
+     margin-top:2em; }
+h3 { color:var(--azul2); margin-top:1.6em; }
+h4 { color:#33475b; }
+a { color:var(--azul2); }
+table { border-collapse:collapse; width:100%; margin:1em 0; font-size:.94em; }
+th, td { border:1px solid var(--borde); padding:8px 10px; text-align:left; vertical-align:top; }
+th { background:var(--azul); color:#fff; font-weight:600; }
+tr:nth-child(even) td { background:var(--gris); }
+code { background:#eef2f7; padding:2px 5px; border-radius:3px; font-size:.92em;
+       font-family: Consolas, "Courier New", monospace; }
+pre { background:#1e2733; color:#e8eef7; padding:14px 18px; border-radius:6px;
+      overflow-x:auto; font-size:.9em; }
+pre code { background:transparent; color:inherit; padding:0; }
+blockquote { border-left:4px solid var(--azul2); background:#eef4fb; margin:1em 0;
+             padding:.6em 1em; color:#2c3e50; }
+hr { border:0; border-top:1px solid var(--borde); margin:2em 0; }
+.mermaid { background:#fff; border:1px solid var(--borde); border-radius:6px;
+           padding:18px; margin:1.2em 0; overflow-x:auto; text-align:center; }
+.portada { text-align:center; margin-bottom:1.5em; }
+.portada .sub { color:#5b6b80; }
+@media print {
+  body { background:#fff; }
+  main { box-shadow:none; margin:0; padding:0; max-width:none; }
+  h1, h2, h3 { page-break-after:avoid; }
+  table, pre, .mermaid { page-break-inside:avoid; }
+}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+</script>
+</head>
+<body>
+<main>
+<h1 id="diccionario-de-datos-db_test">Diccionario de datos - <code>db_test</code></h1>
+<p><strong>Proyecto:</strong> Practica 03 - Bases de datos en la nube<br>
+<strong>Motor:</strong> MySQL 8.0.46<br>
+<strong>Base de datos:</strong> <code>db_test</code><br>
+<strong>Generado:</strong> 12/11/2026 a partir de <code>information_schema</code></p>
+<p>La base contiene <strong>25 tablas</strong> y <strong>25 vistas</strong>. El detalle completo por columna tambien esta disponible en <a href="diccionario_datos.csv"><code>diccionario_datos.csv</code></a>.</p>
+<h2 id="resumen-de-tablas">Resumen de tablas</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tabla</th>
+<th>Descripcion</th>
+<th>Columnas</th>
+<th>Registros</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>tb_carts</code></td>
+<td>Carritos de compra de los usuarios.</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>tb_logs</code></td>
+<td>Bitacora de auditoria generada por los 72 triggers.</td>
+<td>11</td>
+<td>68,888</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>tb_order_cancellations</code></td>
+<td>Solicitudes de cancelacion de pedidos.</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>tb_orders</code></td>
+<td>Pedidos generados a partir de un carrito.</td>
+<td>11</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>tb_payment_methods</code></td>
+<td>Metodos de pago disponibles por tipo.</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>tb_payment_transaction</code></td>
+<td>Transacciones y respuestas de la pasarela de pago.</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>tb_payments</code></td>
+<td>Pagos asociados a un pedido.</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>tb_people</code></td>
+<td>Datos personales y demograficos asociados a un usuario.</td>
+<td>12</td>
+<td>7,502</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>tb_products</code></td>
+<td>Catalogo de productos publicados.</td>
+<td>9</td>
+<td>12,000</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>tb_refunds</code></td>
+<td>Reembolsos originados por devoluciones o cancelaciones.</td>
+<td>11</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>tb_returns</code></td>
+<td>Devoluciones solicitadas por los usuarios.</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>tb_shipments</code></td>
+<td>Envios y seguimiento de pedidos.</td>
+<td>11</td>
+<td>0</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>tb_user_addresses</code></td>
+<td>Direcciones registradas por cada usuario.</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>tb_users</code></td>
+<td>Usuarios de la plataforma (compradores, vendedores y personal).</td>
+<td>9</td>
+<td>7,512</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>tbc_categories</code></td>
+<td>Catalogo jerarquico de categorias y subcategorias.</td>
+<td>7</td>
+<td>100</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>tbc_payment_methods_types</code></td>
+<td>Tipos de metodo de pago (tarjeta, transferencia, etc.).</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>tbd_address_components</code></td>
+<td>Componentes jerarquicos de una direccion (pais, estado, ciudad, colonia, calle).</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>18</td>
+<td><code>tbd_cancellation_items</code></td>
+<td>Detalle de los items cancelados.</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>19</td>
+<td><code>tbd_cart_items</code></td>
+<td>Productos agregados a un carrito.</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>20</td>
+<td><code>tbd_order_items</code></td>
+<td>Detalle de productos y cantidades de un pedido.</td>
+<td>9</td>
+<td>0</td>
+</tr>
+<tr>
+<td>21</td>
+<td><code>tbd_products_categories</code></td>
+<td>Relacion muchos-a-muchos entre productos y categorias.</td>
+<td>5</td>
+<td>17,748</td>
+</tr>
+<tr>
+<td>22</td>
+<td><code>tbd_products_users_providers</code></td>
+<td>Relacion producto-proveedor; identifica al vendedor de cada producto.</td>
+<td>7</td>
+<td>7,000</td>
+</tr>
+<tr>
+<td>23</td>
+<td><code>tbd_return_items</code></td>
+<td>Detalle de productos devueltos.</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>24</td>
+<td><code>tbd_user_payment_methods</code></td>
+<td>Metodos de pago registrados por cada usuario.</td>
+<td>11</td>
+<td>0</td>
+</tr>
+<tr>
+<td>25</td>
+<td><code>tbd_users_wishlist_products</code></td>
+<td>Lista de deseos de los usuarios.</td>
+<td>5</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="detalle-de-tablas">Detalle de tablas</h2>
+<h3 id="tb_carts"><code>tb_carts</code></h3>
+<p>Carritos de compra de los usuarios.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>user_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>UNI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>Si</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>user_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_logs"><code>tb_logs</code></h3>
+<p>Bitacora de auditoria generada por los 72 triggers.<br>
+<strong>Registros:</strong> 68,888</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>id</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>category_id</code></td>
+<td><code>int unsigned</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>product_id</code></td>
+<td><code>bigint unsigned</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>table_name</code></td>
+<td><code>varchar(50)</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>operation</code></td>
+<td><code>varchar(20)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>db_user</code></td>
+<td><code>varchar(100)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>user_id</code></td>
+<td><code>int unsigned</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>record_id</code></td>
+<td><code>varchar(150)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>description</code></td>
+<td><code>text</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>operation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>operation_status</code></td>
+<td><code>bit(1)</code></td>
+<td>Si</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tb_order_cancellations"><code>tb_order_cancellations</code></h3>
+<p>Solicitudes de cancelacion de pedidos.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>order_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_orders.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>user_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>reason</code></td>
+<td><code>text</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>cancellation_status</code></td>
+<td><code>enum('Requested','Approved','Rejected')</code></td>
+<td>No</td>
+<td></td>
+<td>Requested</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>order_ID</code> -&gt; <code>tb_orders.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>user_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_orders"><code>tb_orders</code></h3>
+<p>Pedidos generados a partir de un carrito.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>buyer_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>address_ID</code></td>
+<td><code>bigint unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_user_addresses.ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>order_number</code></td>
+<td><code>varchar(50)</code></td>
+<td>No</td>
+<td>UNI</td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>subtotal</code></td>
+<td><code>decimal(12,2)</code></td>
+<td>No</td>
+<td></td>
+<td>0.00</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>shipping_total</code></td>
+<td><code>decimal(12,2)</code></td>
+<td>No</td>
+<td></td>
+<td>0.00</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>total_amount</code></td>
+<td><code>decimal(12,2)</code></td>
+<td>No</td>
+<td></td>
+<td>0.00</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>order_status</code></td>
+<td><code>enum('Pending','Processing','Shipped','Delivered','Cancelled')</code></td>
+<td>No</td>
+<td></td>
+<td>Pending</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>address_ID</code> -&gt; <code>tb_user_addresses.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>buyer_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_payment_methods"><code>tb_payment_methods</code></h3>
+<p>Metodos de pago disponibles por tipo.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>payment_method_type_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbc_payment_methods_types.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>name</code></td>
+<td><code>varchar(100)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>provider</code></td>
+<td><code>varchar(100)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>payment_method_type_ID</code> -&gt; <code>tbc_payment_methods_types.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_payment_transaction"><code>tb_payment_transaction</code></h3>
+<p>Transacciones y respuestas de la pasarela de pago.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>payment_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_payments.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>gateway_transaction_id</code></td>
+<td><code>varchar(150)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>gateway_status</code></td>
+<td><code>varchar(50)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>gateway_response</code></td>
+<td><code>json</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>amount</code></td>
+<td><code>decimal(12,2)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>payment_ID</code> -&gt; <code>tb_payments.ID</code> (DELETE CASCADE, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_payments"><code>tb_payments</code></h3>
+<p>Pagos asociados a un pedido.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>order_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_orders.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>payment_method_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_payment_methods.ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>amount</code></td>
+<td><code>decimal(12,2)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>currency</code></td>
+<td><code>varchar(10)</code></td>
+<td>No</td>
+<td></td>
+<td>MXN</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>payment_status</code></td>
+<td><code>enum('Pending','Completed','Failed','Refunded')</code></td>
+<td>No</td>
+<td></td>
+<td>Pending</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>payment_date</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>order_ID</code> -&gt; <code>tb_orders.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>payment_method_ID</code> -&gt; <code>tb_payment_methods.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_people"><code>tb_people</code></h3>
+<p>Datos personales y demograficos asociados a un usuario.<br>
+<strong>Registros:</strong> 7,502</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>person_ID</code></td>
+<td><code>bigint unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>user_ID</code></td>
+<td><code>int</code></td>
+<td>Si</td>
+<td>UNI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>courtesy_title</code></td>
+<td><code>varchar(20)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>given_names</code></td>
+<td><code>varchar(150)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>family_names</code></td>
+<td><code>varchar(150)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>birth_date</code></td>
+<td><code>date</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>gender</code></td>
+<td><code>enum('Hombre','Mujer','Prefiero no decirlo')</code></td>
+<td>No</td>
+<td></td>
+<td>Prefiero no decirlo</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>country_code</code></td>
+<td><code>char(2)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>phone</code></td>
+<td><code>varchar(25)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>Si</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>user_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_products"><code>tb_products</code></h3>
+<p>Catalogo de productos publicados.<br>
+<strong>Registros:</strong> 12,000</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>SKU</code></td>
+<td><code>varchar(50)</code></td>
+<td>No</td>
+<td>UNI</td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>name</code></td>
+<td><code>varchar(250)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>description</code></td>
+<td><code>text</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>current_price</code></td>
+<td><code>decimal(10,2)</code></td>
+<td>No</td>
+<td></td>
+<td>0.00</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>current_stock</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>Si</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tb_refunds"><code>tb_refunds</code></h3>
+<p>Reembolsos originados por devoluciones o cancelaciones.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>payment_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_payments.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>return_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>Si</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_returns.ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>cancellation_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>Si</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_order_cancellations.ID</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>amount</code></td>
+<td><code>decimal(12,2)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>refund_status</code></td>
+<td><code>enum('Pending','Processed','Failed')</code></td>
+<td>No</td>
+<td></td>
+<td>Pending</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>refund_reference</code></td>
+<td><code>varchar(150)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>refund_date</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>cancellation_ID</code> -&gt; <code>tb_order_cancellations.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>payment_ID</code> -&gt; <code>tb_payments.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>return_ID</code> -&gt; <code>tb_returns.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_returns"><code>tb_returns</code></h3>
+<p>Devoluciones solicitadas por los usuarios.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>order_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_orders.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>user_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>reason</code></td>
+<td><code>text</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>return_status</code></td>
+<td><code>enum('Requested','Approved','In Transit','Received','Rejected')</code></td>
+<td>No</td>
+<td></td>
+<td>Requested</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>order_ID</code> -&gt; <code>tb_orders.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>user_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_shipments"><code>tb_shipments</code></h3>
+<p>Envios y seguimiento de pedidos.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>order_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_orders.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>carrier</code></td>
+<td><code>varchar(100)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>tracking_number</code></td>
+<td><code>varchar(100)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>shipment_status</code></td>
+<td><code>enum('Preparing','In Transit','Out for Delivery','Delivered','Failed')</code></td>
+<td>No</td>
+<td></td>
+<td>Preparing</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>shipped_date</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>estimated_delivery</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>delivered_date</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>order_ID</code> -&gt; <code>tb_orders.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_user_addresses"><code>tb_user_addresses</code></h3>
+<p>Direcciones registradas por cada usuario.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>bigint unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>user_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>address_label</code></td>
+<td><code>varchar(100)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>recipient_name</code></td>
+<td><code>varchar(150)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>recipient_phone</code></td>
+<td><code>varchar(25)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>delivery_instructions</code></td>
+<td><code>varchar(500)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>latitude</code></td>
+<td><code>decimal(10,7)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>longitude</code></td>
+<td><code>decimal(10,7)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>is_default</code></td>
+<td><code>tinyint(1)</code></td>
+<td>No</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>user_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tb_users"><code>tb_users</code></h3>
+<p>Usuarios de la plataforma (compradores, vendedores y personal).<br>
+<strong>Registros:</strong> 7,512</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>email</code></td>
+<td><code>varchar(100)</code></td>
+<td>No</td>
+<td>UNI</td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>nick</code></td>
+<td><code>varchar(50)</code></td>
+<td>No</td>
+<td>UNI</td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>roles</code></td>
+<td><code>varchar(20)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>password</code></td>
+<td><code>varchar(255)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>last_login</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>Si</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tbc_categories"><code>tbc_categories</code></h3>
+<p>Catalogo jerarquico de categorias y subcategorias.<br>
+<strong>Registros:</strong> 100</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>id</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>name</code></td>
+<td><code>varchar(120)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>description</code></td>
+<td><code>text</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>sup_id_category</code></td>
+<td><code>int unsigned</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tbc_payment_methods_types"><code>tbc_payment_methods_types</code></h3>
+<p>Tipos de metodo de pago (tarjeta, transferencia, etc.).<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>code</code></td>
+<td><code>varchar(30)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>description</code></td>
+<td><code>text</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tbd_address_components"><code>tbd_address_components</code></h3>
+<p>Componentes jerarquicos de una direccion (pais, estado, ciudad, colonia, calle).<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>bigint unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>address_ID</code></td>
+<td><code>bigint unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbd_address_components.address_ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>value</code></td>
+<td><code>varchar(255)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>component_type</code></td>
+<td><code>varchar(50)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>address_sup_ID</code></td>
+<td><code>bigint unsigned</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td><code>tbd_address_components.ID</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>address_ID</code> -&gt; <code>tbd_address_components.address_ID</code> (DELETE RESTRICT, UPDATE NO ACTION)</li>
+<li><code>address_sup_ID</code> -&gt; <code>tbd_address_components.ID</code> (DELETE RESTRICT, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tbd_cancellation_items"><code>tbd_cancellation_items</code></h3>
+<p>Detalle de los items cancelados.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>cancellation_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_order_cancellations.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>order_item_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbd_order_items.ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>quantity</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>cancellation_ID</code> -&gt; <code>tb_order_cancellations.ID</code> (DELETE CASCADE, UPDATE NO ACTION)</li>
+<li><code>order_item_ID</code> -&gt; <code>tbd_order_items.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tbd_cart_items"><code>tbd_cart_items</code></h3>
+<p>Productos agregados a un carrito.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>cart_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_carts.ID</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>provider_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbd_products_users_providers.user_ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>product_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbd_products_users_providers.product_ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>quantity</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>cart_ID</code> -&gt; <code>tb_carts.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>product_ID</code> -&gt; <code>tbd_products_users_providers.product_ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>provider_ID</code> -&gt; <code>tbd_products_users_providers.user_ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tbd_order_items"><code>tbd_order_items</code></h3>
+<p>Detalle de productos y cantidades de un pedido.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>seller_order_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_orders.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>product_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbd_products_users_providers.product_ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>provider_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbd_products_users_providers.user_ID</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>product_name</code></td>
+<td><code>varchar(255)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>quantity</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>unit_price</code></td>
+<td><code>decimal(12,2)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>subtotal</code></td>
+<td><code>decimal(12,2)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>STORED GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>product_ID</code> -&gt; <code>tbd_products_users_providers.product_ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>provider_ID</code> -&gt; <code>tbd_products_users_providers.user_ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>seller_order_ID</code> -&gt; <code>tb_orders.ID</code> (DELETE CASCADE, UPDATE CASCADE)</li>
+</ul>
+<h3 id="tbd_products_categories"><code>tbd_products_categories</code></h3>
+<p>Relacion muchos-a-muchos entre productos y categorias.<br>
+<strong>Registros:</strong> 17,748</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>product_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_products.ID</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>category_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbc_categories.id</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>category_ID</code> -&gt; <code>tbc_categories.id</code> (DELETE CASCADE, UPDATE CASCADE)</li>
+<li><code>product_ID</code> -&gt; <code>tb_products.ID</code> (DELETE CASCADE, UPDATE CASCADE)</li>
+</ul>
+<h3 id="tbd_products_users_providers"><code>tbd_products_users_providers</code></h3>
+<p>Relacion producto-proveedor; identifica al vendedor de cada producto.<br>
+<strong>Registros:</strong> 7,000</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>user_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>product_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_products.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>type_ownership</code></td>
+<td><code>enum('Owner','Reseller','Distributor')</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>available_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>product_ID</code> -&gt; <code>tb_products.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>user_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tbd_return_items"><code>tbd_return_items</code></h3>
+<p>Detalle de productos devueltos.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>return_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_returns.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>order_item_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbd_order_items.ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>quantity</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>condition_notes</code></td>
+<td><code>varchar(255)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>order_item_ID</code> -&gt; <code>tbd_order_items.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>return_ID</code> -&gt; <code>tb_returns.ID</code> (DELETE CASCADE, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tbd_user_payment_methods"><code>tbd_user_payment_methods</code></h3>
+<p>Metodos de pago registrados por cada usuario.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ID</code></td>
+<td><code>bigint unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td>auto_increment</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>user_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>payment_method_type_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td><code>tbc_payment_methods_types.ID</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>provider</code></td>
+<td><code>varchar(60)</code></td>
+<td>No</td>
+<td>MUL</td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>provider_method_ref</code></td>
+<td><code>varchar(255)</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>label</code></td>
+<td><code>varchar(100)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>last_four</code></td>
+<td><code>char(4)</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>is_default</code></td>
+<td><code>tinyint(1)</code></td>
+<td>No</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>Si</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>payment_method_type_ID</code> -&gt; <code>tbc_payment_methods_types.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>user_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h3 id="tbd_users_wishlist_products"><code>tbd_users_wishlist_products</code></h3>
+<p>Lista de deseos de los usuarios.<br>
+<strong>Registros:</strong> 0</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Nulo</th>
+<th>Llave</th>
+<th>Default</th>
+<th>Extra</th>
+<th>FK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>user_ID</code></td>
+<td><code>int</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_users.ID</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>product_ID</code></td>
+<td><code>int unsigned</code></td>
+<td>No</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+<td><code>tb_products.ID</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>status</code></td>
+<td><code>bit(1)</code></td>
+<td>No</td>
+<td></td>
+<td>b'1'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>creation_date</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+<td>DEFAULT_GENERATED</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>last_update</code></td>
+<td><code>datetime</code></td>
+<td>No</td>
+<td></td>
+<td>NULL</td>
+<td>on update CURRENT_TIMESTAMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Llaves foraneas:</strong></p>
+<ul>
+<li><code>product_ID</code> -&gt; <code>tb_products.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+<li><code>user_ID</code> -&gt; <code>tb_users.ID</code> (DELETE NO ACTION, UPDATE NO ACTION)</li>
+</ul>
+<h2 id="vistas">Vistas</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Vista</th>
+<th>Proposito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>vw_productos_por_categoria</code></td>
+<td>Catalogo agregado de productos por categoria.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>vw_trazabilidad_address_components</code></td>
+<td>Vista de trazabilidad de la tabla tb_address_components</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>vw_trazabilidad_cancellation_items</code></td>
+<td>Vista de trazabilidad de la tabla tb_cancellation_items</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>vw_trazabilidad_cart_items</code></td>
+<td>Vista de trazabilidad de la tabla tb_cart_items</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>vw_trazabilidad_carts</code></td>
+<td>Vista de trazabilidad de la tabla tb_carts</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>vw_trazabilidad_categorias</code></td>
+<td>Vista de trazabilidad de la tabla tb_categorias</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>vw_trazabilidad_order_cancellations</code></td>
+<td>Vista de trazabilidad de la tabla tb_order_cancellations</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>vw_trazabilidad_order_items</code></td>
+<td>Vista de trazabilidad de la tabla tb_order_items</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>vw_trazabilidad_orders</code></td>
+<td>Vista de trazabilidad de la tabla tb_orders</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>vw_trazabilidad_payment_methods</code></td>
+<td>Vista de trazabilidad de la tabla tb_payment_methods</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>vw_trazabilidad_payment_methods_types</code></td>
+<td>Vista de trazabilidad de la tabla tb_payment_methods_types</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>vw_trazabilidad_payment_transaction</code></td>
+<td>Vista de trazabilidad de la tabla tb_payment_transaction</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>vw_trazabilidad_payments</code></td>
+<td>Vista de trazabilidad de la tabla tb_payments</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>vw_trazabilidad_people</code></td>
+<td>Vista de trazabilidad de la tabla tb_people</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>vw_trazabilidad_productos</code></td>
+<td>Vista de trazabilidad de la tabla tb_productos</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>vw_trazabilidad_productos_categorias</code></td>
+<td>Vista de trazabilidad de la tabla tb_productos_categorias</td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>vw_trazabilidad_products_users_providers</code></td>
+<td>Vista de trazabilidad de la tabla tb_products_users_providers</td>
+</tr>
+<tr>
+<td>18</td>
+<td><code>vw_trazabilidad_refunds</code></td>
+<td>Vista de trazabilidad de la tabla tb_refunds</td>
+</tr>
+<tr>
+<td>19</td>
+<td><code>vw_trazabilidad_return_items</code></td>
+<td>Vista de trazabilidad de la tabla tb_return_items</td>
+</tr>
+<tr>
+<td>20</td>
+<td><code>vw_trazabilidad_returns</code></td>
+<td>Vista de trazabilidad de la tabla tb_returns</td>
+</tr>
+<tr>
+<td>21</td>
+<td><code>vw_trazabilidad_shipments</code></td>
+<td>Vista de trazabilidad de la tabla tb_shipments</td>
+</tr>
+<tr>
+<td>22</td>
+<td><code>vw_trazabilidad_user_addresses</code></td>
+<td>Vista de trazabilidad de la tabla tb_user_addresses</td>
+</tr>
+<tr>
+<td>23</td>
+<td><code>vw_trazabilidad_user_payment_methods</code></td>
+<td>Vista de trazabilidad de la tabla tb_user_payment_methods</td>
+</tr>
+<tr>
+<td>24</td>
+<td><code>vw_trazabilidad_users_wishlist_products</code></td>
+<td>Vista de trazabilidad de la tabla tb_users_wishlist_products</td>
+</tr>
+<tr>
+<td>25</td>
+<td><code>vw_trazabilidad_usuarios</code></td>
+<td>Trazabilidad de usuarios (sin password).</td>
+</tr>
+</tbody>
+</table>
+</main>
+</body>
+</html>

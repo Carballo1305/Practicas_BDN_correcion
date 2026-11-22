@@ -1,0 +1,207 @@
+============================================================
+PRUEBA: Invitado consulta catalogo de productos
+Usuario: guest1
+SQL: SELECT COUNT(*) AS productos FROM db_test.tb_products;
+Resultado esperado: Permitido
+------------------------------------------------------------
+productos
+12000
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Invitado consulta vista de catalogo
+Usuario: guest1
+SQL: SELECT COUNT(*) AS categorias FROM db_test.vw_productos_por_categoria;
+Resultado esperado: Permitido
+------------------------------------------------------------
+categorias
+100
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Invitado intenta leer usuarios
+Usuario: guest1
+SQL: SELECT COUNT(*) FROM db_test.tb_users;
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: SELECT command denied to user 'guest1'@'localhost' for table 'tb_users'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Invitado intenta leer vista de trazabilidad de usuarios
+Usuario: guest1
+SQL: SELECT COUNT(*) FROM db_test.vw_trazabilidad_usuarios;
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: SELECT command denied to user 'guest1'@'localhost' for table 'vw_trazabilidad_usuarios'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Comprador consulta productos
+Usuario: buyer1
+SQL: SELECT COUNT(*) AS productos FROM db_test.tb_products;
+Resultado esperado: Permitido
+------------------------------------------------------------
+productos
+12000
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Comprador consulta carritos
+Usuario: buyer1
+SQL: SELECT COUNT(*) AS carritos FROM db_test.tb_carts;
+Resultado esperado: Permitido
+------------------------------------------------------------
+carritos
+0
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Comprador intenta leer bitacora
+Usuario: buyer1
+SQL: SELECT COUNT(*) FROM db_test.tb_logs;
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: SELECT command denied to user 'buyer1'@'localhost' for table 'tb_logs'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Comprador intenta leer vista de trazabilidad
+Usuario: buyer1
+SQL: SELECT COUNT(*) FROM db_test.vw_trazabilidad_productos;
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: SELECT command denied to user 'buyer1'@'localhost' for table 'vw_trazabilidad_productos'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Vendedor consulta sus productos
+Usuario: seller1
+SQL: SELECT COUNT(*) AS productos FROM db_test.tb_products;
+Resultado esperado: Permitido
+------------------------------------------------------------
+productos
+12000
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Vendedor consulta trazabilidad de productos
+Usuario: seller1
+SQL: SELECT COUNT(*) AS eventos FROM db_test.vw_trazabilidad_productos;
+Resultado esperado: Permitido
+------------------------------------------------------------
+eventos
+12000
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Vendedor intenta leer pedidos
+Usuario: seller1
+SQL: SELECT COUNT(*) FROM db_test.tb_orders;
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: SELECT command denied to user 'seller1'@'localhost' for table 'tb_orders'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Vendedor intenta eliminar un producto
+Usuario: seller1
+SQL: DELETE FROM db_test.tb_products WHERE 1=0;
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: DELETE command denied to user 'seller1'@'localhost' for table 'tb_products'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Vendedor intenta leer trazabilidad de usuarios
+Usuario: seller1
+SQL: SELECT COUNT(*) FROM db_test.vw_trazabilidad_usuarios;
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: SELECT command denied to user 'seller1'@'localhost' for table 'vw_trazabilidad_usuarios'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Soporte consulta vista de trazabilidad de usuarios
+Usuario: remoto_support
+SQL: SELECT COUNT(*) AS usuarios FROM db_test.vw_trazabilidad_usuarios;
+Resultado esperado: Permitido
+------------------------------------------------------------
+usuarios
+7512
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Soporte consulta bitacora
+Usuario: remoto_support
+SQL: SELECT COUNT(*) AS eventos FROM db_test.tb_logs;
+Resultado esperado: Permitido
+------------------------------------------------------------
+eventos
+68888
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Soporte intenta eliminar productos
+Usuario: remoto_support
+SQL: DELETE FROM db_test.tb_products WHERE 1=0;
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: DELETE command denied to user 'remoto_support'@'localhost' for table 'tb_products'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Soporte intenta crear una tabla
+Usuario: remoto_support
+SQL: CREATE TABLE db_test.zz_permiso_support (id INT);
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: CREATE command denied to user 'remoto_support'@'localhost' for table 'zz_permiso_support'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Soporte intenta crear un usuario
+Usuario: remoto_support
+SQL: CREATE USER 'zz_invalido'@'%' IDENTIFIED BY 'x';
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1227 (42000) at line 1: Access denied; you need (at least one of) the CREATE USER privilege(s) for this operation
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Administrador consulta vista de trazabilidad de usuarios
+Usuario: remoto_admin
+SQL: SELECT COUNT(*) AS usuarios FROM db_test.vw_trazabilidad_usuarios;
+Resultado esperado: Permitido
+------------------------------------------------------------
+usuarios
+7512
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Administrador actualiza productos (0 filas)
+Usuario: remoto_admin
+SQL: UPDATE db_test.tb_products SET name = name WHERE 1=0;
+Resultado esperado: Permitido
+------------------------------------------------------------
+(sin filas devueltas)
+Codigo de salida: 0  ->  PERMITIDO / OK
+
+============================================================
+PRUEBA: Administrador intenta crear una tabla
+Usuario: remoto_admin
+SQL: CREATE TABLE db_test.zz_permiso_admin (id INT);
+Resultado esperado: Denegado
+------------------------------------------------------------
+ERROR 1142 (42000) at line 1: CREATE command denied to user 'remoto_admin'@'localhost' for table 'zz_permiso_admin'
+Codigo de salida: 1  ->  DENEGADO / ERROR
+
+============================================================
+PRUEBA: Superadministrador crea y elimina una tabla
+Usuario: remoto_superadmin
+SQL: CREATE TABLE db_test.zz_permiso_superadmin (id INT); DROP TABLE db_test.zz_permiso_superadmin;
+Resultado esperado: Permitido
+------------------------------------------------------------
+(sin filas devueltas)
+Codigo de salida: 0  ->  PERMITIDO / OK
+
