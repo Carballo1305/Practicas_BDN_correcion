@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1f3a">
+  <meta name="description" content="Documentación interactiva de la base de datos db_test: diccionario de datos y diagrama entidad-relación.">
+  <title>Documentación de la Base de Datos · db_test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>__CSS__
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+    .doc-card {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .doc-card:hover {
+      transform: translateY(-4px);
+      border-color: #c9d9eb;
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+    .doc-card::after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: -60px;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: var(--card-glow, rgba(37, 99, 235, 0.1));
+      pointer-events: none;
+    }
+    .doc-card .big-icon {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      background: var(--card-soft, var(--blue-soft));
+      font-size: 25px;
+      box-shadow: inset 0 0 0 1px rgba(15, 39, 68, 0.05);
+    }
+    .doc-card h2 { margin: 0 0 6px; font-size: 20px; letter-spacing: -0.025em; }
+    .doc-card p { margin: 0 0 16px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .doc-card .doc-meta { display: flex; flex-wrap: wrap; gap: 7px; }
+    .doc-card .doc-meta .pill { background: #fff; }
+    .doc-card .go {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      color: var(--card-color, var(--blue));
+      font-size: 12.5px;
+      font-weight: 800;
+    }
+    .doc-card .go span { transition: transform 0.2s ease; }
+    .doc-card:hover .go span { transform: translateX(3px); }
+    .source-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      padding: 16px 18px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 16px;
+      background: #fcfdff;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .source-card strong { color: var(--ink-2); }
+    .source-card code { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow"><span class="dot"></span> Documentación de datos · Práctica 03</div>
+      <h1>Documentación de la <span class="grad">Base de Datos</span></h1>
+      <p class="lead">
+        Tres formas de explorar <strong>db_test</strong>: un diccionario interactivo para entender qué guarda cada tabla,
+        un diagrama entidad-relación y un ERD standalone generado con Archify para recorrer el esquema completo.
+      </p>
+      <div class="hero-meta">
+        <span class="chip-source">🗄️ Base de datos <strong>db_test</strong></span>
+        <span class="chip-source">📄 Fuente <strong>respaldo1411.sql</strong></span>
+        <span class="chip-source">📅 Generado <strong>__GENERATED__</strong></span>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-icon">🗂️</div>
+          <div class="value">__TABLES__</div>
+          <div class="label">Tablas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🧾</div>
+          <div class="value">__ROWS__</div>
+          <div class="label">Registros</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🔗</div>
+          <div class="value">__RELATIONS__</div>
+          <div class="label">Relaciones</div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon">🧭</div>
+          <div class="value">7</div>
+          <div class="label">Dominios</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-head">
+      <div>
+        <h2>Elige una vista</h2>
+        <p>Las tres páginas son autocontenidas y están pensadas para personas de negocio y para el equipo técnico.</p>
+      </div>
+    </div>
+
+    <div class="doc-grid">
+      <a class="doc-card" href="diccionario_datos.html" style="--card-color:#2563eb;--card-soft:#e8f0ff;--card-glow:rgba(37,99,235,.12);">
+        <div class="big-icon">📚</div>
+        <h2>Diccionario de datos interactivo</h2>
+        <p>
+          Explora las 25 tablas, sus columnas, tipos SQL, llaves, valores por defecto y relaciones.
+          Incluye buscador, filtros por área y ejemplos de registro con datos sensibles protegidos.
+        </p>
+        <div class="doc-meta">
+          <span class="pill">🔎 Búsqueda instantánea</span>
+          <span class="pill">🧩 Fichas por tabla</span>
+          <span class="pill">🔗 Relaciones explicadas</span>
+        </div>
+        <div class="go">Abrir diccionario <span>→</span></div>
+      </a>
+
+      <a class="doc-card" href="diagrama_er.html" style="--card-color:#0d9488;--card-soft:#e6fffb;--card-glow:rgba(13,148,136,.12);">
+        <div class="big-icon">🧭</div>
+        <h2>Diagrama entidad-relación</h2>
+        <p>
+          Visualiza las 25 tablas agrupadas por dominio y las 37 relaciones que las conectan.
+          Incluye un diagrama técnico con zoom, descarga en SVG y la lista completa de relaciones.
+        </p>
+        <div class="doc-meta">
+          <span class="pill">🗺️ Mapa por dominios</span>
+          <span class="pill">🔍 Zoom y SVG</span>
+          <span class="pill">🔗 37 relaciones</span>
+        </div>
+        <div class="go">Abrir diagrama <span>→</span></div>
+      </a>
+
+      <a class="doc-card" href="../08_documentacion/archify/erd_practica03.html" style="--card-color:#7c3aed;--card-soft:#f3e8ff;--card-glow:rgba(124,58,237,.12);">
+        <div class="big-icon">🧬</div>
+        <h2>ERD interactivo · Archify</h2>
+        <p>
+          Recorre las 25 tablas y 205 columnas con roles PK, FK y UK, 36 relaciones dibujables
+          y vistas por dominio. Incluye temas claro/oscuro y exportación de imagen.
+        </p>
+        <div class="doc-meta">
+          <span class="pill">🗂️ Catálogo completo</span>
+          <span class="pill">🔑 PK · FK · UK</span>
+          <span class="pill">🌓 Tema claro/oscuro</span>
+        </div>
+        <div class="go">Abrir ERD Archify <span>→</span></div>
+      </a>
+    </div>
+
+    <div class="source-card">
+      <span>📄 Archivo fuente: <code>respaldo1411.sql</code></span>
+      <span>🧮 Generado con <strong>Python</strong> + <strong>Mermaid</strong> + <strong>Archify</strong></span>
+      <span>🔒 Datos sensibles enmascarados en los ejemplos</span>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Documentación generada a partir de <code>respaldo1411.sql</code> · Base de datos <code>db_test</code>.</span>
+      <span>Práctica 03 · __GENERATED__</span>
+    </div>
+  </footer>
+</body>
+</html>

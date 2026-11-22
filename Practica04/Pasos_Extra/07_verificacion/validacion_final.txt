@@ -1,0 +1,27 @@
+indicador	valor
+Tablas base	25
+Triggers	72
+Vistas	25
+Funciones	7
+Procedimientos	6
+Eventos	2
+Roles	7
+Cuentas remotas	8
+Usuarios simulados	7500
+Productos totales	12000
+Productos con vendedor	7000
+Registros de bitacora	68888
+tablas_con_3_triggers
+24
+GRANTEE	vistas_con_select
+'admin'@'%'	25
+'support'@'%'	25
+'seller'@'%'	5
+'buyer'@'%'	1
+'common_user'@'%'	1
+'user_not_registered'@'%'	1
+EVENT_NAME	STATUS	INTERVAL_VALUE	INTERVAL_FIELD
+ev_cerrar_carritos_inactivos	ENABLED	1	DAY
+ev_purgar_logs_antiguos	ENABLED	1	WEEK
+tablas_zz_pendientes
+0

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>README</title>
+<style>
+:root { --azul:#123b6d; --azul2:#1f5fa8; --gris:#f4f6f9; --borde:#d8dee8; }
+* { box-sizing: border-box; }
+body { margin:0; background:#eef1f5; color:#1c2430;
+       font-family: "Segoe UI", Roboto, Arial, sans-serif; line-height:1.6; }
+main { max-width: 1150px; margin: 28px auto; background:#fff; padding: 46px 58px;
+       box-shadow: 0 4px 24px rgba(0,0,0,.10); border-radius: 6px; }
+h1 { color:var(--azul); border-bottom:3px solid var(--azul2); padding-bottom:.3em;
+     font-size:2em; margin-top:0; }
+h2 { color:var(--azul); border-bottom:1px solid var(--borde); padding-bottom:.2em;
+     margin-top:2em; }
+h3 { color:var(--azul2); margin-top:1.6em; }
+h4 { color:#33475b; }
+a { color:var(--azul2); }
+table { border-collapse:collapse; width:100%; margin:1em 0; font-size:.94em; }
+th, td { border:1px solid var(--borde); padding:8px 10px; text-align:left; vertical-align:top; }
+th { background:var(--azul); color:#fff; font-weight:600; }
+tr:nth-child(even) td { background:var(--gris); }
+code { background:#eef2f7; padding:2px 5px; border-radius:3px; font-size:.92em;
+       font-family: Consolas, "Courier New", monospace; }
+pre { background:#1e2733; color:#e8eef7; padding:14px 18px; border-radius:6px;
+      overflow-x:auto; font-size:.9em; }
+pre code { background:transparent; color:inherit; padding:0; }
+blockquote { border-left:4px solid var(--azul2); background:#eef4fb; margin:1em 0;
+             padding:.6em 1em; color:#2c3e50; }
+hr { border:0; border-top:1px solid var(--borde); margin:2em 0; }
+.mermaid { background:#fff; border:1px solid var(--borde); border-radius:6px;
+           padding:18px; margin:1.2em 0; overflow-x:auto; text-align:center; }
+.portada { text-align:center; margin-bottom:1.5em; }
+.portada .sub { color:#5b6b80; }
+@media print {
+  body { background:#fff; }
+  main { box-shadow:none; margin:0; padding:0; max-width:none; }
+  h1, h2, h3 { page-break-after:avoid; }
+  table, pre, .mermaid { page-break-inside:avoid; }
+}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+</script>
+</head>
+<body>
+<main>
+<h1 id="respaldos-de-db_test">Respaldos de <code>db_test</code></h1>
+<p>Respaldos generados con <code>mysqldump</code> (MySQL 8.0.46) el 12/11/2026.</p>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Contenido</th>
+<th>Tamaño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_00_inicial_20261112.sql</code></td>
+<td>Respaldo completo previo a las correcciones de la Practica 03.</td>
+<td>6.1 MB</td>
+</tr>
+<tr>
+<td><code>backup_01_esquema_20261112.sql</code></td>
+<td>Solo estructura: 25 tablas, 72 triggers, 25 vistas, rutinas y eventos (<code>--no-data</code>).</td>
+<td>0.24 MB</td>
+</tr>
+<tr>
+<td><code>backup_02_usuarios_20261112.sql</code></td>
+<td>Datos de usuarios y personas: <code>tb_users</code>, <code>tb_people</code>, direcciones, metodos de pago y wishlist.</td>
+<td>2.3 MB</td>
+</tr>
+<tr>
+<td><code>backup_03_productos_20261112.sql</code></td>
+<td>Datos de catalogo: <code>tb_products</code>, <code>tbc_categories</code> y tablas de relacion.</td>
+<td>4.9 MB</td>
+</tr>
+<tr>
+<td><code>backup_04_final_20261112.sql</code></td>
+<td>Respaldo completo final: estructura + datos + triggers + vistas + rutinas + eventos.</td>
+<td>22 MB</td>
+</tr>
+<tr>
+<td><code>respaldo1411.sql</code></td>
+<td>Copia renombrada del respaldo final usada como fuente de la documentación interactiva.</td>
+<td>23 MB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="documentacion-interactiva">Documentación interactiva</h2>
+<p>La documentación de la base de datos se puede abrir directamente en el navegador:</p>
+<ul>
+<li><code>index_documentacion.html</code> - página de entrada con enlaces a las dos vistas.</li>
+<li><code>diccionario_datos.html</code> - diccionario interactivo: 25 tablas, columnas, tipos SQL, llaves, relaciones y ejemplos con datos sensibles enmascarados.</li>
+<li><code>diagrama_er.html</code> - diagrama entidad-relación: mapa por dominios, diagrama técnico con zoom y descarga SVG, y lista de las 37 relaciones.</li>
+</ul>
+<p>Los archivos se generan con los scripts de <code>docgen/</code> a partir de <code>respaldo1411.sql</code>:</p>
+<pre><code class="language-bash">python docgen/build.py
+</code></pre>
+<h2 id="respaldos-heredados">Respaldos heredados</h2>
+<p>En esta misma carpeta se conservan sin modificaciones:</p>
+<ul>
+<li><code>respaldo 2010.sql</code> - respaldo de una version anterior de <code>db_test</code>.</li>
+<li><code>respaldo1510.sql</code> - respaldo previo adicional.</li>
+</ul>
+<p>El respaldo vigente de la Practica 03 es <code>backup_04_final_20261112.sql</code>.</p>
+<h2 id="restauracion">Restauracion</h2>
+<p>Restauracion completa en una base limpia:</p>
+<pre><code class="language-bash">mysql -h 127.0.0.1 -P 40045 -u root -p -e &quot;CREATE DATABASE db_test_restaurada;&quot;
+mysql -h 127.0.0.1 -P 40045 -u root -p db_test_restaurada &lt; backup_04_final_20261112.sql
+</code></pre>
+<p>Restauracion solo de estructura:</p>
+<pre><code class="language-bash">mysql -h 127.0.0.1 -P 40045 -u root -p db_test &lt; backup_01_esquema_20261112.sql
+</code></pre>
+<h2 id="prueba-de-restauracion">Prueba de restauracion</h2>
+<p>El respaldo final se restauro en la base temporal <code>db_test_restore_check</code> y se
+verifico su contenido antes de eliminarla:</p>
+<pre><code class="language-text">tablas  triggers  vistas  usuarios  productos  logs
+25      72        25      7,512     12,000     68,888
+</code></pre>
+<p>La restauracion completo en 8.5 segundos y no reporto errores.</p>
+<h2 id="notas">Notas</h2>
+<ul>
+<li>Los respaldos no incluyen las cuentas ni los roles de MySQL (<code>mysql.user</code>, <code>mysql.role_edges</code>),
+  porque <code>mysqldump</code> no exporta el esquema <code>mysql</code>. Las cuentas y privilegios se recrean con
+  <code>../04_usuarios_roles/04_usuarios_roles_privilegios.sql</code>.</li>
+<li><code>--set-gtid-purged=OFF</code> evita incluir informacion de GTID para facilitar la restauracion.</li>
+<li>Los archivos <code>err0*.txt</code> se generaron vacios, lo que confirma que <code>mysqldump</code> no reporto errores.</li>
+</ul>
+</main>
+</body>
+</html>
