@@ -1,3 +1,10 @@
+## Vista en Vivo (GitHub Pages)
+
+Puedes visualizar e interactuar directamente con el diccionario de datos y el diagrama entidad-relación desde tu navegador haciendo clic en los siguientes enlaces:
+
+* **[Ver Diccionario de Datos Interactivo](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/diccionario_datos.html)** — Haz clic aquí para explorar las tablas, columnas, tipos de datos y descripciones de `respaldo2011.sql`.
+* **[Ver Diagrama Entidad-Relación (ER)](https://carballo1305.github.io/Practicas_BDN_correcion/Practica04/diagrama_er.html)** — Haz clic aquí para visualizar el esquema gráfico de relaciones y llaves entre entidades.
+
 📁 Práctica 04: Ingeniería Inversa y Documentación Interactiva de Base de Datos (respaldo2011.sql)
 
 Este proyecto contiene la documentación técnica y funcional generada a partir del respaldo de base de datos respaldo2011.sql. El objetivo principal es traducir la estructura técnica de la base de datos a herramientas visuales e interactivas comprensibles tanto para equipos de desarrollo como para personal de negocio, administración y operaciones.
