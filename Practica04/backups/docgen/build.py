@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Genera el diccionario interactivo y el diagrama ER a partir de respaldo1411.sql."""
+"""Genera el diccionario interactivo y el diagrama ER a partir de respaldo2011.sql."""
 from __future__ import annotations
 
 import json
@@ -14,7 +14,7 @@ from parser import load
 
 BASE = Path(__file__).resolve().parent
 BACKUPS = BASE.parent
-SQL_PATH = BACKUPS / "respaldo1411.sql"
+SQL_PATH = BACKUPS / "respaldo2011.sql"
 SAMPLES_PATH = BASE / "samples.json"
 OUT_MAIN = BACKUPS / "diccionario_datos.html"
 OUT_DIAGRAM = BACKUPS / "diagrama_er.html"
@@ -343,7 +343,7 @@ def build_data() -> dict:
     return {
         "meta": {
             "database": "db_test",
-            "source": "respaldo1411.sql",
+            "source": "respaldo2011.sql",
             "generated": TODAY,
             "tables": len(tables),
             "totalRows": total_rows,

@@ -470,7 +470,7 @@
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "diagrama_er_respaldo1411.svg";
+    link.download = "diagrama_er_respaldo2011.svg";
     document.body.appendChild(link);
     link.click();
     link.remove();
