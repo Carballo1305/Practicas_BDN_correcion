@@ -1,8 +1,8 @@
- Práctica 04: Ingeniería Inversa y Documentación Interactiva de Base de Datos (respaldo2011.sql)
+📁 Práctica 04: Ingeniería Inversa y Documentación Interactiva de Base de Datos (respaldo2011.sql)
 
 Este proyecto contiene la documentación técnica y funcional generada a partir del respaldo de base de datos respaldo2011.sql. El objetivo principal es traducir la estructura técnica de la base de datos a herramientas visuales e interactivas comprensibles tanto para equipos de desarrollo como para personal de negocio, administración y operaciones.
 
- Objetivos de la Práctica
+🎯 Objetivos de la Práctica
 
 Análisis e Ingeniería Inversa: Extraer la estructura completa (tablas, columnas, tipos de datos, llaves primarias/foráneas y conteo real de registros) desde el script SQL respaldo2011.sql.
 
@@ -10,7 +10,7 @@ Traducción Funcional (Sin Jerga Técnica): Inferir el propósito de negocio de 
 
 Visualización Interactiva: Actualizar y entregar dos herramientas web autocontenidas (diccionario_datos.html y diagrama_er.html) que faciliten la exploración de datos y sus relaciones.
 
-Estructura de Archivos Entregables
+📂 Estructura de Archivos Entregables
 
 Practica04/
 ├── backups/
@@ -20,7 +20,7 @@ Practica04/
 └── README.md                    # Documentación general del proyecto
 
 
- Componentes Desarrollados
+🛠️ Componentes Desarrollados
 
 1. Diccionario de Datos Extendido e Interactivo (diccionario_datos.html)
 
@@ -48,7 +48,7 @@ Trazado de Relaciones: Conexiones visuales entre llaves foráneas y primarias qu
 
 Controles de Navegación: Herramientas interactivas de zoom, desplazamiento (panning) y resaltado de conexiones para explorar esquemas extensos con comodidad.
 
- Cómo Visualizar los Resultados
+🚀 Cómo Visualizar los Resultados
 
 Al tratarse de archivos HTML autocontenidos, no requieren instalación de servidores ni dependencias externas:
 
@@ -58,7 +58,7 @@ Haz doble clic sobre diccionario_datos.html para abrirlo en tu navegador web pre
 
 Haz doble clic sobre diagrama_er.html para inspeccionar de forma gráfica el mapa de relaciones de la base de datos.
 
- Notas Técnicas
+📝 Notas Técnicas
 
 Fuente de Verdad: Toda la información técnica, tipos de datos y volúmenes de registros provienen directamente del análisis de respaldo2011.sql.
 
